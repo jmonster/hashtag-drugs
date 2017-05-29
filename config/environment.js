@@ -2,6 +2,13 @@
 
 module.exports = function(environment) {
   var ENV = {
+    firebase: {
+      apiKey: 'AIzaSyBj_Y-rlm9z-soF3UvlLqRNKNXKcVuJYIg',
+      authDomain: 'thermhal9000-cb670.firebaseapp.com',
+      databaseURL: 'hhttps://thermhal9000-cb670.firebaseio.com',
+      storageBucket: 'thermhal9000-cb670.appspot.com',
+    },
+
     modulePrefix: 'thermhal-ui',
     environment: environment,
     rootURL: '/',
