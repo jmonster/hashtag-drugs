@@ -8,6 +8,9 @@ module.exports = function(environment) {
       databaseURL: 'hhttps://thermhal9000-cb670.firebaseio.com',
       storageBucket: 'thermhal9000-cb670.appspot.com',
     },
+    torii: {
+      sessionServiceName: 'session'
+    },
 
     modulePrefix: 'thermhal-ui',
     environment: environment,
