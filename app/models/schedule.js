@@ -6,6 +6,5 @@ export default DS.Model.extend({
   onDay: DS.attr('number'),
   value: DS.attr('string'),
 
-
   device: DS.belongsTo('device', { inverse: null })
 });

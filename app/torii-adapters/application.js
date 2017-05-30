@@ -27,12 +27,12 @@ export default ToriiFirebaseAdapter.extend({
       store
         .find('user', id)
         .then((currentUser) => { resolve({ currentUser }); })
-        .catch(() => {
-          // give Ember Data a chance to work out it's own issues
+        .catch((err) => {
+          console.error(err);
+
           Ember.run.later(function() {
             const currentUser = store.createRecord('user', { id, name, email });
             currentUser.save();
-
             resolve({ currentUser });
           });
         });
