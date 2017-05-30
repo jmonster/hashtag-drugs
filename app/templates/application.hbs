@@ -7,3 +7,18 @@
 {{/if}}
 
 {{outlet}}
+
+<h1>{{session.currentUser.device.name}}</h1>
+<ul>
+  <li>model: {{session.currentUser.device.model}}</li>
+  <li>serial: {{session.currentUser.device.serial}}</li>
+  <li>last contacted: {{session.currentUser.device.contactedAt}}</li>
+</ul>
+
+<h1>schedule</h1>
+<ul>
+  <li>raw: {{session.currentUser.device.schedule.value}}</li>
+  <li>temperatureOffset: {{session.currentUser.device.schedule.temperatureOffset}}</li>
+  <li>activeAt: {{session.currentUser.device.schedule.activeAt}}</li>
+  <li>onDay: {{session.currentUser.device.schedule.onDay}}</li>
+</ul>
