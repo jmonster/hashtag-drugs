@@ -1,26 +1,41 @@
-{{#if session.isAuthenticated}}
-  Logged in as {{session.currentUser.name}}
-  <button {{action "signOut"}}>Sign out</button>
-  {{outlet}}
-{{else}}
-  <button {{action "signIn" "google"}}>Sign in with Google</button>
-{{/if}}
-
-{{outlet}}
+<div class="mdl-grid">
+{{#mdl-card title='getting connectedAF'}}
+  <div class="mdl-card__supporting-text">
+    {{#if session.isAuthenticated}}
+      Logged in as {{session.currentUser.name}}
+    {{/if}}
+  </div>
+  {{#mdl-card-actions}}
+    {{#if session.isAuthenticated}}
+      {{mdl-button action=(route-action "signOut") text='Sign out'}}
+    {{else}}
+      {{mdl-button action=(route-action 'signIn' 'google') text='Sign in with Google'}}
+    {{/if}}
+  {{/mdl-card-actions}}
+{{/mdl-card}}
 
 {{#each session.currentUser.devices as |device| }}
-  <h1>{{device.name}}</h1>
-  <ul>
-    <li>model: {{device.model}}</li>
-    <li>serial: {{device.serial}}</li>
-    <li>last contacted: {{device.contactedAt}}</li>
-  </ul>
-
-  <h2>schedule</h2>
-  <ul>
-    <li>raw: {{device.schedule.value}}</li>
-    <li>temperatureOffset: {{device.schedule.temperatureOffset}}</li>
-    <li>activeAt: {{device.schedule.activeAt}}</li>
-    <li>onDay: {{device.schedule.onDay}}</li>
-  </ul>
+{{#mdl-card title=device.name}}
+  <div class="mdl-card__supporting-text">
+    <ul>
+      <li>model: {{device.model}}</li>
+      <li>serial: {{device.serial}}</li>
+      <li>last contacted: {{device.contactedAt}}</li>
+    </ul>
+  </div>
+{{/mdl-card}}
+{{#mdl-card title="Schedule"}}
+  <div class="mdl-card__supporting-text">
+    <ul>
+      <li>raw: {{device.schedule.value}}</li>
+      <li>temperatureOffset: {{device.schedule.temperatureOffset}}</li>
+      <li>activeAt: {{device.schedule.activeAt}}</li>
+      <li>onDay: {{device.schedule.onDay}}</li>
+    </ul>
+  </div>
+{{/mdl-card}}
 {{/each}}
+</div>
+
+
+{{outlet}}
