@@ -1,0 +1,12 @@
+.ember-burger-menu .bm-outlet .bm-content {
+  height: 100vh;
+}
+
+.bm-menu {
+  background-color: color($primary, 'A700');
+}
+
+.primary-menu-header {
+  display: flex;
+  justify-content: flex-end;
+}

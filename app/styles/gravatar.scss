@@ -1,0 +1,16 @@
+.img-circle {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.gravatar-header {
+  margin-bottom: 0.6rem;
+}
+
+.gravatar-header-placeholder, .gravatar-header-placeholder md-icon {
+  font-size: 100px !important;
+  height: 100px;
+}

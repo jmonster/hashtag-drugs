@@ -1,6 +1,5 @@
 {
   "name": "thermhal-ui",
   "dependencies": {
-    "material-design-lite": "~1.0.4"
   }
 }

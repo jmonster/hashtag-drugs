@@ -1,63 +1,85 @@
-{{#mdl-nav title='connected.AF' fixedHeader=false}}
-  {{!-- {{mdl-nav-item name='Buttons'   route='buttons'}}
-  {{mdl-nav-item name='Tabs'      route='tabs'}}
-  {{mdl-nav-item name='Nav'       route='navs'}} --}}
-  {{!-- {{mdl-nav-item name='Nav'}} --}}
-
-  <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--12-col">
-      {{#mdl-card title='Account'}}
-        <div class="mdl-card__supporting-text">
-          {{#if session.isAuthenticated}}
-            Logged in as {{session.currentUser.name}}
-          {{/if}}
-        </div>
-
-        {{#mdl-card-actions}}
-          {{#if session.isAuthenticated}}
-            {{mdl-button action=(route-action 'signOut') text='Sign out'}}
-          {{else}}
-            {{mdl-button isRaised=true action=(route-action 'signIn' 'google') text='Sign in with Google'}}
-          {{/if}}
-        {{/mdl-card-actions}}
-      {{/mdl-card}}
-
-
-      {{#if (is-pending session.currentUser.devices)}}
-        {{#mdl-card}}
-          {{mdl-spinner}}
-        {{/mdl-card}}
-      {{/if}}
-
-      {{#if (await session.currentUser.devices)}}
-        {{#each session.currentUser.devices as |device| }}
-          {{#mdl-card title=device.name}}
-            <div class="mdl-card__supporting-text">
-              <ul>
-                <li>model: {{device.model}}</li>
-                <li>serial: {{device.serial}}</li>
-                <li>last contacted: {{device.contactedAt}}</li>
-              </ul>
-            </div>
-          {{/mdl-card}}
-
-          {{#mdl-card title="Schedule"}}
-            <div class="mdl-card__supporting-text">
-              <ul>
-                <li>raw: {{device.schedule.value}}</li>
-                <li>temperatureOffset: {{device.schedule.temperatureOffset}}</li>
-                <li>activeAt: {{device.schedule.activeAt}}</li>
-                <li>onDay: {{device.schedule.onDay}}</li>
-              </ul>
-            </div>
-            {{#mdl-card-actions}}
-              {{mdl-button action=(route-action 'updateSchedule' device) text='Update'}}
-            {{/mdl-card-actions}}
-          {{/mdl-card}}
-        {{/each}}
-      {{/if}}
-
-      {{outlet}}
+{{#burger-menu animation='open-door' as |burger|}}
+  {{#burger.menu itemTagName="div" dismissOnItemClick=true as |menu|}}
+    <div class="primary-menu-header">
+      {{#paper-button onClick=(action burger.state.actions.close)}}{{paper-icon "close"}}{{/paper-button}}
     </div>
-  </div>
-{{/mdl-nav}}
+
+    {{#if session.isAuthenticated}}
+      <div class="layout-column">
+        <div class="layout-row layout-align-center gravatar-header">
+          {{gravatar-image email=session.currentUser.email
+              title=session.currentUser.email
+              defaultImage='identicon'
+              class='img-circle'
+              size=100
+              retina=true}}
+        </div>
+        <div class="layout-row layout-align-center">
+          <strong>{{session.currentUser.name}}</strong>
+        </div>
+        <div class="layout-row layout-align-center">
+          <small>{{session.currentUser.email}}</small>
+        </div>
+        <div class="layout-row layout-align-center">
+          {{#paper-button onClick=(route-action 'signOut')}}
+            Sign out
+          {{/paper-button}}
+        </div>
+      </div>
+
+      {{paper-divider}}
+    {{else}}
+      <div class="layout-row layout-align-center gravatar-header-placeholder">
+        {{paper-icon "account-circle"}}
+      </div>
+      <div class="layout-row layout-align-center">
+        {{#paper-button raised=true onClick=(route-action 'signIn' 'google')}}
+          Sign in
+        {{/paper-button}}
+      </div>
+    {{/if}}
+
+    {{#if session.isAuthenticated}}
+      {{#paper-subheader}}Devices{{/paper-subheader}}
+      {{#each session.currentUser.devices as |device|}}
+        {{#menu.item}}
+
+        {{#paper-item class="md-2-line" onClick=(route-action "transitionTo" "devices.show" device.id)}}
+          {{paper-icon "devices" class="md-avatar-icon"}}
+          <div class="md-list-item-text">
+            <h3>{{device.name}}</h3>
+            <p>{{device.model}}</p>
+          </div>
+        {{/paper-item}}
+        {{/menu.item}}
+      {{/each}}
+    {{/if}}
+  {{/burger.menu}}
+
+  {{#burger.outlet}}
+    {{#paper-toolbar}}
+      {{#paper-toolbar-tools}}
+        {{#paper-button iconButton=true onClick=burger.state.actions.toggle}}
+          {{paper-icon "menu"}}
+        {{/paper-button}}
+        <h2>
+          ThermHAL 9000
+        </h2>
+
+        <span class="flex"></span>
+        {{#paper-button iconButton=true onClick=(route-action "transitionTo" "/")}}
+          {{paper-icon "home"}}
+        {{/paper-button}}
+        {{#paper-button iconButton=true}}
+          {{paper-icon "more_vert"}}
+        {{/paper-button}}
+      {{/paper-toolbar-tools}}
+    {{/paper-toolbar}}
+
+    <div class="layout-row">
+      <div class="flex-20"></div>
+      <div class="flex-70">{{outlet}}</div>
+      <div class="flex"></div>
+    </div>
+  {{/burger.outlet}}
+{{/burger-menu}}

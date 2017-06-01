@@ -12,8 +12,8 @@ export default Ember.Route.extend({
     signOut: function() {
       this.get('session').close();
     },
-    updateSchedule: function(device) {
-
+    transitionTo(route, id) {
+      this.transitionTo(route, id);
     }
   }
 });
