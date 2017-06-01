@@ -15,10 +15,6 @@ module.exports = function(environment) {
       defaultLocale: 'en'
     },
 
-    sassOptions: {
-      includePaths: ['bower_components/material-design-lite/src']
-    },
-
     modulePrefix: 'thermhal-ui',
     environment: environment,
     rootURL: '/',
