@@ -1,4 +1,4 @@
-{{#burger-menu animation='open-door' as |burger|}}
+{{#burger-menu animation='push-rotate' as |burger|}}
   {{#burger.menu itemTagName="div" dismissOnItemClick=true as |menu|}}
     <div class="primary-menu-header">
       {{#paper-button onClick=(action burger.state.actions.close)}}{{paper-icon "close"}}{{/paper-button}}
