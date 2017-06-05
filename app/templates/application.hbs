@@ -1,43 +1,50 @@
-{{#burger-menu animation='push-rotate' as |burger|}}
+{{#burger-menu animation='slide' translucentOverlay=false as |burger|}}
   {{#burger.menu itemTagName="div" dismissOnItemClick=true as |menu|}}
-    <div class="primary-menu-header">
-      {{#paper-button onClick=(action burger.state.actions.close)}}{{paper-icon "close"}}{{/paper-button}}
-    </div>
-
-    {{#if session.isAuthenticated}}
-      <div class="layout-column">
-        <div class="layout-row layout-align-center gravatar-header">
-          {{gravatar-image email=session.currentUser.email
-              title=session.currentUser.email
-              defaultImage='identicon'
-              class='img-circle'
-              size=100
-              retina=true}}
-        </div>
-        <div class="layout-row layout-align-center">
-          <strong>{{session.currentUser.name}}</strong>
-        </div>
-        <div class="layout-row layout-align-center">
-          <small>{{session.currentUser.email}}</small>
-        </div>
-        <div class="layout-row layout-align-center">
-          {{#paper-button onClick=(route-action 'signOut')}}
-            Sign out
+    <div class="primary-menu-header layout-column">
+      <div class="primary-menu-header-background layout-column"></div>
+      <div class="primary-menu-header-content layout-column">
+        <div class="layout-row layout-align-end">
+          {{#paper-button onClick=(action burger.state.actions.close)}}
+            {{paper-icon "close"}}
           {{/paper-button}}
         </div>
-      </div>
 
-      {{paper-divider}}
-    {{else}}
-      <div class="layout-row layout-align-center gravatar-header-placeholder">
-        {{paper-icon "account-circle"}}
+        {{#if session.isAuthenticated}}
+          <div class="layout-column menu-header-user">
+            <div class="layout-row layout-align-center">
+              {{gravatar-image email=session.currentUser.email
+                  title=session.currentUser.email
+                  defaultImage='identicon'
+                  class='img-circle'
+                  size=100
+                  retina=true}}
+            </div>
+
+            <div class="layout-row layout-align-center menu-header-user-email">
+              <em>{{session.currentUser.email}}</em>
+            </div>
+
+            <div class="layout-row layout-align-center menu-header-actions">
+              {{#paper-button noink=true primary=true onClick=(route-action 'signOut')}}
+                Sign out
+              {{/paper-button}}
+            </div>
+          </div>
+
+          {{paper-divider}}
+        {{else}}
+          <div class="layout-row layout-align-center gravatar-header-placeholder">
+            {{paper-icon "account-circle"}}
+          </div>
+
+          <div class="layout-row layout-align-center">
+            {{#paper-button raised=true onClick=(route-action 'signIn' 'google')}}
+              Sign in
+            {{/paper-button}}
+          </div>
+        {{/if}}
       </div>
-      <div class="layout-row layout-align-center">
-        {{#paper-button raised=true onClick=(route-action 'signIn' 'google')}}
-          Sign in
-        {{/paper-button}}
-      </div>
-    {{/if}}
+    </div>
 
     {{#if session.isAuthenticated}}
       {{#paper-subheader}}Devices{{/paper-subheader}}
@@ -102,10 +109,11 @@
       {{/paper-toolbar-tools}}
     {{/paper-toolbar}}
 
-    <div class="layout-row">
-      <div class="flex-20"></div>
-      <div class="flex-70">{{outlet}}</div>
-      <div class="flex"></div>
+    <div id="page-content" class="layout-row">
+      <div class="flex-10"></div>
+      <div class="flex-80 root-outlet layout-column layout-align-space-around-stretch">{{outlet}}</div>
+      <div class="flex-10"></div>
     </div>
+
   {{/burger.outlet}}
 {{/burger-menu}}

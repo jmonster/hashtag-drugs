@@ -1,3 +1,7 @@
-$primary: "cyan";
-$accent: "yellow";
-$warn: "pink";
+$primary: "amber";
+$accent: "brown";
+$warn: "red";
+
+$primary-text: color($primary, '900');
+$accent-primary-text: color($primary, '900');
+$accent-secondary-text: color($primary, '600');

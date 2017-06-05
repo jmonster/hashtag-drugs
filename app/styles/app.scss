@@ -2,3 +2,12 @@
 @import 'gravatar';
 @import 'ember-paper';
 @import 'menu';
+
+#page-content {
+  flex: 1;
+  background: $primary;
+}
+
+.text-align-center {
+  text-align: center;
+}
