@@ -1,12 +1,11 @@
 import Ember from 'ember';
 
-const { computed, computed: { oneWay, lte }, inject: { service } } = Ember;
+const { computed, computed: { lte }, inject: { service } } = Ember;
 
-
-export default Ember.Controller.extend({
+export default Ember.Component.extend({
   store: service(),
+  session: service(),
 
-  deviceModels: oneWay('model.deviceModels'),
   disableModelSelect: lte('deviceModels.length', 1),
   selectedDeviceModel: computed('deviceModels.[]', function() {
     return this.get('deviceModels.length') === 1 ? this.get('deviceModels.firstObject') : null;
@@ -30,7 +29,7 @@ export default Ember.Controller.extend({
         user.save(),
         record.save()
       ]).then(() => {
-        this.transitionToRoute('/');
+        this.get('onCreate')();
       });
     }
   }
