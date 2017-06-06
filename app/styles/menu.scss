@@ -1,7 +1,3 @@
-body > [class="ember-view"] {
-  height: 100%;
-}
-
 .ember-burger-menu .bm-outlet .bm-content {
   display: flex;
   flex-direction: column;
@@ -48,12 +44,4 @@ body > [class="ember-view"] {
   left: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, .5);
-}
-
-.cromulon {
-  height: 160px;
-}
-
-.gravatar-image {
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
 }

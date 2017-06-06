@@ -2,6 +2,11 @@
 @import 'gravatar';
 @import 'ember-paper';
 @import 'menu';
+@import 'hacks';
+
+body > [class="ember-view"] {
+  height: 100%;
+}
 
 #page-content {
   flex: 1;
@@ -10,4 +15,12 @@
 
 .text-align-center {
   text-align: center;
+}
+
+.cromulon {
+  height: 160px;
+}
+
+.gravatar-image {
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
 }
