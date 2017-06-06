@@ -1,0 +1,49 @@
+{{#paper-form onSubmit=(action "createDevice") as |form|}}
+  <div class="layout-row">
+    <div class="layout-column  flex-50">
+      {{form.input
+          label="Name"
+          icon="email"
+          value=name
+          onChange=(action (mut name))
+          required=true
+          maxlength="64"
+          errorMessages=(hash
+           required="Name is required."
+           maxlength="Name is too long."
+          )
+      }}
+
+      {{form.input
+          label="Serial Number"
+          icon="email"
+          value=serialNumber
+          onChange=(action (mut serialNumber))
+          required=true
+          maxlength="32"
+          errorMessages=(hash
+           required="Serial Number is required."
+           maxlength="Serial Number must be less than 32 characters."
+          )
+      }}
+
+      {{#form.select
+        disabled=disableModelSelect
+        label="Model"
+        options=deviceModels
+        selected=selectedDeviceModel
+        required=true
+        errorMessages=(hash
+         required="Model is required."
+        )
+        onChange=(action 'selectDeviceModel') as |model|}}
+        {{model.title}}
+      {{/form.select}}
+    </div>
+  </div>
+
+  <div class="layout-row  flex-50 layout-align-end-stretch">
+    {{#form.submit-button raised=true primary=true}}Submit{{/form.submit-button}}
+    {{#paper-button raised=true onClick=(route-action "transitionTo" "/")}}Cancel{{/paper-button}}
+  </div>
+{{/paper-form}}

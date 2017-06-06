@@ -1,4 +1,5 @@
 import Ember from 'ember';
+const { isEmpty } = Ember;
 
 export default Ember.Route.extend({
   beforeModel: function() {
@@ -12,8 +13,15 @@ export default Ember.Route.extend({
     signOut: function() {
       this.get('session').close();
     },
-    transitionTo(route, id) {
-      this.transitionTo(route, id);
+    transitionTo(route) {
+      // transitionTo(route, id, event) vs transitionTo(route, event)
+      const id = arguments.length > 2 ? arguments[1] : null;
+
+      if (isEmpty(id)) {
+        this.transitionTo(route);
+      } else {
+        this.transitionTo(route, id);
+      }
     }
   }
 });
