@@ -1,6 +1,9 @@
 /* eslint-env node */
 
-module.exports = function(environment) {
+module.exports = function(environmentArg) {
+  // e.g. production:ios, development:web
+  const [environment, platform] = environmentArg ? [environmentArg, 'web'].join(':').split(':') : ['development','web'];
+
   var ENV = {
     firebase: {
       apiKey: 'AIzaSyBj_Y-rlm9z-soF3UvlLqRNKNXKcVuJYIg',
@@ -35,6 +38,14 @@ module.exports = function(environment) {
       // when it is created
     }
   };
+
+  if (platform !== 'web') {
+    // cordova specific changes
+    // http://embercordova.com/pages/workflow/project_setup
+
+    ENV.locationType = 'hash';
+    ENV.rootURL = '/';
+  }
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
