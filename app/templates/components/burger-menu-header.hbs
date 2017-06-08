@@ -1,0 +1,43 @@
+<div class="burger-menu-header-background layout-column"></div>
+<div class="burger-menu-header-content layout-column">
+  <div class="layout-row layout-align-end">
+    {{#paper-button onClick=(action close)}}
+      {{paper-icon "close"}}
+    {{/paper-button}}
+  </div>
+
+  {{#if user}}
+    <div class="layout-column menu-header-user">
+      <div class="layout-row layout-align-center">
+        {{gravatar-image email=user.email
+            title=user.email
+            defaultImage='identicon'
+            class='img-circle'
+            size=100
+            retina=true}}
+      </div>
+
+      <div class="layout-row layout-align-center menu-header-user-email">
+        <em>{{user.email}}</em>
+      </div>
+
+      <div class="layout-row layout-align-center menu-header-actions">
+        {{#paper-button noink=true primary=true onClick=(route-action 'signOut')}}
+          Sign out
+        {{/paper-button}}
+      </div>
+    </div>
+
+    {{paper-divider}}
+  {{else}}
+    <div class="layout-row layout-align-center gravatar-header-placeholder">
+      {{paper-icon "account-circle"}}
+    </div>
+
+    <div class="layout-row layout-align-center">
+      {{#paper-button raised=true onClick=(route-action 'signIn' 'google')}}
+        Sign in
+      {{/paper-button}}
+    </div>
+  {{/if}}
+</div>

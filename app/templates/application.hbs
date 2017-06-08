@@ -1,92 +1,7 @@
 {{#burger-menu animation='slide' translucentOverlay=false as |burger|}}
   {{#burger.menu itemTagName="div" dismissOnItemClick=true as |menu|}}
-    <div class="primary-menu-header layout-column">
-      <div class="primary-menu-header-background layout-column"></div>
-      <div class="primary-menu-header-content layout-column">
-        <div class="layout-row layout-align-end">
-          {{#paper-button onClick=(action burger.state.actions.close)}}
-            {{paper-icon "close"}}
-          {{/paper-button}}
-        </div>
-
-        {{#if session.isAuthenticated}}
-          <div class="layout-column menu-header-user">
-            <div class="layout-row layout-align-center">
-              {{gravatar-image email=session.currentUser.email
-                  title=session.currentUser.email
-                  defaultImage='identicon'
-                  class='img-circle'
-                  size=100
-                  retina=true}}
-            </div>
-
-            <div class="layout-row layout-align-center menu-header-user-email">
-              <em>{{session.currentUser.email}}</em>
-            </div>
-
-            <div class="layout-row layout-align-center menu-header-actions">
-              {{#paper-button noink=true primary=true onClick=(route-action 'signOut')}}
-                Sign out
-              {{/paper-button}}
-            </div>
-          </div>
-
-          {{paper-divider}}
-        {{else}}
-          <div class="layout-row layout-align-center gravatar-header-placeholder">
-            {{paper-icon "account-circle"}}
-          </div>
-
-          <div class="layout-row layout-align-center">
-            {{#paper-button raised=true onClick=(route-action 'signIn' 'google')}}
-              Sign in
-            {{/paper-button}}
-          </div>
-        {{/if}}
-      </div>
-    </div>
-
-    {{#if session.isAuthenticated}}
-      {{#paper-subheader}}Devices{{/paper-subheader}}
-      {{#each session.currentUser.devices as |device|}}
-        {{#menu.item}}
-          {{#paper-item class="md-2-line" onClick=(route-action "transitionTo" "devices.show" device.id)}}
-            {{paper-icon "devices" class="md-avatar-icon"}}
-            <div class="md-list-item-text">
-              <h3>{{device.name}}</h3>
-              <p>{{device.model}}</p>
-            </div>
-          {{/paper-item}}
-        {{/menu.item}}
-      {{/each}}
-
-      {{#menu.item}}
-        {{#paper-item class="md-2-line"  onClick=(route-action "transitionTo" "devices.new")}}
-          {{paper-icon "add" class="md-avatar-icon"}}
-          <div class="md-list-item-text">
-            <p>Add a device</p>
-          </div>
-        {{/paper-item}}
-      {{/menu.item}}
-
-      {{#paper-subheader}}Feedback{{/paper-subheader}}
-      {{#menu.item}}
-        {{#paper-item class="md-2-line"  onClick=(route-action "transitionTo" "devices.new")}}
-          {{paper-icon "sentiment-satisfied" class="md-avatar-icon"}}
-          <div class="md-list-item-text">
-            <p>Happy?</p>
-          </div>
-        {{/paper-item}}
-      {{/menu.item}}
-      {{#menu.item}}
-        {{#paper-item class="md-2-line"  onClick=(route-action "transitionTo" "devices.new")}}
-          {{paper-icon "sentiment-dissatisfied" class="md-avatar-icon"}}
-          <div class="md-list-item-text">
-            <p>Disappointed?</p>
-          </div>
-        {{/paper-item}}
-      {{/menu.item}}
-    {{/if}}
+    {{burger-menu-header menu=menu close=burger.state.actions.close user=session.currentUser}}
+    {{burger-menu-body menu=menu user=session.currentUser devices=session.currentUser.devices }}
   {{/burger.menu}}
 
   {{#burger.outlet}}
@@ -95,25 +10,23 @@
         {{#paper-button iconButton=true onClick=burger.state.actions.toggle}}
           {{paper-icon "menu"}}
         {{/paper-button}}
+
         <h2>
           ThermHAL 9000
         </h2>
 
         <span class="flex"></span>
+        
         {{#paper-button iconButton=true onClick=(route-action "transitionTo" "/")}}
           {{paper-icon "home"}}
         {{/paper-button}}
+
         {{#paper-button iconButton=true}}
           {{paper-icon "more_vert"}}
         {{/paper-button}}
       {{/paper-toolbar-tools}}
     {{/paper-toolbar}}
 
-    <div id="page-content" class="layout-row">
-      <div class="flex-10"></div>
-      <div class="flex-80 root-outlet layout-column layout-align-space-around-stretch">{{outlet}}</div>
-      <div class="flex-10"></div>
-    </div>
-
+    <div class="root-outlet layout-column flex">{{outlet}}</div>
   {{/burger.outlet}}
 {{/burger-menu}}

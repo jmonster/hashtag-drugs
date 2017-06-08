@@ -1,0 +1,42 @@
+{{#if user}}
+  {{#paper-subheader}}Devices{{/paper-subheader}}
+  {{#each devices as |device|}}
+    {{#menu.item}}
+      {{#paper-item class="md-2-line" onClick=(route-action "transitionTo" "devices.show" device.id)}}
+        {{paper-icon "devices" class="md-avatar-icon"}}
+        <div class="md-list-item-text">
+          <h3>{{device.name}}</h3>
+          <p>{{device.model}}</p>
+        </div>
+      {{/paper-item}}
+    {{/menu.item}}
+  {{/each}}
+
+  {{#menu.item}}
+    {{#paper-item class="md-2-line"  onClick=(route-action "transitionTo" "devices.new")}}
+      {{paper-icon "add" class="md-avatar-icon"}}
+      <div class="md-list-item-text">
+        <p>Add a device</p>
+      </div>
+    {{/paper-item}}
+  {{/menu.item}}
+
+  {{#paper-subheader}}Feedback{{/paper-subheader}}
+  {{#menu.item}}
+    {{#paper-item class="md-2-line"  onClick=(route-action "transitionTo" "devices.new")}}
+      {{paper-icon "sentiment-satisfied" class="md-avatar-icon"}}
+      <div class="md-list-item-text">
+        <p>Happy?</p>
+      </div>
+    {{/paper-item}}
+  {{/menu.item}}
+
+  {{#menu.item}}
+    {{#paper-item class="md-2-line"  onClick=(route-action "transitionTo" "devices.new")}}
+      {{paper-icon "sentiment-dissatisfied" class="md-avatar-icon"}}
+      <div class="md-list-item-text">
+        <p>Disappointed?</p>
+      </div>
+    {{/paper-item}}
+  {{/menu.item}}
+{{/if}}

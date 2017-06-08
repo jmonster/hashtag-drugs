@@ -12,31 +12,28 @@
   box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
 }
 
-.primary-menu-header {
+.burger-menu-header {
   position: relative;
   color: color('grey', '300');
   display: flex;
   justify-content: flex-end;
 }
 
-.primary-menu-header-content {
-  z-index: 1;
-}
-
-.primary-menu-header-background {
-  height: 100%;
+.burger-menu-header-background {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  right: 0;
+  bottom: 0;
 
-  background-image: url('/assets/images/schwifty.jpg');
+  background-image: url('images/schwifty.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: auto 216px;
 }
-.primary-menu-header-background::before {
-  content:"";
+
+.burger-menu-header-background::before {
+  content: "";
   display: block;
   height: 100%;
   position: absolute;
