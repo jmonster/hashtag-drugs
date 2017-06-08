@@ -7,8 +7,7 @@ export default Ember.Route.extend({
   model() {
     return RSVP.hash({
       deviceModels: A([
-        { title: 'ThermHAL 9000' },
-        { title: 'Ding Dong™' }
+        { title: 'ThermHAL 9000' }
       ])
     });
   }

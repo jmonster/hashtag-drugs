@@ -6,6 +6,8 @@ export default Ember.Component.extend({
   store: service(),
   session: service(),
 
+  classNames: ['device-form', 'layout-row', 'layout-align-center-start'],
+
   disableModelSelect: lte('deviceModels.length', 1),
   selectedDeviceModel: computed('deviceModels.[]', function() {
     return this.get('deviceModels.length') === 1 ? this.get('deviceModels.firstObject') : null;

@@ -1,6 +1,19 @@
-{{#paper-form onSubmit=(action "createDevice") as |form|}}
-  <div class="layout-row">
-    <div class="layout-column  flex-50">
+{{#paper-form classNames="flex-xs-100 flex-66" onSubmit=(action "createDevice") as |form|}}
+  <div class="device-form-inputs layout-row">
+    <div class="layout-column flex-100">
+      {{#form.select
+        disabled=disableModelSelect
+        label="Model"
+        options=deviceModels
+        selected=selectedDeviceModel
+        required=true
+        errorMessages=(hash
+         required="Model is required."
+        )
+        onChange=(action 'selectDeviceModel') as |model|}}
+          {{model.title}}
+      {{/form.select}}
+      
       {{form.input
           label="Name"
           icon="title"
@@ -26,23 +39,10 @@
            maxlength="Serial Number must be less than 32 characters."
           )
       }}
-
-      {{#form.select
-        disabled=disableModelSelect
-        label="Model"
-        options=deviceModels
-        selected=selectedDeviceModel
-        required=true
-        errorMessages=(hash
-         required="Model is required."
-        )
-        onChange=(action 'selectDeviceModel') as |model|}}
-        {{model.title}}
-      {{/form.select}}
     </div>
   </div>
 
-  <div class="layout-row  flex-50 layout-align-end-stretch">
+  <div class="layout-row layout-align-end device-form-actions">
     {{#form.submit-button raised=true primary=true}}Submit{{/form.submit-button}}
     {{#paper-button raised=true onClick=onCancel}}Cancel{{/paper-button}}
   </div>
