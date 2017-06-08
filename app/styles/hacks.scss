@@ -2,3 +2,11 @@
   z-index: 100;
   position: relative;
 }
+
+md-backdrop.md-opaque.md-default-theme, md-backdrop .md-opaque {
+  z-index: 100;
+}
+
+.md-dialog-container {
+  z-index: 100;
+}
