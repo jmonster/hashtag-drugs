@@ -13,21 +13,12 @@ export default ToriiFirebaseAdapter.extend({
     const email = authorization.email;
     const store = this.get('store');
 
-    // _always_ creating a record even when it exists smells bad
-    // but it works just fine with Firebase...
-    // in fact, trying to do a find() first and it fails
-    // will then cause the subsequent create to fail because
-    // of some bug in Ember Data that things the ID is already taken...
-    // return this.get('store')
-    //   .createRecord('user', { id, name, email })
-    //   .save()
-    //   .then((currentUser) => { return { currentUser }; });
-
     return new RSVP.Promise(function(resolve) {
       store
         .find('user', id)
         .then((currentUser) => { resolve({ currentUser }); })
-        .catch((err) => {
+        .catch((/*err*/) => {
+          // wait for Ember Data to sort out it's own issues
           Ember.run.later(function() {
             const currentUser = store.createRecord('user', { id, name, email });
             currentUser.save();
