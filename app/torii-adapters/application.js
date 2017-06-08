@@ -32,6 +32,8 @@ export default ToriiFirebaseAdapter.extend({
     this.get('store').unloadAll('user');
     this.get('store').unloadAll('device');
     this.get('store').unloadAll('schedule');
+    this.get('store').unloadAll('event');
+    
     return this._super(...arguments);
   }
 });
