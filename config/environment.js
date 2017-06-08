@@ -18,7 +18,7 @@ module.exports = function(environmentArg) {
       defaultLocale: 'en'
     },
 
-    modulePrefix: 'thermhal-ui',
+    modulePrefix: 'thermHAL',
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
