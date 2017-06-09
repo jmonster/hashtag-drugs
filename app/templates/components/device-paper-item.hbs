@@ -1,0 +1,7 @@
+{{#paper-item class="md-2-line" onClick=(route-action "transitionTo" "devices.show" device.id)}}
+  {{paper-icon "devices" class="md-avatar-icon"}}
+  <div class="md-list-item-text">
+    <h3>{{device.name}}</h3>
+    <p>{{device.model}}</p>
+  </div>
+{{/paper-item}}

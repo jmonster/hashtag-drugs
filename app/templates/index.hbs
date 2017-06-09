@@ -1,9 +1,13 @@
-{{#super-center}}
-  <img src="assets/images/cromulon.png" alt="" class="cromulon">
+{{#each session.currentUser.devices as |device|}}
+  {{device-paper-item device=device onClick=(route-action "transitionTo" "devices.show" device.id)}}
+{{else}}
+  {{#super-center}}
+    <img src="assets/images/cromulon.png" alt="" class="cromulon">
 
-  <h3>SHOW ME WHAT YOU GOT</h3>
+    <h3>SHOW ME WHAT YOU GOT</h3>
 
-  {{#paper-button raised=true primary=true onClick=(route-action "transitionTo" "devices.new")}}
-    Add device
-  {{/paper-button}}
-{{/super-center}}
+    {{#paper-button raised=true primary=true onClick=(route-action "transitionTo" "devices.new")}}
+      Add device
+    {{/paper-button}}
+  {{/super-center}}
+{{/each}}
