@@ -1,0 +1,46 @@
+.thermostat-target-temperature-input {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  > .md-errors-spacer {
+    display: none;
+  }
+}
+
+.thermostat-controls {
+  margin-bottom: 1rem;
+  width: 100%;
+
+  > md-input-container > input {
+    text-align: center !important;
+    background-image: none !important;
+  }
+}
+
+.thermostat-target-temperature-slider {
+  height: 38px;
+}
+
+.thermostat-current-temperature {
+  font-size: 14rem;
+  margin: 0;
+  color: color('grey', '800');
+  // &::after {
+  //   content: 'º';
+  // }
+}
+
+.thermostat-ui {
+  // background-color: black;
+  // color: white;
+}
+
+.thermostat-controls-wrapper {
+  width: 100%;
+}
+
+.thermostat-target-temperature-input {
+  font-size: 2rem;
+  font-weight: bold;
+}

@@ -6,5 +6,8 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   contactedAt: DS.attr('number'),
 
+  targetTemperature: DS.attr('number'),
+  currentTemperature: DS.attr('number'),
+
   schedule: DS.belongsTo('schedule', { inverse: null, async: true })
 });
