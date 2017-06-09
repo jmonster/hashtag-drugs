@@ -25,6 +25,7 @@
 
   {{#feedback-menu-item
     menu=menu
+    showDialog=false
     title="Share a review on Amazon?"
     body="Your thoughts mean everything to us!"
     confirmLabel="Post A Review"
@@ -34,12 +35,12 @@
 
   {{#feedback-menu-item
     menu=menu
-    title="💁 How can we help?"
-    body=""
-    confirmLabel="Instructions"
+    showDialog=false
+    title="💁 We're here to help!"
+    body="Visit the website to see instructions, tutorials, our FAQ and excellent customer service."
+    confirmLabel="Goto Website"
     onConfirm=(route-action "hopTo" hrefForAmazon)
-    cancelLabel="Website"
-    onCancel=(route-action "hopTo" "https://get.connectedaf.com")
+    cancelLabel="Nevermind"
   }}
     <p>Disappointed?</p>
   {{/feedback-menu-item}}
