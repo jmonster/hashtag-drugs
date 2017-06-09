@@ -1,4 +1,4 @@
-{{#burger-menu animation='slide' translucentOverlay=false as |burger|}}
+{{#burger-menu animation="slide" translucentOverlay=false as |burger|}}
   {{#burger.menu itemTagName="div" dismissOnItemClick=true as |menu|}}
     {{burger-menu-header menu=menu close=burger.state.actions.close user=session.currentUser}}
     {{burger-menu-body menu=menu user=session.currentUser devices=session.currentUser.devices }}
@@ -16,7 +16,7 @@
         </h2>
 
         <span class="flex"></span>
-        
+
         {{#paper-button iconButton=true onClick=(route-action "transitionTo" "/")}}
           {{paper-icon "home"}}
         {{/paper-button}}

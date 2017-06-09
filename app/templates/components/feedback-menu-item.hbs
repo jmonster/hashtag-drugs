@@ -1,0 +1,35 @@
+{{#menu.item}}
+  {{#paper-item class="md-2-line" onClick=(action (mut showDialog))}}
+    {{paper-icon "sentiment-dissatisfied" class="md-avatar-icon"}}
+    <div class="md-list-item-text">
+      {{yield}}
+    </div>
+  {{/paper-item}}
+{{/menu.item}}
+
+{{#if showDialog}}
+  {{#paper-dialog fullscreen=true onClose=(action 'toggleDialog') clickOutsideToClose=false}}
+  {{#paper-toolbar}}
+     {{#paper-toolbar-tools}}
+       <h2>🌻 Feedback</h2>
+       <span class="flex"></span>
+       {{#paper-button iconButton=true onClick=(action 'toggleDialog')}}
+         {{paper-icon icon="close"}}
+       {{/paper-button}}
+     {{/paper-toolbar-tools}}
+   {{/paper-toolbar}}
+
+    {{#paper-dialog-content}}
+      <h2 class="md-title">{{title}}</h2>
+      <p>{{body}}</p>
+    {{/paper-dialog-content}}
+
+    {{#paper-dialog-actions class="layout-row"}}
+      <span class="flex"></span>
+      {{#if onCancel}}
+        {{#paper-button onClick=onCancel}}{{cancelLabel}}{{/paper-button}}
+      {{/if}}
+      {{#paper-button primary=true onClick=onConfirm}}{{confirmLabel}}{{/paper-button}}
+    {{/paper-dialog-actions}}
+  {{/paper-dialog}}
+{{/if}}

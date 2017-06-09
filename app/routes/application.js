@@ -13,6 +13,7 @@ export default Ember.Route.extend({
     signOut: function() {
       this.get('session').close();
     },
+    
     transitionTo(route) {
       // transitionTo(route, id, event) vs transitionTo(route, event)
       const id = arguments.length > 2 ? arguments[1] : null;
@@ -22,6 +23,11 @@ export default Ember.Route.extend({
       } else {
         this.transitionTo(route, id);
       }
+    },
+
+    hopTo(url) {
+      // TODO make this work with Cordova
+      window.location.assign(url);
     }
   }
 });

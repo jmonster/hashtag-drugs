@@ -22,21 +22,25 @@
   {{/menu.item}}
 
   {{#paper-subheader}}Feedback{{/paper-subheader}}
-  {{#menu.item}}
-    {{#paper-item class="md-2-line"  onClick=(route-action "transitionTo" "devices.new")}}
-      {{paper-icon "sentiment-satisfied" class="md-avatar-icon"}}
-      <div class="md-list-item-text">
-        <p>Happy?</p>
-      </div>
-    {{/paper-item}}
-  {{/menu.item}}
 
-  {{#menu.item}}
-    {{#paper-item class="md-2-line"  onClick=(route-action "transitionTo" "devices.new")}}
-      {{paper-icon "sentiment-dissatisfied" class="md-avatar-icon"}}
-      <div class="md-list-item-text">
-        <p>Disappointed?</p>
-      </div>
-    {{/paper-item}}
-  {{/menu.item}}
+  {{#feedback-menu-item
+    menu=menu
+    title="Share a review on Amazon?"
+    body="Your thoughts mean everything to us!"
+    confirmLabel="Post A Review"
+    onConfirm=(route-action "hopTo" hrefForAmazon)}}
+    <p>Happy?</p>
+  {{/feedback-menu-item}}
+
+  {{#feedback-menu-item
+    menu=menu
+    title="💁 How can we help?"
+    body=""
+    confirmLabel="Instructions"
+    onConfirm=(route-action "hopTo" hrefForAmazon)
+    cancelLabel="Website"
+    onCancel=(route-action "hopTo" "https://get.connectedaf.com")
+  }}
+    <p>Disappointed?</p>
+  {{/feedback-menu-item}}
 {{/if}}
