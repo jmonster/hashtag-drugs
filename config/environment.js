@@ -1,5 +1,5 @@
 /* eslint-env node */
-
+const links = require('./links');
 module.exports = function(environmentArg) {
   // e.g. production:ios, development:web
   const [environment, platform] = environmentArg ? [environmentArg, 'web'].join(':').split(':') : ['development','web'];
@@ -17,6 +17,7 @@ module.exports = function(environmentArg) {
     i18n: {
       defaultLocale: 'en'
     },
+    links,
 
     modulePrefix: 'thermHAL',
     environment: environment,
