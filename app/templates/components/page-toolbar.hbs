@@ -1,0 +1,9 @@
+{{#paper-toolbar class="toolbar-dynamic-background" as |toolbar|}}
+  {{#toolbar.tools}}
+    {{#paper-button iconButton=true onClick=burger.state.actions.toggle}}
+      {{paper-icon "menu"}}
+    {{/paper-button}}
+
+    <h2>{{title}}</h2>
+  {{/toolbar.tools}}
+{{/paper-toolbar}}

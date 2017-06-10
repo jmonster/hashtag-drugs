@@ -1,5 +1,5 @@
-<div class="burger-menu-header-background layout-column"></div>
-<div class="burger-menu-header-content layout-column">
+  <div class="burger-menu-header-background layout-column"></div>
+  <div class="burger-menu-header-content layout-column">
   <div class="layout-row layout-align-end">
     {{#paper-button onClick=(action close)}}
       {{paper-icon "close"}}
@@ -12,7 +12,7 @@
         {{gravatar-image email=user.email
             title=user.email
             defaultImage='identicon'
-            class='img-circle'
+            class='gravatar-image-circle-100'
             size=100
             retina=true}}
       </div>
@@ -22,9 +22,11 @@
       </div>
 
       <div class="layout-row layout-align-center menu-header-actions">
-        {{#paper-button noink=true primary=true onClick=(route-action 'signOut')}}
-          Sign out
-        {{/paper-button}}
+        {{#menu.item dismissOnClick=false}}
+          {{#paper-button noink=true primary=true onClick=(route-action 'signOut')}}
+            Sign out
+          {{/paper-button}}
+        {{/menu.item}}
       </div>
     </div>
 
@@ -35,9 +37,11 @@
     </div>
 
     <div class="layout-row layout-align-center">
-      {{#paper-button raised=true onClick=(route-action 'signIn' 'google')}}
-        Sign in
-      {{/paper-button}}
+      {{#menu.item dismissOnClick=false}}
+        {{#paper-button raised=true onClick=(route-action 'signIn' 'google')}}
+          Sign in
+        {{/paper-button}}
+      {{/menu.item}}
     </div>
   {{/if}}
-</div>
+  </div>

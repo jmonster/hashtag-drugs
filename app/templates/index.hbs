@@ -1,3 +1,5 @@
+{{page-hamburger-menu title="ThermHAL 9000" burger=burger user=session.currentUser}}
+
 {{#each session.currentUser.devices as |device|}}
   {{device-paper-item device=device onClick=(route-action "transitionTo" "devices.show" device.id)}}
 {{else}}

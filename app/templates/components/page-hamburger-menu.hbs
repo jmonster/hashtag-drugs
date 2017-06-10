@@ -1,0 +1,11 @@
+{{#burger-menu animation="slide" translucentOverlay=false as |burger|}}
+  {{#burger.menu itemTagName="div" dismissOnItemClick=true as |menu|}}
+    {{burger-menu-header menu=menu close=burger.state.actions.close user=user}}
+    {{burger-menu-body menu=menu user=user devices=user.devices}}
+  {{/burger.menu}}
+
+  {{#burger.outlet}}
+    {{page-toolbar title=title burger=burger}}
+    {{outlet}}
+  {{/burger.outlet}}
+{{/burger-menu}}
