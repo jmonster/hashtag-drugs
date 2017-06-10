@@ -2,16 +2,17 @@ import Ember from 'ember';
 const { isEmpty } = Ember;
 
 export default Ember.Route.extend({
-  beforeModel: function() {
+  beforeModel() {
     return this.get('session').fetch().catch(function() {});
   },
 
   actions: {
-    signIn: function(provider) {
-      this.get('session').open('firebase', { provider });
+    signIn(provider) {
+      this.get('session').open('firebase', { provider }).then(() => { this.transitionTo('/'); });
     },
-    signOut: function() {
-      this.get('session').close();
+    
+    signOut() {
+      this.get('session').close().then(() => { this.refresh(); });
     },
 
     transitionTo(route) {

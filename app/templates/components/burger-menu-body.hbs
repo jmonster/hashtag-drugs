@@ -2,12 +2,12 @@
   {{#paper-subheader}}Devices{{/paper-subheader}}
   {{#each devices as |device|}}
     {{#menu.item}}
-      {{device-paper-item device=device onClick=(route-action "transitionTo" "devices.show" device.id)}}
+      {{device-paper-item device=device onClick=(route-action "transitionTo" "authenticated.devices.show" device.id)}}
     {{/menu.item}}
   {{/each}}
 
   {{#menu.item}}
-    {{#paper-item class="md-2-line"  onClick=(route-action "transitionTo" "devices.new")}}
+    {{#paper-item class="md-2-line"  onClick=(route-action "transitionTo" "authenticated.devices.new")}}
       {{paper-icon "add" class="md-avatar-icon"}}
       <div class="md-list-item-text">
         <p>Add a device</p>

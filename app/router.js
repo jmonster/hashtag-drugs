@@ -7,8 +7,12 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('devices.new', { path: '/devices/new' });
-  this.route('devices.show', { path: '/devices/:id' });
+  this.route('onboarding');
+
+  this.route('authenticated', { path: '/' }, function() {
+    this.route('devices.new', { path: '/devices/new' });
+    this.route('devices.show', { path: '/devices/:id' });
+  });
 });
 
 export default Router;
