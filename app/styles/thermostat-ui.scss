@@ -43,18 +43,52 @@
   }
 }
 
-.thermostat-ui {
-  color: white;
+.thermostat-current-temperature {
+  position: relative;
+  &:after {
+    content: "º";
+    position: absolute;
+  }
 }
 
-md-icon.heat {
+.thermostat-ui {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.thermostat-weather-icon {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+}
+
+
+
+.heat md-icon {
   color: color('amber', '800');
 }
 
-md-icon.cool {
+.cool md-icon {
   color: color('light-blue', '500');
 }
 
-md-icon.fan {
+.fan md-icon {
   color: color('grey', '500');
+}
+
+@keyframes glow {
+  to { text-shadow: 0 0 0px color('amber', '800'); }
+}
+
+@keyframes glow-cool {
+  to { text-shadow: 0 0 20px color('light-blue', '500'); }
+}
+
+.cool .thermostat-target-temperature {
+  animation: glow-cool 1s infinite alternate;
+}
+
+.heat .thermostat-target-temperature {
+  animation: glow-heat 1s infinite alternate;
 }
