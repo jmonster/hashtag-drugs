@@ -3,9 +3,17 @@
   padding: 0;
   width: 100%;
 
+  font-size: 2rem;
+  font-weight: bold;
+  display: none;
+
   > .md-errors-spacer {
     display: none;
   }
+}
+
+.thermostat-controls-wrapper {
+  width: 100%;
 }
 
 .thermostat-controls {
@@ -22,25 +30,31 @@
   height: 38px;
 }
 
-.thermostat-current-temperature {
+.thermostat-target-temperature {
+  position: relative;
   font-size: 14rem;
   margin: 0;
   color: color('grey', '800');
-  // &::after {
-  //   content: 'º';
-  // }
+
+  &::after {
+    content: "º";
+    position: absolute;
+    font-size: 7rem;
+  }
 }
 
 .thermostat-ui {
-  // background-color: black;
-  // color: white;
+  color: white;
 }
 
-.thermostat-controls-wrapper {
-  width: 100%;
+md-icon.heat {
+  color: color('amber', '800');
 }
 
-.thermostat-target-temperature-input {
-  font-size: 2rem;
-  font-weight: bold;
+md-icon.cool {
+  color: color('light-blue', '500');
+}
+
+md-icon.fan {
+  color: color('grey', '500');
 }

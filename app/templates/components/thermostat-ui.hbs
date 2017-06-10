@@ -1,8 +1,8 @@
 {{#super-center class="thermostat-ui"}}
   {{#super-center}}
-    <h1 class="thermostat-current-temperature breathing {{breathingTextClass}}">{{currentTemperature}}</h1>
+    <h1 class="thermostat-target-temperature {{breathingTextClass}}">{{targetTemperature}}</h1>
     <div class="thermostat-weather-icon">
-      {{paper-icon weatherIcon size=48}}
+      {{paper-icon weatherIcon size=48 class=mode}}
     </div>
   {{/super-center}}
 
@@ -11,7 +11,7 @@
       {{paper-slider
         class="flex md-accent thermostat-target-temperature-slider"
         min=50
-        max=85
+        max=90
         value=targetTemperature
         onChange=(action (mut targetTemperature))}}
       {{paper-input disabled=true class="thermostat-target-temperature-input" type="number" value=targetTemperature onChange=(action (mut targetTemperature))}}

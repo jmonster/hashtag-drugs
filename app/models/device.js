@@ -6,6 +6,7 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   contactedAt: DS.attr('number'),
 
+  mode: DS.attr('string'),
   targetTemperature: DS.attr('number'),
   currentTemperature: DS.attr('number'),
 
