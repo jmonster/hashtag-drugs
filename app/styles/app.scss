@@ -1,19 +1,17 @@
 @import 'variables';
-@import 'gravatar';
+
 @import 'ember-paper';
+
+@import 'gravatar';
 @import 'menu';
 @import 'device-form';
 @import 'thermostat-ui';
 @import 'hacks';
 
-body > [class="ember-view"] {
-  height: 100%;
-}
-
 .cromulon {
   height: 160px;
 }
 
-.gravatar-image {
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+body {
+  background-color: color('grey', '100');
 }

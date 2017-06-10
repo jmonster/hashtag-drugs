@@ -6,6 +6,9 @@
     <title>ThermhalUi</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-title" content="ThermHAL 9000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
     <meta property="og:image" content="http://i.imgur.com/Yu2kRVj.gif"/>
 
 
@@ -16,7 +19,7 @@
 
     {{content-for "head-footer"}}
   </head>
-  <body>
+  <body class="noselect">
     {{content-for "body"}}
 
     <script src="{{rootURL}}assets/vendor.js"></script>
