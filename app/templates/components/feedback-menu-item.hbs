@@ -1,9 +1,6 @@
 {{#menu.item}}
   {{#paper-item class="md-2-line" onClick=(action (mut showDialog) true)}}
-    {{paper-icon "sentiment-dissatisfied" class="md-avatar-icon"}}
-    <div class="md-list-item-text">
-      {{yield}}
-    </div>
+    {{yield}}
   {{/paper-item}}
 {{/menu.item}}
 

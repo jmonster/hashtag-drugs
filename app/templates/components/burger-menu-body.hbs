@@ -25,7 +25,10 @@
     body="Your thoughts mean everything to us!"
     confirmLabel="Post A Review"
     onConfirm=(route-action "hopTo" hrefForAmazon)}}
-    <p>Happy?</p>
+      {{paper-icon "sentiment-very-satisfied" class="md-avatar-icon"}}
+      <div class="md-list-item-text">
+        <p>Happy?</p>
+      </div>
   {{/feedback-menu-item}}
 
   {{#feedback-menu-item
@@ -37,6 +40,9 @@
     onConfirm=(route-action "hopTo" hrefForAmazon)
     cancelLabel="Nevermind"
   }}
-    <p>Disappointed?</p>
+    {{paper-icon "sentiment-neutral" class="md-avatar-icon"}}
+      <div class="md-list-item-text">
+        <p>Disappointed?</p>
+      </div>
   {{/feedback-menu-item}}
 {{/if}}
