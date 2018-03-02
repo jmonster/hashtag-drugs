@@ -1,15 +1,14 @@
-/* eslint-env node */
-const links = require('./links');
-module.exports = function(environmentArg) {
-  // e.g. production:ios, development:web
-  const [environment, platform] = environmentArg ? [environmentArg, 'web'].join(':').split(':') : ['development','web'];
+'use strict';
 
-  var ENV = {
+module.exports = function(environment) {
+  let ENV = {
     firebase: {
-      apiKey: 'AIzaSyBj_Y-rlm9z-soF3UvlLqRNKNXKcVuJYIg',
-      authDomain: 'thermhal9000-cb670.firebaseapp.com',
-      databaseURL: 'https://thermhal9000-cb670.firebaseio.com',
-      storageBucket: 'thermhal9000-cb670.appspot.com',
+      apiKey: "AIzaSyCbzoohs1bW5G-P-COxcizqVlLSSvo1cHQ",
+      authDomain: "toppotstop.firebaseapp.com",
+      databaseURL: "https://toppotstop.firebaseio.com",
+      projectId: "toppotstop",
+      storageBucket: "",
+      messagingSenderId: "296002376021"
     },
     torii: {
       sessionServiceName: 'session'
@@ -17,10 +16,9 @@ module.exports = function(environmentArg) {
     i18n: {
       defaultLocale: 'en'
     },
-    links,
 
-    modulePrefix: 'thermHAL',
-    environment: environment,
+    modulePrefix: 'top-pot',
+    environment,
     rootURL: '/',
     locationType: 'auto',
     EmberENV: {
@@ -40,14 +38,6 @@ module.exports = function(environmentArg) {
     }
   };
 
-  if (platform !== 'web') {
-    // cordova specific changes
-    // http://embercordova.com/pages/workflow/project_setup
-
-    ENV.locationType = 'hash';
-    ENV.rootURL = '/';
-  }
-
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -65,10 +55,11 @@ module.exports = function(environmentArg) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+    ENV.APP.autoboot = false;
   }
 
   if (environment === 'production') {
-
+    // here you can enable a production-specific feature
   }
 
   return ENV;

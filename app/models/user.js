@@ -2,7 +2,5 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   name: DS.attr('string'),
-  email: DS.attr('string'),
-
-  devices: DS.hasMany('device', { inverse: null, async: true })
+  email: DS.attr('string')
 });

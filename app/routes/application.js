@@ -1,7 +1,7 @@
-import Ember from 'ember';
-const { isEmpty } = Ember;
+import { isEmpty } from '@ember/utils';
+import Route from '@ember/routing/route'
 
-export default Ember.Route.extend({
+export default Route.extend({
   beforeModel() {
     return this.get('session').fetch().catch(function() {});
   },
@@ -10,7 +10,7 @@ export default Ember.Route.extend({
     signIn(provider) {
       this.get('session').open('firebase', { provider }).then(() => { this.transitionTo('/'); });
     },
-    
+
     signOut() {
       this.get('session').close().then(() => { this.refresh(); });
     },

@@ -1,22 +1,3 @@
-{{page-toolbar title="connectedAF"}}
-
-<div class="layout-row layout-align-center">
-  {{#paper-card class="onboarding-card" as |card|}}
-    {{card.image src="http://i.imgur.com/cFb1g2p.png" alt="Home" title="Home"}}
-    {{#card.title as |title|}}
-      {{#title.text as |text|}}
-        {{#text.headline}}Welcome!{{/text.headline}}
-      {{/title.text}}
-    {{/card.title}}
-    {{#card.content}}
-      <p>
-        We'll need you to securely sign in before we can let you start controlling this household.
-        I mean, you wouldn't want some jabroni on the street to start messing with your stuff, AMIRITE??
-      </p>
-    {{/card.content}}
-    {{#card.actions}}
-      {{#paper-button primary=true onClick=(route-action 'signIn' 'google')}}Sign In{{/paper-button}}
-    {{/card.actions}}
-  {{/paper-card}}
-
+<div class="">
+  <button {{action (route-action 'signIn' 'google')}}>Sign In</button>
 </div>

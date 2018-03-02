@@ -1,15 +1,1 @@
-{{page-hamburger-menu title="ThermHAL 9000" burger=burger user=session.currentUser}}
-
-{{#each session.currentUser.devices as |device|}}
-  {{device-paper-item device=device onClick=(route-action "transitionTo" "authenticated.devices.show" device.id)}}
-{{else}}
-  {{#super-center}}
-    <img src="assets/images/cromulon.png" alt="" class="cromulon">
-
-    <h3>SHOW ME WHAT YOU GOT</h3>
-
-    {{#paper-button raised=true primary=true onClick=(route-action "transitionTo" "authenticated.devices.new")}}
-      Add device
-    {{/paper-button}}
-  {{/super-center}}
-{{/each}}
+<h3>SHOW ME WHAT YOU GOT</h3>

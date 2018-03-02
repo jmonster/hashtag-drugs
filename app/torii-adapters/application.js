@@ -1,8 +1,7 @@
 import ToriiFirebaseAdapter from 'emberfire/torii-adapters/firebase';
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import { later } from '@ember/runloop';
 import RSVP from 'rsvp';
-
-const { inject: { service }} = Ember;
 
 export default ToriiFirebaseAdapter.extend({
   store: service(),
@@ -19,7 +18,7 @@ export default ToriiFirebaseAdapter.extend({
         .then((currentUser) => { resolve({ currentUser }); })
         .catch((/*err*/) => {
           // wait for Ember Data to sort out it's own issues
-          Ember.run.later(function() {
+          later(function() {
             const currentUser = store.createRecord('user', { id, name, email });
             currentUser.save();
             resolve({ currentUser });
@@ -30,10 +29,7 @@ export default ToriiFirebaseAdapter.extend({
 
   close() {
     this.get('store').unloadAll('user');
-    this.get('store').unloadAll('device');
-    this.get('store').unloadAll('schedule');
-    this.get('store').unloadAll('event');
-    
+
     return this._super(...arguments);
   }
 });
