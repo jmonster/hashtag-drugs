@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('authenticated', { path: '/' }, function() {
 
   });
+  this.route('cart');
 });
 
 export default Router;

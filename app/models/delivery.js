@@ -11,9 +11,8 @@ import DS from 'ember-data';
 const inverse = null;
 
 export default DS.Model.extend({
-  cart: DS.belongsTo('cart', { inverse }),
-  location: DS.belongsTo('location', { inverse }),
-  orders: DS.hasMany('order', { inverse }),
-  name: DS.attr('string'),
-  email: DS.attr('string')
+  order: DS.belongsTo('order', { inverse }),
+  driver: DS.belongsTo('user', { inverse }),
+  lastKnownLocation: DS.belongsTo('location', { inverse }),
+  eta: DS.attr('date')
 });
