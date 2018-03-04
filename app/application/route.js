@@ -6,6 +6,10 @@ export default Route.extend({
     return this.get('session').fetch().catch(function() {});
   },
 
+  model() {
+    return this.store.peekAll('user').get('firstObject');
+  },
+
   actions: {
     signIn(provider) {
       this.get('session').open('firebase', { provider }).then(() => { this.transitionTo('/'); });
