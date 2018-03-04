@@ -34,9 +34,8 @@
 @import "ember-cli-bootstrap-4/carousel";
 @import "ember-cli-bootstrap-4/utilities";
 @import "ember-cli-bootstrap-4/print";
-@import 'gravatar';
-@import 'hacks';
 
-@import 'grid';
+@import 'gravatar';
 @import 'animate';
 @import 'x-input';
+// @import 'hacks'; // not sure if this is necessary anymore
