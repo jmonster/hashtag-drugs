@@ -1,4 +1,4 @@
-.fancy-input-label {
+.x-input-label {
   -webkit-animation-duration: 0.2s;
   animation-duration: 0.2s;
 }
@@ -13,43 +13,43 @@ input { padding: 0; margin: 0; }
   border-top: 1px #999 solid;
 }
 
-.row > .fancy-input:not(:last-child) {
+.row > .x-input:not(:last-child) {
   border-right: 1px #999 solid;
 }
 
-.row > .fancy-input:not(:first-child) {
+.row > .x-input:not(:first-child) {
   padding: 0.2rem !important;
 }
 
-.fancy-input {
+.x-input {
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
 }
-.fancy-input label {
+.x-input label {
   order: 1;
   font-size: 0.8rem;
   color: #777;
   visibility: hidden;
 }
-.fancy-input input {
+.x-input input {
   order: 2;
   color: #333;
   background-color: transparent;
   border: none;
   font-size: 1.2rem;
 }
-.fancy-input input::-webkit-input-placeholder {
+.x-input input::-webkit-input-placeholder {
   color: #bbb;
 }
-.fancy-input input:focus {
+.x-input input:focus {
   outline: none;
   color: black;
 }
-.fancy-input label.label-emphasized {
+.x-input label.label-emphasized {
   visibility: visible;
 }
-.fancy-input input:focus + label.label-emphasized {
+.x-input input:focus + label.label-emphasized {
   color: blue;
 }

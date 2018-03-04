@@ -4,8 +4,8 @@
 
 <h2>new product</h2>
 <div>
-  {{fancy-input value=newProduct.name placeholder="name" label="name"}}
-  {{fancy-input value=newProduct.description type="text" placeholder="description" label="description"}}
+  {{x-input value=newProduct.name placeholder="name" label="name"}}
+  {{x-input value=newProduct.description type="text" placeholder="description" label="description"}}
 
   <label>brand</label>
   {{#x-select value=newProduct.brand as |xs|}}

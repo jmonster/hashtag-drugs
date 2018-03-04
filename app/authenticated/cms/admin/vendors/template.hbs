@@ -4,11 +4,11 @@
 
 <h2>new vendor</h2>
 <div>
-  {{fancy-input value=newVendor.name placeholder="name" label="name"}}
-  {{fancy-input value=newVendor.description placeholder="description" label="description"}}
-  {{fancy-input value=newVendor.url placeholder="url" label="url"}}
-  {{fancy-input value=newVendor.location.street1 placeholder="Street" label="street"}}
-  {{fancy-input value=newVendor.location.zip placeholder="zip code" label="zip code" maxlength=5}}
+  {{x-input value=newVendor.name placeholder="name" label="name"}}
+  {{x-input value=newVendor.description placeholder="description" label="description"}}
+  {{x-input value=newVendor.url placeholder="url" label="url"}}
+  {{x-input value=newVendor.location.street1 placeholder="Street" label="street"}}
+  {{x-input value=newVendor.location.zip placeholder="zip code" label="zip code" maxlength=5}}
 
   <label>products</label>
   {{#x-select value=newVendor.products multiple=true as |xs|}}

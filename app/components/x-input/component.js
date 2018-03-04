@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 
 export default Component.extend({
-  classNames: ['fancy-input', 'box'],
+  classNames: ['x-input', 'box'],
   attributeBindings: ['style'],
 
   classWhenActive: computed('value', function() {
