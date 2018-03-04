@@ -12,6 +12,8 @@ Router.map(function() {
 
   });
   this.route('cart');
+  this.route('cms');
+  this.route('products');
 });
 
 export default Router;
