@@ -13,7 +13,9 @@ Router.map(function() {
   });
   this.route('cart');
   this.route('cms');
-  this.route('products');
+  this.route('products', function() {
+    this.route('view', { path: '/view/:id' });
+  });
 });
 
 export default Router;
