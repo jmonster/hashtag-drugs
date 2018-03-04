@@ -1,5 +1,10 @@
+<h1>products</h1>
 <ul>
-  {{#each products as |product|}}
+  {{#each model as |product|}}
     <li>{{product.name}} -- {{product.brand.name}}</li>
+  {{else}}
+    <li>
+      no products.
+    </li>
   {{/each}}
 </ul>
