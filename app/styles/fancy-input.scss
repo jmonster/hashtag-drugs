@@ -1,0 +1,55 @@
+.fancy-input-label {
+  -webkit-animation-duration: 0.2s;
+  animation-duration: 0.2s;
+}
+
+input { padding: 0; margin: 0; }
+
+.clever-form > .row .box {
+  border-bottom: 1px #999 solid;
+}
+
+.clever-form > .row:first-child .box {
+  border-top: 1px #999 solid;
+}
+
+.row > .fancy-input:not(:last-child) {
+  border-right: 1px #999 solid;
+}
+
+.row > .fancy-input:not(:first-child) {
+  padding: 0.2rem !important;
+}
+
+.fancy-input {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.fancy-input label {
+  order: 1;
+  font-size: 0.8rem;
+  color: #777;
+  visibility: hidden;
+}
+.fancy-input input {
+  order: 2;
+  color: #333;
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+}
+.fancy-input input::-webkit-input-placeholder {
+  color: #bbb;
+}
+.fancy-input input:focus {
+  outline: none;
+  color: black;
+}
+.fancy-input label.label-emphasized {
+  visibility: visible;
+}
+.fancy-input input:focus + label.label-emphasized {
+  color: blue;
+}
