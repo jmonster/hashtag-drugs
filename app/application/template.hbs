@@ -8,27 +8,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          {{#link-to "authenticated" class="nav-link"}}Home <span class="sr-only">(current)</span>{{/link-to}}
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          {{#link-to "cms" class="nav-link"}}CMS{{/link-to}}
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
+          {{#link-to "products" class="nav-link"}}Products{{/link-to}}
         </li>
       </ul>
       <div class="navbar-nav navbar-right">
-        <div class="dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href='/sign-out' {{action (route-action 'signOut')}}>Sign out</a>
-          </div>
-        </div>
+        <li class="nav-item">
+          <a class="nav-link" href='/sign-out' {{action (route-action 'signOut')}}>Sign out</a>
+        </li>
       </div>
     </div>
   </nav>
