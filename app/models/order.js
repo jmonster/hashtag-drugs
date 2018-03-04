@@ -11,9 +11,10 @@ import DS from 'ember-data';
 const inverse = null;
 
 export default DS.Model.extend({
-  cart: DS.belongsTo('cart', { inverse }),
-  location: DS.belongsTo('location', { inverse }),
-  orders: DS.hasMany('order', { inverse }),
-  name: DS.attr('string'),
-  email: DS.attr('string')
+  purchaser: DS.belongsTo('user', { inverse }),
+  tracking: DS.belongsTo('delivery', { inverse }),
+  cartItems: DS.hasMany('cart-item', { inverse }),
+  createdAt: DS.attr('date'),
+  fulfilledAt: DS.attr('date'),
+  total: DS.attr('number') // in cents
 });
