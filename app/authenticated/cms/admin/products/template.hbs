@@ -1,27 +1,38 @@
+<h2>new product</h2>
 <p>A product is made by a brand and sold by a vendor.</p>
 
-<hr>
+<div class="container x-form">
+  <div class="row">
+    <div class="col">
+      {{x-input value=newProduct.name placeholder="name" label="name"}}
+    </div>
+  </div>
 
-<h2>new product</h2>
-<div>
-  {{x-input value=newProduct.name placeholder="name" label="name"}}
-  {{x-input value=newProduct.description type="text" placeholder="description" label="description"}}
+  <div class="row">
+    <div class="col">
+      {{x-input value=newProduct.description type="text" placeholder="description" label="description"}}
+    </div>
+  </div>
 
-  <label>brand</label>
-  {{#x-select value=newProduct.brand as |xs|}}
-    {{#each brands as |brand|}}
-      {{#xs.option value=brand}}{{brand.name}}{{/xs.option}}
-    {{/each}}
-  {{/x-select}}
-
-  <button type="button" {{action "saveProduct" newProduct}}>Create</button>
+  <div class="row">
+    <div class="col">
+      <label>brand</label>
+      {{#x-select value=newProduct.brand as |xs|}}
+        {{#each brands as |brand|}}
+          {{#xs.option value=brand}}{{brand.name}}{{/xs.option}}
+        {{/each}}
+      {{/x-select}}
+    </div>
+  </div>
 </div>
+
+<button type="button" {{action "saveProduct" newProduct}}>Create</button>
 
 <hr>
 
 <h2>products</h2>
 <ul>
   {{#each products as |product|}}
-    <li>{{product.name}} -- {{product.brand.name}}</li>
+    <li>{{product.name}}</li>
   {{/each}}
 </ul>

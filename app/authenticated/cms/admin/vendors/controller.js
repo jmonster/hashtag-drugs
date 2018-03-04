@@ -17,6 +17,11 @@ export default Controller.extend({
     return this.store.findAll('vendor');
   }),
 
+  products: filterBy('_products', 'isNew', false),
+  _products: computed(function() {
+    return this.store.findAll('product');
+  }),
+
   actions: {
     saveVendor(vendor) {
       vendor.save();

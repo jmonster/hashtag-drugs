@@ -1,24 +1,60 @@
+<h2>new vendor</h2>
 <p>A vendor is a company that sells products made by a brand.</p>
 
-<hr>
+<div class="container x-form">
+  <div class="row">
+    <div class="col">
+      {{x-input value=newVendor.name placeholder="name" label="name"}}
+    </div>
+  </div>
 
-<h2>new vendor</h2>
-<div>
-  {{x-input value=newVendor.name placeholder="name" label="name"}}
-  {{x-input value=newVendor.description placeholder="description" label="description"}}
-  {{x-input value=newVendor.url placeholder="url" label="url"}}
-  {{x-input value=newVendor.location.street1 placeholder="Street" label="street"}}
-  {{x-input value=newVendor.location.zip placeholder="zip code" label="zip code" maxlength=5}}
+  <div class="row">
+    <div class="col">
+      {{x-input value=newVendor.description placeholder="description" label="description"}}
+    </div>
+  </div>
 
-  <label>products</label>
-  {{#x-select value=newVendor.products multiple=true as |xs|}}
-    {{#each products as |product|}}
-      {{#xs.option value=product}}{{product.name}}{{/xs.option}}
-    {{/each}}
-  {{/x-select}}
+  <div class="row">
+    <div class="col">
+      {{x-input value=newVendor.url placeholder="url" label="url"}}
+    </div>
+  </div>
 
-  <button type="button" {{action "saveVendor" newVendor}}>Create</button>
+  <div class="row">
+    <div class="col">
+      {{x-input value=newVendor.location.street1 placeholder="Street" label="street"}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      {{x-input value=newVendor.location.street2 placeholder="Street (continued)" label="street (continued)"}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      {{x-input value=newVendor.location.zip placeholder="zip code" label="zip code" maxlength=5 type="number"}}
+    </div>
+    <div class="col">
+      {{x-input value=newVendor.location.state placeholder="state" label="state"}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <label>products</label>
+      {{#x-select value=newVendor.products multiple=true as |xs|}}
+        {{#each products as |product|}}
+          {{#xs.option value=product}}{{product.name}}{{/xs.option}}
+        {{/each}}
+      {{/x-select}}
+    </div>
+  </div>
 </div>
+
+<button type="button" {{action "saveVendor" newVendor}}>Save</button>
+
+<hr>
 
 <h2>vendors</h2>
 {{#each vendors as |vendor|}}

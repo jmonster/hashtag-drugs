@@ -1,10 +1,17 @@
+<h2>new brand</h2>
 <p>A brand is a company that makes products which are sold by a vendor.</p>
 
-<h2>new brand</h2>
-<div>
-  {{x-input value=newBrandName placeholder="brand name" label="name" type="input"}}
-  <button type="button" {{action "saveBrand" newBrandName}}>Create</button>
+<div class="container x-form">
+  <div class="row">
+    <div class="col">
+      {{x-input value=newBrandName placeholder="brand name" label="name" type="input"}}
+    </div>
+  </div>
 </div>
+
+<button type="button" {{action "saveBrand" newBrandName}}>Create</button>
+
+<hr>
 
 <h2>brands</h2>
 <ul>

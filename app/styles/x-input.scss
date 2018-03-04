@@ -1,24 +1,18 @@
-.x-input-label {
-  -webkit-animation-duration: 0.2s;
-  animation-duration: 0.2s;
-}
-
 input { padding: 0; margin: 0; }
 
-.clever-form > .row .box {
+// x-form + x-input
+.x-form.container > .row:not(:last-child) {
   border-bottom: 1px #999 solid;
 }
 
-.clever-form > .row:first-child .box {
-  border-top: 1px #999 solid;
-}
-
-.row > .x-input:not(:last-child) {
+.x-form .col:not(:last-child) {
   border-right: 1px #999 solid;
 }
 
-.row > .x-input:not(:first-child) {
-  padding: 0.2rem !important;
+// x-input
+.x-input-label {
+  -webkit-animation-duration: 0.2s;
+  animation-duration: 0.2s;
 }
 
 .x-input {
