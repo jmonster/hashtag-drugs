@@ -1,0 +1,10 @@
+<h1>inventory</h1>
+<p>Product inventory tracks which products are available at a vendor.</p>
+<label>product inventory</label>
+{{#x-select value=vendor.products multiple=true action="productsChanged" as |xs|}}
+  {{#each products as |product|}}
+    {{#xs.option value=product}}{{product.name}}{{/xs.option}}
+  {{/each}}
+{{/x-select}}
+
+<button type="button" {{action "saveInventory"}}>Save</button>

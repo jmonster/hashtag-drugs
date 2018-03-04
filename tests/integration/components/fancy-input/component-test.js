@@ -13,14 +13,5 @@ module('Integration | Component | fancy-input', function(hooks) {
     await render(hbs`{{fancy-input}}`);
 
     assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      {{#fancy-input}}
-        template block text
-      {{/fancy-input}}
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
   });
 });

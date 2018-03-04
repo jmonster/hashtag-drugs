@@ -7,12 +7,27 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('onboarding');
-  this.route('authenticated', { path: '/' }, function() {
+  this.route('onboarding'); // logged out users
 
+  this.route('authenticated', { path: '/' }, function() {
+    this.route('cms', function() {
+      // dispenary-managed things
+      this.route('vendor', { path: '/vendor/:id' }, function() { // dispensaries
+        this.route('locations');                                 // email, phone, address, hours
+        this.route('styles');                                    // logo, colors
+        this.route('inventory');                                 // product catalog, prices, quantity in-stock
+      });
+
+      // top-pot managed things
+      this.route('admin', function() {
+        this.route('vendors');  // dispensaries
+        this.route('brands');   // product manufacturers
+        this.route('products'); // global product catalog
+      });
+    });
   });
+
   this.route('cart');
-  this.route('cms');
   this.route('products', function() {
     this.route('view', { path: '/view/:id' });
   });

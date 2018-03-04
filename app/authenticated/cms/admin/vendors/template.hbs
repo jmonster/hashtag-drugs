@@ -1,0 +1,26 @@
+<p>A vendor is a company that sells products made by a brand.</p>
+
+<hr>
+
+<h2>new vendor</h2>
+<div>
+  {{fancy-input value=newVendor.name placeholder="name" label="name"}}
+  {{fancy-input value=newVendor.description placeholder="description" label="description"}}
+  {{fancy-input value=newVendor.url placeholder="url" label="url"}}
+  {{fancy-input value=newVendor.location.street1 placeholder="Street" label="street"}}
+  {{fancy-input value=newVendor.location.zip placeholder="zip code" label="zip code" maxlength=5}}
+
+  <label>products</label>
+  {{#x-select value=newVendor.products multiple=true as |xs|}}
+    {{#each products as |product|}}
+      {{#xs.option value=product}}{{product.name}}{{/xs.option}}
+    {{/each}}
+  {{/x-select}}
+
+  <button type="button" {{action "saveVendor" newVendor}}>Create</button>
+</div>
+
+<h2>vendors</h2>
+{{#each vendors as |vendor|}}
+  <li>{{#link-to 'authenticated.cms.vendor' vendor.id}}{{vendor.name}}{{/link-to}}</li>
+{{/each}}

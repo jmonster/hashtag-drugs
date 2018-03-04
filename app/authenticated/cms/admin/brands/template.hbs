@@ -1,0 +1,14 @@
+<p>A brand is a company that makes products which are sold by a vendor.</p>
+
+<h2>new brand</h2>
+<div>
+  {{fancy-input value=newBrandName placeholder="brand name" label="name" type="input"}}
+  <button type="button" {{action "saveBrand" newBrandName}}>Create</button>
+</div>
+
+<h2>brands</h2>
+<ul>
+  {{#each brands as |brand|}}
+    <li>{{brand.name}}</li>
+  {{/each}}
+</ul>

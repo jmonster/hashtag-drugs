@@ -13,14 +13,5 @@ module('Integration | Component | page-toolbar', function(hooks) {
     await render(hbs`{{page-toolbar}}`);
 
     assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      {{#page-toolbar}}
-        template block text
-      {{/page-toolbar}}
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
   });
 });

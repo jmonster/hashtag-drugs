@@ -1,0 +1,27 @@
+<p>A product is made by a brand and sold by a vendor.</p>
+
+<hr>
+
+<h2>new product</h2>
+<div>
+  {{fancy-input value=newProduct.name placeholder="name" label="name"}}
+  {{fancy-input value=newProduct.description type="text" placeholder="description" label="description"}}
+
+  <label>brand</label>
+  {{#x-select value=newProduct.brand as |xs|}}
+    {{#each brands as |brand|}}
+      {{#xs.option value=brand}}{{brand.name}}{{/xs.option}}
+    {{/each}}
+  {{/x-select}}
+
+  <button type="button" {{action "saveProduct" newProduct}}>Create</button>
+</div>
+
+<hr>
+
+<h2>products</h2>
+<ul>
+  {{#each products as |product|}}
+    <li>{{product.name}} -- {{product.brand.name}}</li>
+  {{/each}}
+</ul>
