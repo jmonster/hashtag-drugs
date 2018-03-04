@@ -14,7 +14,7 @@
     "lint:js": "eslint ./*.js app config lib server tests",
     "start": "ember serve",
     "test": "ember test",
-    "deploy": "firebase deploy",
+    "deploy": "ember deploy production",
     "open": "firebase open hosting:site"
   },
   "devDependencies": {
