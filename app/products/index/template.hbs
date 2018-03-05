@@ -1,19 +1,11 @@
 <div class="container">
   <h1>products</h1>
-  <ul>
-    {{#each products as |product|}}
-      <li>{{product.name}} -- {{product.brand.name}}</li>
-    {{else}}
-      <li>
-        no products.
-      </li>
-    {{/each}}
-  </ul>
+
   <div class="row">
     {{#each products as |product|}}
       <div class="col">
         <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="/assets/pod-1.jpg" alt="Card image cap">
+          {{#link-to "products.view" product.id}}<img class="card-img-top" src="/assets/images/pod-1.jpg" alt="Card image cap">{{/link-to}}
           <div class="card-body">
             <h5 class="card-title">{{product.name}}</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

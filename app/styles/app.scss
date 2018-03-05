@@ -1,6 +1,6 @@
-@import 'variables'; // overrides go here, but it's kinda bugged. might run into errors.
+@import "global";
 @import "ember-cli-bootstrap-4/functions";
-@import "ember-cli-bootstrap-4/variables";
+@import "variables";
 @import "ember-cli-bootstrap-4/mixins";
 @import "ember-cli-bootstrap-4/root";
 @import "ember-cli-bootstrap-4/reboot";
