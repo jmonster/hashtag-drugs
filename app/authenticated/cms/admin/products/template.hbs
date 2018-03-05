@@ -33,6 +33,6 @@
 <h2>products</h2>
 <ul>
   {{#each products as |product|}}
-    <li>{{product.name}}</li>
+    <li>{{product.name}} -- <a href="#" {{action "deleteProduct" product}}>delete</a></li>
   {{/each}}
 </ul>
