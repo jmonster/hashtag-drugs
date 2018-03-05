@@ -16,6 +16,7 @@ Router.map(function() {
         this.route('locations');                                 // email, phone, address, hours
         this.route('styles');                                    // logo, colors
         this.route('inventory');                                 // product catalog, prices, quantity in-stock
+        this.route('blog')
         this.route('announcements')
       });
 
