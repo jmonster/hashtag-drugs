@@ -18,11 +18,5 @@ export default Controller.extend({
   products: filterBy('_products', 'isNew', false), // persisted records only
   _products: computed(function() {
     return this.store.findAll('product');
-  }),
-
-  actions: {
-    saveProduct(product) {
-      product.save();
-    }
-  }
+  })
 });

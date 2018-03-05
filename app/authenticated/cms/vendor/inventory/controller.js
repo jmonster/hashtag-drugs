@@ -17,10 +17,6 @@ export default Controller.extend({
   actions: {
     productsChanged(selectedProducts) {
       this.get('vendor').set('products', selectedProducts);
-    },
-
-    saveInventory() {
-      return this.get('vendor').save();
     }
   }
 });

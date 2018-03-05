@@ -1,0 +1,33 @@
+<div class="container x-form">
+  <div class="row">
+    <div class="col">
+      {{x-input value=record.name placeholder="name" label="name"}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      {{x-input value=record.url placeholder="url" label="url"}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      {{x-input value=record.location.street1 placeholder="Street" label="street"}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      {{x-input value=record.location.street2 placeholder="Street (continued)" label="street (continued)"}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      {{x-input value=record.location.zip placeholder="zip code" label="zip code" maxlength=5 type="number"}}
+    </div>
+    <div class="col">
+      {{x-input value=record.location.state placeholder="state" label="state"}}
+    </div>
+  </div>
+</div>

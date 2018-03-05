@@ -14,6 +14,6 @@ export default DS.Model.extend({
   products: DS.hasMany('product', { inverse }),
   location: DS.belongsTo('location', { inverse }),
   name: DS.attr('string'),
-  url: DS.attr('string'),
-  description: DS.attr('string')
+  description: DS.attr('string'),
+  instagramFeed: DS.attr('string')
 });
