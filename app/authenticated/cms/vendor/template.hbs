@@ -31,6 +31,9 @@
 <h3>location</h3>
 {{location-form record=model.vendor}}
 
+<h3>menu (pdf) upload</h3>
+{{#upload-menu session.currentUser}}<a href="#">click to select file</a>{{/upload-menu}}
+
 <button type="button" {{action (route-action "saveRecord" model.vendor)}}>Save</button>
 
 

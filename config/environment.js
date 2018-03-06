@@ -7,7 +7,7 @@ module.exports = function(environment) {
       authDomain: "toppotstop.firebaseapp.com",
       databaseURL: "https://toppotstop.firebaseio.com",
       projectId: "toppotstop",
-      storageBucket: "",
+      storageBucket: "gs://toppotstop.appspot.com",
       messagingSenderId: "296002376021"
     },
     torii: {
