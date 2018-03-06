@@ -31,6 +31,9 @@ Router.map(function() {
   this.route('products', function() {
     this.route('view', { path: '/view/:id' });
   });
+
+  // 404 -- must be last
+  this.route('404', { path: '/*path' });
 });
 
 export default Router;
