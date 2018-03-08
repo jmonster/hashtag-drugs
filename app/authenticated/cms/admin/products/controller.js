@@ -18,5 +18,14 @@ export default Controller.extend({
   products: filterBy('_products', 'isNew', false), // persisted records only
   _products: computed(function() {
     return this.store.findAll('product');
-  })
+  }),
+
+  actions: {
+    deleteProduct(product) {
+      // TODO *important* anything pointing at this record will now error...
+      // perhaps we should just set a `deleted` flag?
+      // or we can write a lambda-like hook to clean up the other records
+      return product.destroyRecord();
+    }
+  }
 });
