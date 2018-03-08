@@ -11,10 +11,7 @@ import DS from 'ember-data';
 const inverse = null;
 
 export default DS.Model.extend({
-  products: DS.hasMany('product', { inverse }),
-  announcements: DS.hasMany('announcement', { inverse }),
-  location: DS.belongsTo('location', { inverse }),
-  name: DS.attr('string'),
-  description: DS.attr('string'),
-  instagramFeed: DS.attr('string')
+  vendor: DS.belongsTo('vendor', { inverse }),
+  title: DS.attr('string'),
+  body: DS.attr('string')
 });

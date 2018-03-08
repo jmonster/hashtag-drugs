@@ -1,0 +1,25 @@
+<h3>new announcement</h3>
+
+<div class="container x-form">
+  <div class="row">
+    <div class="col">
+      {{x-input value=newAnnouncement.title placeholder="So high you might never come back down!" label="name" type="input"}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      {{textarea value=newAnnouncement.body placeholder="description"}}
+    </div>
+  </div>
+</div>
+
+<button type="button" {{action "saveAnnouncement"}}>Save</button>
+
+<h3>Announcements</h3>
+<ul>
+  {{#each announcements as |announcement|}}
+    <li>
+      {{announcement.title}}: {{announcement.body}} -- <a href="#" {{action "deleteAnnouncement" announcement}}>delete</a>
+    </li>
+  {{/each}}
+</ul>
