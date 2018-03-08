@@ -1,5 +1,4 @@
 import Component from '@ember/component';
-import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default Component.extend({
@@ -16,8 +15,8 @@ export default Component.extend({
     }
 
     // ensure `location` attribute exists
-    record.get('location').catch((e) => {
-      record.set('location', this.get('store').createRecord('location'));
+    record.get('location').catch((/* err */) => {
+      record.set('location', store.createRecord('location'));
     });
   },
 
