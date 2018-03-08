@@ -1,0 +1,25 @@
+<h3>new post</h3>
+
+<div class="container x-form">
+  <div class="row">
+    <div class="col">
+      {{x-input value=newPost.title placeholder="So high you might never come back down!" label="name" type="input"}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      {{textarea value=newPost.body placeholder="description"}}
+    </div>
+  </div>
+</div>
+
+<button type="button" {{action "savePost"}}>Save</button>
+
+<h3>Posts</h3>
+<ul>
+  {{#each blogPosts as |post|}}
+    <li>
+      {{post.title}}: {{post.body}} -- <a href="#" {{action "deletePost" post}}>delete</a>
+    </li>
+  {{/each}}
+</ul>
