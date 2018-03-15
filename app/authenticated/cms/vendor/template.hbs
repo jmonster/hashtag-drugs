@@ -36,7 +36,7 @@
 <h3>menu (pdf) upload</h3>
 {{#upload-menu session.currentUser}}<a href="#">click to select file</a>{{/upload-menu}}
 
-<button type="button" {{action (route-action "saveRecord" model.vendor)}}>Save</button>
+<button class="btn btn-primary" type="button" {{action (route-action "saveRecord" model.vendor)}}>Save</button>
 
 
 {{outlet}}
