@@ -2,12 +2,34 @@ import { isEmpty } from '@ember/utils';
 import Route from '@ember/routing/route'
 
 export default Route.extend({
+  removeInitialLoading: Ember.on('activate', function() {
+    if (document) {
+      document.getElementById('initial-loading').remove();
+    }
+  }),
+
   beforeModel() {
-    return this.get('session').fetch().catch(function() {});
+    const fetchSession = this.get('session').fetch().catch(function() {});
+
+    // initial loading
+    Ember.run(function() {
+      const loadingProgress = document.getElementById('initial-loading').children[0].children[1];
+      loadingProgress.value = 70;
+
+      fetchSession.then(function() {
+        loadingProgress.value = 100;
+      });
+    });
+
+    return fetchSession;
+
   },
 
   model() {
-    return this.store.peekAll('user').get('firstObject');
+    return Ember.RSVP.hash({
+      user: this.store.peekAll('user').get('firstObject'),
+      cartItems: this.store.peekAll('cart-item')
+    });
   },
 
   actions: {

@@ -18,6 +18,13 @@
   <body>
     {{content-for "body"}}
 
+    <div id="initial-loading">
+      <div class="text-center" style="margin-top: 100px;">
+        <p class="lead">loading...</p>
+        <progress value="0" max="100">0%</progress>
+      </div>
+    </div>
+
     <script src="{{rootURL}}assets/vendor.js"></script>
     <script src="{{rootURL}}assets/top-pot.js"></script>
 

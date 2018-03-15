@@ -6,7 +6,7 @@
     </div>
     <div class="col">
       <img class="card-img-top" style="width: 300px;" src="/assets/images/pod-1.jpg" alt="Card image cap">
-      {{link-to "Add to Cart" "cart" class="btn btn-primary"}}
+      <button {{action "addToCart" model}} type="button" name="button" class="btn btn-primary">Add to Cart</button>
     </div>
   </div>
 </div>

@@ -19,14 +19,14 @@
       </ul>
       <div class="navbar-nav navbar-right">
         <li class="nav-item">
-          {{#link-to "cart" class="nav-link"}}{{fa-icon "shopping-cart"}} Cart (0){{/link-to}}
+          {{#link-to "cart" class="nav-link"}}{{fa-icon "shopping-cart"}} Cart ({{model.cartItems.length}}){{/link-to}}
         </li>
         <li class="nav-item">
 
         </li>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{model.name}}
+          {{user.name}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href='/sign-out' {{action (route-action 'signOut')}}>Sign out</a>
