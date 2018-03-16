@@ -1,11 +1,32 @@
-<div class="container">
-  <h3>Admin Links</h3>
-  <ul>
-    <li>{{#link-to "authenticated.cms.admin.brands"}}manage brands{{/link-to}}</li>
-    <li>{{#link-to "authenticated.cms.admin.products"}}manage products{{/link-to}}</li>
-    <li>{{#link-to "authenticated.cms.admin.vendors"}}manage vendors{{/link-to}}</li>
-  </ul>
-  <hr>
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            {{#link-to "authenticated.cms.admin.brands" class="nav-link"}}
+              <i class="fa fa-pie-chart"></i>
+              manage brands
+            {{/link-to}}
+          </li>
+          <li class="nav-item">
+            {{#link-to "authenticated.cms.admin.products" class="nav-link"}}
+              <i class="fa fa-bar-chart"></i>
+              manage products
+            {{/link-to}}
+          </li>
+          <li class="nav-item">
+            {{#link-to "authenticated.cms.admin.vendors" class="nav-link"}}
+              <i class="fa fa-question"></i>
+              manage vendors
+            {{/link-to}}
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-  {{outlet}}
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+      {{outlet}}
+    </main>
+  </div>
 </div>
