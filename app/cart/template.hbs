@@ -1,6 +1,17 @@
 <div class="container">
   <h1>cart</h1>
-  <div class="card bg-faded">
-    empty
-  </div>
+  {{#each model as |cartItem|}}
+    <div class="">
+      <div class="">
+        name: {{cartItem.product.name}}
+      </div>
+      <div class="">
+        quantity: {{cartItem.quantity}}
+      </div>
+    </div>
+  {{else}}
+    <div class="card bg-faded">
+      empty
+    </div>
+  {{/each}}
 </div>
