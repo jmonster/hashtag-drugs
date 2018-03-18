@@ -1,7 +1,5 @@
-{{#if theme._toastMessage}}
-  <div>
-    {{theme._toastMessage}}
-  </div>
+{{#if theme.toastMessageText}}
+  {{toast-message message=theme.toastMessageText}}
 {{/if}}
 
 {{#if session.isAuthenticated}}

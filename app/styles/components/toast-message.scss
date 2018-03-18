@@ -1,0 +1,8 @@
+.toast-message {
+  text-align: center;
+
+  .toast-text {
+    position: absolute;
+    z-index: 10000;
+  }
+}

@@ -2,6 +2,8 @@ import { isEmpty } from '@ember/utils';
 import Route from '@ember/routing/route'
 
 export default Route.extend({
+  theme: Ember.inject.service(),
+
   removeInitialLoading: Ember.on('activate', function() {
     if (document) {
       document.getElementById('initial-loading').remove();
@@ -55,6 +57,10 @@ export default Route.extend({
     hopTo(url) {
       // TODO make this work with Cordova
       window.location.assign(url);
+    },
+
+    toastMessage(message) {
+      this.get('theme').toastMessage(message);
     }
   }
 });

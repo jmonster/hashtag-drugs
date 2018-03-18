@@ -1,8 +1,8 @@
 import Service from '@ember/service';
 
 export default Service.extend({
-  _toastMessage: null,
+  toastMessageText: null,
   toastMessage(message) {
-    this.set('_toastMessage', message);
+    this.set('toastMessageText', message);
   }
 });
