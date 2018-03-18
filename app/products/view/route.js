@@ -6,10 +6,10 @@ export default Route.extend({
   },
 
   actions: {
-    addToCart(record) {
+    addToCart(record, options = {}) {
       this.store.createRecord('cart-item', {
         product: record,
-        quantity: 1
+        quantity: options.productQuantity
       });
     }
   }

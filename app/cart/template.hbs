@@ -1,9 +1,9 @@
 <div class="container">
   <h1>cart</h1>
-  {{#each model as |cartItem|}}
+  {{#each cartItems as |cartItem|}}
     <div class="">
       <div class="">
-        name: {{cartItem.product.name}}
+        name: {{cartItem.name}}
       </div>
       <div class="">
         quantity: {{cartItem.quantity}}

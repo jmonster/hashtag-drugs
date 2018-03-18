@@ -6,7 +6,12 @@
     </div>
     <div class="col">
       <img class="card-img-top" style="width: 300px;" src="/assets/images/pod-1.jpg" alt="Card image cap">
-      <button {{action "addToCart" model}} type="button" name="button" class="btn btn-primary">Add to Cart</button>
+      <select name="productQuantity" onchange={{action (mut _productQuantity) value="target.value"}}>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+      <button {{action "addToCart" model (hash productQuantity=productQuantity)}} type="button" name="button" class="btn btn-primary">Add to Cart</button>
     </div>
   </div>
 </div>
