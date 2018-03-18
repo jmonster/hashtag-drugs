@@ -7,6 +7,12 @@ export default Route.extend({
     return this.store.findRecord('product', params.id);
   },
 
+  resetController(controller, isExiting, transition) {
+    if (isExiting) {
+      controller.set('_productQuantity', 1);
+    }
+  },
+
   actions: {
     addToCart(record, options = {}) {
       this.store.createRecord('cart-item', {
