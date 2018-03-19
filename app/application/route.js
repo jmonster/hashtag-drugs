@@ -59,14 +59,21 @@ export default Route.extend({
       window.location.assign(url);
     },
 
+    // usage: this.send('toastMessage', message)
+    // alt usage: {{action "toastMessage" message}}
+    // expires after 6 seconds
     toastMessage(message) {
       this.get('theme').toastMessage(message);
     },
 
+    // usage: this.send('addToCart', product, options)
+    // alt usage: {{action "addToCart" product (hash quantity=1)}}
+    // options will be the customizations added to the cart item, such as
+    // quantity, color, size, etc.
     addToCart(product, options = {}) {
       this.store.createRecord('cart-item', {
         product: product,
-        quantity: options.quantity
+        quantity: parseInt(options.quantity, 10)
       });
 
       this.get('theme').toastMessage(`${options.quantity} item(s) added`);

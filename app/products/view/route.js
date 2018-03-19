@@ -9,7 +9,7 @@ export default Route.extend({
 
   resetController(controller, isExiting, transition) {
     if (isExiting) {
-      controller.set('_productQuantity', 1);
+      controller.set('quantity', 1);
     }
   }
 });
