@@ -61,6 +61,15 @@ export default Route.extend({
 
     toastMessage(message) {
       this.get('theme').toastMessage(message);
+    },
+
+    addToCart(product, options = {}) {
+      this.store.createRecord('cart-item', {
+        product: product,
+        quantity: options.quantity
+      });
+
+      this.get('theme').toastMessage(`${options.quantity} item(s) added`);
     }
   }
 });
