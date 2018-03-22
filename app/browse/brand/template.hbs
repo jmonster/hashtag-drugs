@@ -1,0 +1,28 @@
+<main class="container">
+  <h2>browse by brand</h2>
+  <div class="row">
+    {{#each brandCategories as |category|}}
+      <div class="col-sm">
+        {{#link-to "browse.products.index" (query-params brand=category.id) class="cursor-pointer" tagName="div"}}
+          <div class="card mb-4 box-shadow text-center">
+            {{media-icon fa="image"}}
+            <div class="card-body">
+              <div class="card-title">
+                {{category.name}}
+                <div class="text-muted">
+                  <small>5 item(s)</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{/link-to}}
+      </div>
+    {{else}}
+      <div class="col">
+        <div class="card bg-faded">
+          no brands.
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</main>

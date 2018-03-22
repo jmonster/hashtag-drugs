@@ -3,41 +3,46 @@
 {{/if}}
 
 {{#if session.isAuthenticated}}
-  <nav class="navbar navbar-expand-lg navbar-light">
-    {{#link-to "authenticated" class="navbar-brand"}}{{fa-icon "leaf"}} TopPot{{/link-to}}
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          {{#link-to "authenticated" class="nav-link"}}Home <span class="sr-only">(current)</span>{{/link-to}}
-        </li>
-        <li class="nav-item">
-          {{#link-to "authenticated.cms" class="nav-link"}}CMS{{/link-to}}
-        </li>
-        <li class="nav-item">
-          {{#link-to "products" class="nav-link"}}Products{{/link-to}}
-        </li>
-      </ul>
-      <div class="navbar-nav navbar-right">
-        <li class="nav-item">
-          {{#link-to "cart" class="nav-link"}}{{fa-icon "shopping-cart"}} Cart ({{cartItemCount}}){{/link-to}}
-        </li>
-        <li class="nav-item">
-
-        </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{model.user.name}}
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href='/sign-out' {{action (route-action 'signOut')}}>Sign out</a>
-        </div>
-      </li>
-      </div>
+{{#side-menu}}
+  <header class="navbar navbar-default">
+    <div class="navbar-header">
+      TopPot
     </div>
+  </header>
+  <ul>
+    <li>
+      {{#side-menu-link-to "cart"}}Cart ({{cartItemCount}}){{/side-menu-link-to}}
+    </li>
+    <li>
+      {{#side-menu-link-to "authenticated"}}
+        Home <span class="sr-only">(current)</span>
+      {{/side-menu-link-to}}
+    </li>
+    <li>
+      {{#side-menu-link-to "authenticated.cms"}}CMS{{/side-menu-link-to}}
+    </li>
+    <li>
+      {{#side-menu-link-to "browse.products.index"}}
+        Browse Products
+      {{/side-menu-link-to}}
+    </li>
+    <li>
+      {{#side-menu-link-to "browse.brand"}}
+        Browse by Brand
+      {{/side-menu-link-to}}
+    </li>
+    <li>
+      {{#side-menu-link-to "browse.vendor"}}
+        Browse by Vendor
+      {{/side-menu-link-to}}
+    </li>
+  </ul>
+{{/side-menu}}
+{{content-backdrop}}
+
+  <nav class="navbar navbar-light">
+    {{#link-to "authenticated" class="navbar-brand"}}{{fa-icon "leaf"}} TopPot{{/link-to}}
+    {{side-menu-toggle}}
   </nav>
 {{/if}}
 

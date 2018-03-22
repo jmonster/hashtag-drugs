@@ -30,8 +30,13 @@ Router.map(function() {
   });
 
   this.route('cart');
-  this.route('products', function() {
-    this.route('view', { path: '/view/:id' });
+
+  this.route('browse', function() {
+    this.route('vendor');
+    this.route('brand');
+    this.route('products', { path: '/' }, function() {
+      this.route('view', { path: '/view/:id' });
+    });
   });
 });
 

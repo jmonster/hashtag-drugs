@@ -6,3 +6,11 @@ body {
 .flex-md-equal > * {
   flex: 1;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.box-shadow {
+  box-shadow: 0 0 10px rgba(0,0,0,.1);
+}

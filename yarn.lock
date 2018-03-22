@@ -3462,6 +3462,12 @@ ember-runtime-enumerable-includes-polyfill@^2.0.0:
     ember-cli-babel "^6.9.0"
     ember-cli-version-checker "^2.1.0"
 
+ember-side-menu@^0.0.15:
+  version "0.0.15"
+  resolved "https://registry.npmjs.org/ember-side-menu/-/ember-side-menu-0.0.15.tgz#5ab6f3fa01e2a19894b83f41104cedb184fe958a"
+  dependencies:
+    ember-cli-babel "^5.1.7"
+
 ember-source@~3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/ember-source/-/ember-source-3.0.0.tgz#51811cae98d2ceec53bcfbaa876d02b2b5b2159f"

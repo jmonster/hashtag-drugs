@@ -22,5 +22,5 @@ export default Controller.extend({
     }
 
     return this.store.query('product', {});
-  }),
+  })
 });

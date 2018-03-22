@@ -1,0 +1,15 @@
+.side-menu-toggle.navbar-toggler {
+  width: auto;
+  height: auto;
+  border-color: transparent;
+  padding: 0;
+
+  .hamburger-box {
+    .hamburger-inner,
+    .hamburger-inner::before,
+    .hamburger-inner::after {
+      background-color: $gray-600;
+      width: 34px;
+    }
+  }
+}
