@@ -1,8 +1,9 @@
 <main class="container">
-  <h2>browse by brand</h2>
+  <h2>Browse by brand</h2>
+  <p class="text-muted">Typewriter neutra gochujang blue bottle la croix.</p>
   <div class="row">
     {{#each brandCategories as |category|}}
-      <div class="col-sm">
+      <div class="col-sm-4 col-6 col-md-3">
         {{#link-to "browse.products.index" (query-params brand=category.id) class="cursor-pointer" tagName="div"}}
           <div class="card mb-4 box-shadow text-center">
             {{media-icon fa="image"}}

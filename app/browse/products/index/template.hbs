@@ -1,8 +1,9 @@
 <div class="container">
-  <h2>products</h2>
+  <h2>Products</h2>
+  <p class="text-muted">Waistcoat butcher live-edge hella.</p>
   <div class="row">
     {{#each products as |product|}}
-      <div class="col-md-4">
+      <div class="col-6 col-sm-4">
         <div class="card mb-4 box-shadow">
           {{#link-to "browse.products.view" product.id}}<img class="card-img-top" src="/assets/images/pod-1.jpg" alt="Card image cap">{{/link-to}}
           <div class="card-body">
