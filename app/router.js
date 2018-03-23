@@ -35,7 +35,11 @@ Router.map(function() {
     this.route('vendor');
     this.route('brand');
     this.route('products', { path: '/' }, function() {
-      this.route('view', { path: '/view/:id' });
+      this.route('view', { path: '/view/:id' }, function() {
+        this.route('benefits');
+        this.route('reviews');
+        this.route('photos');
+      });
     });
   });
 });

@@ -1,15 +1,20 @@
 <div class="container">
-  <h1>{{model.name}}</h1>
+  <header>
+    <h1>{{model.name}}</h1>
+    <div class="text-muted">
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star-half-o"></i>
+      4.4 | 8385 reviews
+    </div>
+  </header>
   <div class="row">
     <div class="col">
-      {{#if model.description}}
-        <p>{{model.description}}</p>
-      {{else}}
-        <p class="text-muted font-italic">No description.</p>
-      {{/if}}
+      <img class="card-img-top" style="width: 300px;" src="/assets/images/pod-1.jpg" alt="Card image cap">
     </div>
     <div class="col">
-      <img class="card-img-top" style="width: 300px;" src="/assets/images/pod-1.jpg" alt="Card image cap">
       <select name="productQuantity" onchange={{action (mut quantity) value="target.value"}}>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -22,15 +27,17 @@
 <div class="container">
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a class="nav-link active" href="#">Benefits</a>
+      {{link-to "Strain info" "browse.products.view.index" class="nav-link"}}
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Dispensaries</a>
+      {{link-to "Benefits" "browse.products.view.benefits" class="nav-link"}}
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Benefits</a>
+      {{link-to "Reviews (8385)" "browse.products.view.reviews" class="nav-link"}}
+    </li>
+    <li class="nav-item">
+      {{link-to "Photos (436)" "browse.products.view.photos" class="nav-link"}}
     </li>
   </ul>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   {{outlet}}
 </div>
