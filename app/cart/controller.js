@@ -1,3 +1,4 @@
+import { alias } from '@ember/object/computed';
 import Controller from '@ember/controller';
 
 export default Controller.extend({
@@ -8,5 +9,5 @@ export default Controller.extend({
   //     quantity: item.get('quantity')
   //   };
   // })
-  cartItems: Ember.computed.alias('model')
+  cartItems: alias('model')
 });

@@ -7,8 +7,7 @@ export default Controller.extend({
   }),
 
   brandCategories: computed('model.[]', function() {
-    const brands = this.get('model').mapBy('brand');
-    debugger;
+    // const brands = this.get('model').mapBy('brand');
     return [];
   })
 });

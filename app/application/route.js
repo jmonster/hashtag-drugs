@@ -1,10 +1,14 @@
+import { hash } from 'rsvp';
+import { run } from '@ember/runloop';
+import { on } from '@ember/object/evented';
+import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 import Route from '@ember/routing/route'
 
 export default Route.extend({
-  theme: Ember.inject.service(),
+  theme: service(),
 
-  removeInitialLoading: Ember.on('activate', function() {
+  removeInitialLoading: on('activate', function() {
     if (document) {
       document.getElementById('initial-loading').remove();
     }
@@ -14,7 +18,7 @@ export default Route.extend({
     const fetchSession = this.get('session').fetch().catch(function() {});
 
     // initial loading
-    Ember.run(function() {
+    run(function() {
       const loadingProgress = document.getElementById('initial-loading').children[0].children[1];
       loadingProgress.value = 70;
 
@@ -28,7 +32,7 @@ export default Route.extend({
   },
 
   model() {
-    return Ember.RSVP.hash({
+    return hash({
       user: this.store.peekAll('user').get('firstObject'),
       cartItems: this.store.peekAll('cart-item')
     });

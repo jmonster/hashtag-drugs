@@ -1,3 +1,5 @@
+import { alias } from '@ember/object/computed';
+import { computed } from '@ember/object';
 import SideMenuToggle from 'ember-side-menu/components/side-menu-toggle';
 
 export default SideMenuToggle.extend({
@@ -6,10 +8,10 @@ export default SideMenuToggle.extend({
     classNameBindings: ['isActive'],
     attributeBindings: ['type', 'ariaExpanded:aria-expanded', 'ariaLabel:aria-label', 'ariaControls:aria-controls'],
     ariaLabel: 'Menu',
-    ariaExpanded: Ember.computed('sideMenu.isOpen', function() {
+    ariaExpanded: computed('sideMenu.isOpen', function() {
       return this.get('sideMenu.isOpen') ? 'true' : 'false';
     }),
     type: 'button',
     ariaControls: 'navigation',
-    isActive: Ember.computed.alias('sideMenu.isOpen')
+    isActive: alias('sideMenu.isOpen')
 });

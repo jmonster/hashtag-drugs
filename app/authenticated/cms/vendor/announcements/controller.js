@@ -16,7 +16,7 @@ export default Controller.extend({
   _announcements: oneWay('model.announcements'),
 
   actions: {
-    saveAnnouncement(announcement) {
+    saveAnnouncement() {
       const vendor = this.get('vendor');
       const newAnnouncement = this.get('newAnnouncement');
 

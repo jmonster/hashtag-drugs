@@ -1,9 +1,10 @@
+import { computed } from '@ember/object';
 import Component from '@ember/component';
 
 export default Component.extend({
   classNames: ['rating-bar', 'd-inline'],
   progress: 0,
-  firstStarIcon: Ember.computed('progress', function() {
+  firstStarIcon: computed('progress', function() {
     const progress = this.get('progress');
 
     if (progress >= 20) {
@@ -14,7 +15,7 @@ export default Component.extend({
 
     return 'star-o';
   }),
-  secondStarIcon: Ember.computed('progress', function() {
+  secondStarIcon: computed('progress', function() {
     const progress = this.get('progress');
 
     if (progress >= 40) {
@@ -25,7 +26,7 @@ export default Component.extend({
 
     return 'star-o';
   }),
-  thirdStarIcon: Ember.computed('progress', function() {
+  thirdStarIcon: computed('progress', function() {
     const progress = this.get('progress');
 
     if (progress >= 60) {
@@ -36,7 +37,7 @@ export default Component.extend({
 
     return 'star-o';
   }),
-  fourthStarIcon: Ember.computed('progress', function() {
+  fourthStarIcon: computed('progress', function() {
     const progress = this.get('progress');
 
     if (progress >= 80) {
@@ -47,7 +48,7 @@ export default Component.extend({
 
     return 'star-o';
   }),
-  fifthStarIcon: Ember.computed('progress', function() {
+  fifthStarIcon: computed('progress', function() {
     const progress = this.get('progress');
 
     if (progress >= 100) {

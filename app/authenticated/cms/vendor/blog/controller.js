@@ -16,7 +16,7 @@ export default Controller.extend({
   _blogPosts: oneWay('model.blogPosts'),
 
   actions: {
-    savePost(post) {
+    savePost() {
       const vendor = this.get('vendor');
       const newPost = this.get('newPost');
 
