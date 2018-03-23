@@ -72,7 +72,7 @@ export default Route.extend({
     // quantity, color, size, etc.
     addToCart(product, options = {}) {
       this.store.createRecord('cart-item', {
-        product: product,
+        product,
         quantity: parseInt(options.quantity, 10)
       });
 

@@ -15,5 +15,11 @@
     color: #222;
     padding: 0 10px;
     top: 15px;
+
+    a {
+      font-weight: bold;
+      color: darken($primary, 15%);
+      text-decoration: underline;
+    }
   }
 }

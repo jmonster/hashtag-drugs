@@ -1,25 +1,29 @@
 <div class="container">
   <h1>cart</h1>
-  <div class="panel panel-default">
-    Two-hour delivery of in-stock items in some locations for only $9. See checkout for availability.
-  </div>
-  {{#each cartItems as |cartItem|}}
-    <div class="">
-      <div class="">
-        name: {{cartItem.name}}
-      </div>
-      <div class="">
-        quantity: {{cartItem.quantity}}
-      </div>
-    </div>
+  <p class="text-muted">Two-hour delivery of in-stock items in some locations for only $9. See checkout for availability.</p>
+
+  {{#unless cartItems.length}}
+    <p>no items. {{link-to "shop" "browse.products.index"}}</p>
   {{else}}
-    <div class="card bg-faded">
-      <div class="well">
-        <p>There are no items in your bag.</p>
-        <p>If you already have an account, Sign In to see your bag.</p>
-        <p>If you are trying to add items to your bag and it remains empty, you may have cookies disabled in your browser settings. If that's the case, please enable acceptance of cookies and try again.</p>
-        <p>{{link-to "shop" "browse.products.index"}}</p>
-      </div>
-    </div>
-  {{/each}}
+    <table>
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>quantity</th>
+          <th>price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each cartItems as |cartItem|}}
+          <tr>
+            <td>{{link-to cartItem.name "browse.products.view" cartItem.product.id}}</td>
+            <td>{{cartItem.quantity}}</td>
+            <td>$25.00</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/unless}}
+
+
 </div>

@@ -3488,7 +3488,7 @@ ember-source@~3.0.0:
 
 ember-truth-helpers@^2.0.0:
   version "2.0.0"
-  resolved "https://registry.yarnpkg.com/ember-truth-helpers/-/ember-truth-helpers-2.0.0.tgz#f3e2eef667859197f1328bb4f83b0b35b661c1ac"
+  resolved "https://registry.npmjs.org/ember-truth-helpers/-/ember-truth-helpers-2.0.0.tgz#f3e2eef667859197f1328bb4f83b0b35b661c1ac"
   dependencies:
     ember-cli-babel "^6.8.2"
 
