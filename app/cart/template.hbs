@@ -16,7 +16,7 @@
       <tbody>
         {{#each cartItems as |cartItem|}}
           <tr>
-            <td>{{link-to cartItem.name "browse.products.view" cartItem.product.id}}</td>
+            <td>{{link-to cartItem.product.name "browse.products.view" cartItem.product.id}}</td>
             <td>{{cartItem.quantity}}</td>
             <td>$25.00</td>
           </tr>

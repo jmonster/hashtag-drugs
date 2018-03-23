@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 
 export default Component.extend({
+  classNames: ['rating-bar', 'd-inline'],
   progress: 0,
   firstStarIcon: Ember.computed('progress', function() {
     const progress = this.get('progress');
