@@ -20,7 +20,7 @@
             <td>{{link-to cartItem.product.name "browse.products.view" cartItem.product.id}}</td>
             <td>{{cartItem.quantity}}</td>
             <td>$25.00</td>
-            <td><span {{action "deleteRecord" cartItem}}><i class="fa fa-trash"></i> delete</span></td>
+            <td><span {{action "deleteRecord" cartItem}}>delete</span></td>
           </tr>
         {{/each}}
       </tbody>
