@@ -81,6 +81,10 @@ export default Route.extend({
       });
 
       this.get('theme').toastMessage(`${options.quantity} item(s) added`);
+    },
+
+    deleteRecord(record) {
+      record.deleteRecord();
     }
   }
 });
