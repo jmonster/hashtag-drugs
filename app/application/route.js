@@ -80,7 +80,10 @@ export default Route.extend({
         quantity: parseInt(options.quantity, 10)
       });
 
-      this.get('theme').toastMessage(`${options.quantity} item(s) added`);
+      this.get('theme').toastMessage(`${options.quantity} item(s) added`, {
+        path: 'cart',
+        text: 'view cart'
+      });
     },
 
     deleteRecord(record) {

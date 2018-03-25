@@ -1,12 +1,14 @@
-{{#if connectivityAlert.message}}
-  <div class="alert alert-{{connectivityAlert.context}}">
-    {{connectivityAlert.message}}
+{{#if theme.alertText}}
+  <div class="alert alert-{{theme.alertContext}}">
+    {{theme.alertText}}
   </div>
 {{/if}}
 
 {{#if theme.toastMessageText}}
   {{#toast-message message=theme.toastMessageText}}
-    {{link-to "view cart" "cart"}}
+    {{#if (and theme.toastLinkText theme.toastLinkPath)}}
+      {{link-to theme.toastLinkText theme.toastLinkPath}}
+    {{/if}}
   {{/toast-message}}
 {{/if}}
 

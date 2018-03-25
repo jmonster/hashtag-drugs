@@ -11,5 +11,5 @@ export default Controller.extend({
     }
 
     return 0;
-  })
+  }),
 });
