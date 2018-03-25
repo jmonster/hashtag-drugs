@@ -1,22 +1,27 @@
 <div class="container">
-  <header>
-    <h1>{{model.name}}</h1>
-    {{rating-bar progress=95}}
-    <span class="text-muted">
-      4.4 | 8385 reviews
-    </span>
-  </header>
   <div class="row">
     <div class="col">
       <img class="card-img-top" style="width: 300px;" src="/assets/images/pod-1.jpg" alt="Card image cap">
     </div>
     <div class="col">
-      <select name="productQuantity" onchange={{action (mut quantity) value="target.value"}}>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
-      <button {{action "addToCart" model (hash quantity=quantity)}} type="button" name="button" class="btn btn-primary">Add to Cart</button>
+      <header>
+        <h1>{{model.name}}</h1>
+        {{rating-bar progress=95}}
+        <span class="text-muted">
+          4.4 | 8385 reviews
+        </span>
+      </header>
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <label for="quantity">Quantity</label>
+          <select id="quantity" name="productQuantity" onchange={{action (mut quantity) value="target.value"}}>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+        <button {{action "addToCart" model (hash quantity=quantity)}} type="button" name="button" class="btn btn-primary">Add to Cart</button>
+      </form>
     </div>
   </div>
 </div>
