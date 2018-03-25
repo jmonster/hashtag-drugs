@@ -1,6 +1,11 @@
 {{#if theme.alertText}}
-  <div class="alert alert-{{theme.alertContext}}">
+  <div class="alert alert-{{theme.alertContext}} {{if theme.alertDismissible 'alert-dismissible'}}">
     {{theme.alertText}}
+    {{#if theme.alertDismissible}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    {{/if}}
   </div>
 {{/if}}
 
