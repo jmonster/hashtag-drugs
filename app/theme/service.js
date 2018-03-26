@@ -11,6 +11,11 @@ export default Service.extend({
         toastLinkText: linkOptions.text,
         toastLinkPath:linkOptions.path,
       });
+    } else {
+      this.setProperties({
+        toastLinkPath: '',
+        toastLinkText: '',
+      })
     }
   },
   clearToast() {
