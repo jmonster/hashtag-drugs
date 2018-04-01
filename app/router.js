@@ -22,7 +22,9 @@ Router.map(function() {
 
       // top-pot managed things
       this.route('admin', function() {
-        this.route('vendors');  // dispensaries
+        this.route('vendors', function() {
+          this.route('new');
+        });  // dispensaries
         this.route('brands');   // product manufacturers
         this.route('products'); // global product catalog
       });

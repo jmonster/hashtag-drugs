@@ -1,0 +1,7 @@
+<h2 class="border-bottom">vendors</h2>
+
+<ul class="list-group">
+  {{#each model as |vendor|}}
+    {{link-to vendor.name 'authenticated.cms.vendor' vendor.id tagName="li" class="list-group-item list-group-item-action"}}
+  {{/each}}
+</ul>

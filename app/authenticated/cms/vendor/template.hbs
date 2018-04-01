@@ -1,42 +1,23 @@
-<h3>Vendor Links</h3>
-<ul>
-  <li>{{#link-to "authenticated.cms.vendor.styles"}}configure styles{{/link-to}}</li>
-  <li>{{#link-to "authenticated.cms.vendor.inventory"}}manage inventory{{/link-to}}</li>
-  <li>{{#link-to "authenticated.cms.vendor.locations"}}manage locations{{/link-to}}</li>
-  <li>{{#link-to "authenticated.cms.vendor.announcements"}}manage announcements{{/link-to}}</li>
-  <li>{{#link-to "authenticated.cms.vendor.blog"}}manage blog{{/link-to}}</li>
-</ul>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">{{link-to "vendors" "authenticated.cms.admin.vendors.index"}}</li>
+    <li class="breadcrumb-item active" aria-current="page">{{model.vendor.name}}</li>
+  </ol>
+</nav>
 
-<h2>update</h2>
-<p>vendor preferences.</p>
-
-<h3>deets</h3>
-<div class="container x-form">
-  <div class="row">
-    <div class="col">
-      {{x-input value=model.vendor.name placeholder="name" label="name" type="input"}}
-    </div>
-    div
-  </div>
-  <div class="row">
-    <div class="col">
-      {{textarea value=model.vendor.description placeholder="description"}}
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      {{x-input value=model.vendor.instagramFeed placeholder="https://instagram.com/..." label="instagram feed" type="input"}}
-    </div>
-  </div>
+<div class="border-bottom">
+  <h1>{{model.vendor.name}}</h1>
 </div>
 
-<h3>location</h3>
-{{location-form record=model.vendor}}
-
-<h3>menu (pdf) upload</h3>
-{{#upload-menu session.currentUser}}<a href="#">click to select file</a>{{/upload-menu}}
-
-<button class="btn btn-primary" type="button" {{action (route-action "saveRecord" model.vendor)}}>Save</button>
-
+<ul class="nav nav-tabs">
+  <li class="nav-item">{{#link-to "authenticated.cms.vendor.index" class="nav-link"}}general{{/link-to}}</li>
+  <li class="nav-item">{{#link-to "authenticated.cms.vendor.styles" class="nav-link"}}styles{{/link-to}}</li>
+  <li class="nav-item">{{#link-to "authenticated.cms.vendor.inventory" class="nav-link"}}inventory{{/link-to}}</li>
+  <li class="nav-item">{{#link-to "authenticated.cms.vendor.locations" class="nav-link"}}locations{{/link-to}}</li>
+  <li class="nav-item">{{#link-to "authenticated.cms.vendor.announcements" class="nav-link"}}announcements{{/link-to}}</li>
+  <li class="nav-item">{{#link-to "authenticated.cms.vendor.blog" class="nav-link"}}blog{{/link-to}}</li>
+</ul>
 
 {{outlet}}
+
+<button class="btn btn-primary" type="button" {{action (route-action "saveRecord" model.vendor)}}>Save</button>

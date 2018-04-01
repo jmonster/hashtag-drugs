@@ -17,10 +17,3 @@
 </div>
 
 <button class="btn btn-primary" type="button" {{action "saveVendor" newVendor}}>Save</button>
-
-<hr>
-
-<h2>vendors</h2>
-{{#each vendors as |vendor|}}
-  <li>{{#link-to 'authenticated.cms.vendor' vendor.id}}{{vendor.name}}{{/link-to}}</li>
-{{/each}}

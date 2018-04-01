@@ -1,0 +1,28 @@
+<h2>update</h2>
+<p>vendor preferences.</p>
+
+<h3>deets</h3>
+<div class="container x-form">
+  <div class="row">
+    <div class="col">
+      {{x-input value=model.vendor.name placeholder="name" label="name" type="input"}}
+    </div>
+    div
+  </div>
+  <div class="row">
+    <div class="col">
+      {{textarea value=model.vendor.description placeholder="description"}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      {{x-input value=model.vendor.instagramFeed placeholder="https://instagram.com/..." label="instagram feed" type="input"}}
+    </div>
+  </div>
+</div>
+
+<h3>location</h3>
+{{location-form record=model.vendor}}
+
+<h3>menu (pdf) upload</h3>
+{{#upload-menu session.currentUser}}<a href="#">click to select file</a>{{/upload-menu}}
