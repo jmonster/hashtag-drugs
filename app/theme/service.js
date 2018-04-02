@@ -1,4 +1,5 @@
 import Service from '@ember/service';
+import { on } from '@ember/object/evented';
 
 export default Service.extend({
   // toast message
@@ -24,7 +25,7 @@ export default Service.extend({
 
   // alerts
   alertDismissible: false,
-  setupConnectivityAlert: Ember.on('init', function() {
+  setupConnectivityAlert: on('init', function() {
     window.addEventListener('online', () => {
       this.clearAlert();
       this.toastMessage('re-connected');
