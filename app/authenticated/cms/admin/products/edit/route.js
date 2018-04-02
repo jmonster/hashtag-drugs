@@ -1,7 +1,10 @@
 import Route from '@ember/routing/route';
+import RSVP from 'rsvp';
 
 export default Route.extend({
   model(params) {
-    return this.store.findRecord('product', params.id);
+    return RSVP.hash({
+      product: this.store.findRecord('product', params.id)
+    });
   }
 });

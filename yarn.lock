@@ -3499,6 +3499,14 @@ ember-truth-helpers@^2.0.0:
   dependencies:
     ember-cli-babel "^6.8.2"
 
+ember-uuid-shim@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/ember-uuid-shim/-/ember-uuid-shim-0.1.1.tgz#c2bb38ad1aa61c4b1b10e6df111001c922b19722"
+  dependencies:
+    broccoli-merge-trees "^1.2.1"
+    broccoli-webpack "^1.0.0"
+    ember-cli-babel "^5.1.7"
+
 ember-welcome-page@^3.0.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/ember-welcome-page/-/ember-welcome-page-3.1.1.tgz#dead338443f24257c552bfa83ca84b0704b6c184"
@@ -9193,7 +9201,7 @@ uuid@^2.0.1:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
 
-uuid@^3.0.0, uuid@^3.1.0:
+uuid@^3.0.0, uuid@^3.0.1, uuid@^3.1.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.2.1.tgz#12c528bb9d58d0b9265d9a2f6f0fe8be17ff1f14"
 

@@ -1,28 +1,43 @@
-<h1>{{model.name}}</h1>
+<h1>{{product.name}}</h1>
 
 <div class="container x-form">
   <div class="row">
     <div class="col">
-      {{x-input value=model.name placeholder="name" label="name"}}
+      {{x-input value=product.name placeholder="name" label="name"}}
     </div>
   </div>
 
   <div class="row">
     <div class="col">
-      {{x-input value=model.description type="text" placeholder="description" label="description"}}
+      {{x-input value=product.description type="text" placeholder="description" label="description"}}
     </div>
   </div>
 
   <div class="row">
     <div class="col">
       <label>brand</label>
-      {{#x-select value=model.brand as |xs|}}
-        {{#each model as |brand|}}
+      {{#x-select value=product.brand action=(action "selectBrand") as |xs|}}
+        {{#each brands as |brand|}}
           {{#xs.option value=brand}}{{brand.name}}{{/xs.option}}
         {{/each}}
       {{/x-select}}
     </div>
   </div>
+
+  <div class="row">
+      <div class="col">
+        <label>Images</label>
+        <ul>
+          {{#each product.pictures as |picture|}}
+            <li><img src="{{picture.url}}" alt="" width="128px"></li>
+          {{/each}}
+        </ul>
+
+        {{#x-file-input name="menu" multiple=true action=(action "didSelectImages") alt="Choose images"}}
+          <button type="button" name="button">Add photo(s)</button>
+        {{/x-file-input}}
+      </div>
+  </div>
 </div>
 
-<button class="btn btn-primary" type="button" {{action (route-action "saveRecord" model)}}>Save</button>
+<button class="btn btn-primary" type="button" {{action (route-action "saveRecord" product)}}>Save</button>
