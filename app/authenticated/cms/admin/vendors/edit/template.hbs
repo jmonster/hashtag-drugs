@@ -1,0 +1,16 @@
+<div class="container x-form">
+  {{location-form record=model}}
+
+  <div class="row">
+    <div class="col">
+      <label>products</label>
+      {{#x-select value=model.products multiple=true as |xs|}}
+        {{#each products as |product|}}
+          {{#xs.option value=product}}{{product.name}}{{/xs.option}}
+        {{/each}}
+      {{/x-select}}
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-primary" type="button" {{action "saveVendor" model}}>Save</button>

@@ -1,0 +1,12 @@
+<h2>new brand</h2>
+<p>A brand is a company that makes products which are sold by a vendor.</p>
+
+<div class="container x-form">
+  <div class="row">
+    <div class="col">
+      {{x-input value=model.name placeholder="brand name" label="name" type="input"}}
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-primary" type="button" {{action (route-action "saveRecord" model)}}>Create</button>

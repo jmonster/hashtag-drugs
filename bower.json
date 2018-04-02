@@ -1,0 +1,6 @@
+{
+  "name": "top-pot",
+  "dependencies": {
+    "slick-carousel": "1.5.8"
+  }
+}

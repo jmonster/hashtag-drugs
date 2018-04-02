@@ -1,0 +1,28 @@
+<h1>{{model.name}}</h1>
+
+<div class="container x-form">
+  <div class="row">
+    <div class="col">
+      {{x-input value=model.name placeholder="name" label="name"}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      {{x-input value=model.description type="text" placeholder="description" label="description"}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <label>brand</label>
+      {{#x-select value=model.brand as |xs|}}
+        {{#each model as |brand|}}
+          {{#xs.option value=brand}}{{brand.name}}{{/xs.option}}
+        {{/each}}
+      {{/x-select}}
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-primary" type="button" {{action (route-action "saveRecord" model)}}>Save</button>

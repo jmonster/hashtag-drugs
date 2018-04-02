@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
+  theme: Ember.inject.service(),
   afterModel() {
     if (!this.get('session.isAuthenticated')) {
       this.transitionTo('onboarding');
@@ -9,7 +10,9 @@ export default Route.extend({
 
   actions: {
     saveRecord(record) {
-      record.save();
+      record.save().then(() => {
+        this.get('theme').toastMessage('saved!');
+      });
     }
   }
 });

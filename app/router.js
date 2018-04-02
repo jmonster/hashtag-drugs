@@ -22,11 +22,21 @@ Router.map(function() {
 
       // top-pot managed things
       this.route('admin', function() {
+        // dispensaries
         this.route('vendors', function() {
           this.route('new');
-        });  // dispensaries
-        this.route('brands');   // product manufacturers
-        this.route('products'); // global product catalog
+          this.route('edit', { path: '/edit/:id' });
+        });
+        // product manufacturers
+        this.route('brands', function() {
+          this.route('new');
+          this.route('edit', { path: '/edit/:id' });
+        });
+        // global product catalog
+        this.route('products', function() {
+          this.route('new');
+          this.route('edit', { path: '/edit/:id' });
+        });
       });
     });
   });

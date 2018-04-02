@@ -1,0 +1,9 @@
+<h2>brands</h2>
+<ul>
+  {{#each model as |brand|}}
+    <li>{{link-to brand.name "authenticated.cms.admin.brands.edit" brand.id}}</li>
+  {{/each}}
+</ul>
+{{#link-to "authenticated.cms.admin.brands.new"}}
+  <i class="fa fa-plus"></i> Add a brand
+{{/link-to}}
