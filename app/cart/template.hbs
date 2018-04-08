@@ -19,7 +19,15 @@
                 {{cartItem.product.name}} <small>by {{cartItem.product.brand.name}}</small>
               {{/link-to}}
             </td>
-            <td>{{cartItem.quantity}}</td>
+            <td>
+              <select onchange={{action (mut cartItem.quantity) value="target.value"}} class="" name="">
+                <option selected={{eq cartItem.quantity 1}} value="1">1</option>
+                <option selected={{eq cartItem.quantity 2}} value="2">2</option>
+                <option selected={{eq cartItem.quantity 3}} value="3">3</option>
+                <option selected={{eq cartItem.quantity 4}} value="4">4</option>
+                <option selected={{eq cartItem.quantity 5}} value="5">5</option>
+              </select>
+            </td>
             <td>$25.00</td>
             <td><span {{action "destroyRecord" cartItem}}>delete</span></td>
           </tr>
@@ -27,6 +35,4 @@
       </tbody>
     </table>
   {{/unless}}
-
-
 </div>
