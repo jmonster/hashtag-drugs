@@ -34,7 +34,7 @@ export default Route.extend({
   model() {
     return hash({
       user: this.store.peekAll('user').get('firstObject'),
-      cartItems: this.store.peekAll('cart-item')
+      cartItems: this.store.findAll('cart-item')
     });
   },
 
