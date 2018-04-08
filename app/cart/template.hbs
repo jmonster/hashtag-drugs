@@ -8,7 +8,7 @@
           <th><h1 class="h3">shopping cart</h1></th>
           <th>quantity</th>
           <th>price</th>
-          <th>remove</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -29,10 +29,18 @@
               </select>
             </td>
             <td>$25.00</td>
-            <td><span {{action "destroyRecord" cartItem}}>delete</span></td>
+            <td><a href="/remove/cart-item" {{action "destroyRecord" cartItem}} class="cursor-pointer">remove</a></td>
           </tr>
         {{/each}}
       </tbody>
+      <tfoot>
+        <tr>
+          <td>Total</td>
+          <td></td>
+          <td>{{totalPrice}}</td>
+          <td></td>
+        </tr>
+      </tfoot>
     </table>
   {{/unless}}
 </div>
