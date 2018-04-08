@@ -1,26 +1,27 @@
 <div class="container">
-  <h1>cart</h1>
-  <p class="text-muted">Two-hour delivery of in-stock items in some locations for only $9. See checkout for availability.</p>
-
-  {{#unless cartItems.length}}
+  {{#unless model.length}}
     <p>no items. {{link-to "shop" "browse.products.index"}}</p>
   {{else}}
     <table class="table">
       <thead>
         <tr>
-          <th>name</th>
+          <th><h1 class="h3">shopping cart</h1></th>
           <th>quantity</th>
           <th>price</th>
           <th>remove</th>
         </tr>
       </thead>
       <tbody>
-        {{#each cartItems as |cartItem|}}
+        {{#each model as |cartItem|}}
           <tr>
-            <td>{{link-to cartItem.product.name "browse.products.view" cartItem.product.id}}</td>
+            <td>
+              {{#link-to "browse.products.view" cartItem.product.id}}
+                {{cartItem.product.name}} <small>by {{cartItem.product.brand.name}}</small>
+              {{/link-to}}
+            </td>
             <td>{{cartItem.quantity}}</td>
             <td>$25.00</td>
-            <td><span {{action "deleteRecord" cartItem}}>delete</span></td>
+            <td><span {{action "destroyRecord" cartItem}}>delete</span></td>
           </tr>
         {{/each}}
       </tbody>

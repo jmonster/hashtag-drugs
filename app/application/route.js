@@ -75,19 +75,33 @@ export default Route.extend({
     // options will be the customizations added to the cart item, such as
     // quantity, color, size, etc.
     addToCart(product, options = {}) {
-      this.store.createRecord('cart-item', {
-        product,
-        quantity: parseInt(options.quantity, 10)
-      });
+      const cartItems = this.store.peekAll('cart-item');
+      const productQuantity = options.quantity || 1;
+      let cartItem;
 
-      this.get('theme').toastMessage(`${options.quantity} item(s) added`, {
-        path: 'cart',
-        text: 'view cart'
+      if (cartItems.isAny('product.id', product.get('id'))) {
+        const indexOfItem = cartItems.mapBy('product.id').lastIndexOf(product.get('id'));
+        cartItem = cartItems.objectAt(indexOfItem);
+        cartItem.incrementProperty('quantity', productQuantity);
+      } else {
+        cartItem = this.store.createRecord('cart-item', {
+          product,
+          quantity: productQuantity
+        });
+      }
+
+      cartItem.save().then(() => {
+        this.get('theme').toastMessage(`${productQuantity} item(s) added`, {
+          path: 'cart',
+          text: 'view cart'
+        });
+      }).catch(() => {
+        this.get('theme').toastMessage('error adding item');
       });
     },
 
-    deleteRecord(record) {
-      record.deleteRecord();
+    destroyRecord(record) {
+      record.destroyRecord();
     }
   }
 });
