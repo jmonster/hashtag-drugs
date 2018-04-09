@@ -12,7 +12,7 @@ const inverse = null;
 
 export default DS.Model.extend({
   reviews: DS.hasMany('review', { inverse }), // user authored reviews
-  pictures: DS.hasMany('picture', { inverse}),
+  pictures: DS.hasMany('picture', { inverse }),
   brand: DS.belongsTo('brand'),   // { name: "Jetty", ... }
   name: DS.attr('string'),        // e.g. "Sunset Sherbert"
   description: DS.attr('string'), // markdown text field

@@ -13,5 +13,5 @@ const inverse = null;
 export default DS.Model.extend({
   product: DS.belongsTo('product', { inverse }),
   order: DS.belongsTo('order', { inverse }), // set once an order is confirmed
-  quantity: DS.attr('number')
+  quantity: DS.attr('number', { defaultValue: 1 })
 });

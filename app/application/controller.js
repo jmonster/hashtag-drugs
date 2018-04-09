@@ -7,7 +7,7 @@ export default Controller.extend({
   cartItemCount: computed('model.cartItems.@each.quantity', function() {
     if (this.get('model.cartItems.length')) {
       const quantities = this.get('model.cartItems').mapBy('quantity');
-      return quantities.reduce((a, b) => a + b);
+      return quantities.reduce((a, b) => parseInt(a, 10) + parseInt(b, 10));
     }
 
     return 0;
