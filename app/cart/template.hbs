@@ -1,5 +1,5 @@
 <div class="container">
-  {{#unless model.length}}
+  {{#unless model.cartItems.length}}
     <p>no items. {{link-to "shop" "browse.products.index"}}</p>
   {{else}}
     <table class="table">
@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        {{#each model as |cartItem|}}
+        {{#each model.cartItems as |cartItem|}}
           <tr>
             <td>
               {{#link-to "browse.products.view" cartItem.product.id}}

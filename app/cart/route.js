@@ -2,6 +2,8 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   model() {
-    return this.store.peekAll('cart-item');
+    return Ember.RSVP.hash({
+      cartItems: this.store.peekAll('cart-item')
+    });
   }
 });
