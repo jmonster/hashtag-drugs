@@ -80,8 +80,7 @@ export default Route.extend({
       let cartItem;
 
       if (cartItems.isAny('product.id', product.get('id'))) {
-        const indexOfItem = cartItems.mapBy('product.id').lastIndexOf(product.get('id'));
-        cartItem = cartItems.objectAt(indexOfItem);
+        cartItem = cartItems.findBy('id', product.get('id'));
         cartItem.incrementProperty('quantity', productQuantity);
       } else {
         cartItem = this.store.createRecord('cart-item', {
