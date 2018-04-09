@@ -20,13 +20,19 @@
               {{/link-to}}
             </td>
             <td>
-              <select onchange={{action (mut cartItem.quantity) value="target.value"}} class="" name="">
-                <option selected={{eq cartItem.quantity 1}} value="1">1</option>
-                <option selected={{eq cartItem.quantity 2}} value="2">2</option>
-                <option selected={{eq cartItem.quantity 3}} value="3">3</option>
-                <option selected={{eq cartItem.quantity 4}} value="4">4</option>
-                <option selected={{eq cartItem.quantity 5}} value="5">5</option>
-              </select>
+
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{cartItem.quantity}}
+                </button>
+                <select multiple onchange={{action (mut cartItem.quantity) value="target.value"}} class="dropdown-menu" name="">
+                  <option class="dropdown-item" selected={{eq cartItem.quantity 1}} value="1">1</option>
+                  <option class="dropdown-item" selected={{eq cartItem.quantity 2}} value="2">2</option>
+                  <option class="dropdown-item" selected={{eq cartItem.quantity 3}} value="3">3</option>
+                  <option class="dropdown-item" selected={{eq cartItem.quantity 4}} value="4">4</option>
+                  <option class="dropdown-item" selected={{eq cartItem.quantity 5}} value="5">5</option>
+                </select>
+              </div>
             </td>
             <td>$25.00</td>
             <td><a href="/remove/cart-item" {{action "destroyRecord" cartItem}} class="cursor-pointer">remove</a></td>
@@ -43,4 +49,5 @@
       </tfoot>
     </table>
   {{/unless}}
+
 </div>
