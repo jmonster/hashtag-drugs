@@ -7,6 +7,7 @@ import Route from '@ember/routing/route'
 
 export default Route.extend({
   theme: service(),
+  session: service(),
 
   removeInitialLoading: on('activate', function() {
     if (document) {
@@ -33,7 +34,6 @@ export default Route.extend({
 
   model() {
     return hash({
-      user: this.store.peekAll('user').get('firstObject'),
       cartItems: this.store.findAll('cart-item')
     });
   },
@@ -75,22 +75,21 @@ export default Route.extend({
     // options will be the customizations added to the cart item, such as
     // quantity, color, size, etc.
     addToCart(product, options = {}) {
-      const cartItems = this.store.peekAll('cart-item');
-      const productQuantity = options.quantity || 1;
-      let cartItem;
+      const cartItems = this.modelFor('application').cartItems;
+      const quantity = options.quantity || 1;
 
-      if (cartItems.isAny('product.id', product.get('id'))) {
-        cartItem = cartItems.findBy('id', product.get('id'));
-        cartItem.incrementProperty('quantity', productQuantity);
+      let cartItem = cartItems.findBy('product.id', product.get('id'));
+
+      if (cartItem) {
+        cartItem.incrementProperty('quantity', quantity);
       } else {
         cartItem = this.store.createRecord('cart-item', {
-          product,
-          quantity: productQuantity
+          product, quantity
         });
       }
 
       cartItem.save().then(() => {
-        this.get('theme').toastMessage(`${productQuantity} item(s) added`, {
+        this.get('theme').toastMessage(`${quantity} item(s) added`, {
           path: 'cart',
           text: 'view cart'
         });

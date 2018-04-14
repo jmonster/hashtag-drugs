@@ -17,7 +17,9 @@
   <div class="row">
     <ul>
       {{#each filteredResults as |result|}}
-        <li>{{result.name}}</li>
+        <li {{action 'didClickResult' result}}>
+          {{#link-to result.viewRoute result.id}}{{result.name}}{{/link-to}}
+        </li>
       {{/each}}
     </ul>
   </div>

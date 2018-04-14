@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { run } from '@ember/runloop';
 
-const DEBOUNCE_WAIT = 250; // ms
+const DEBOUNCE_WAIT = 100; // ms
 
 export default Component.extend({
   classNames: ['wikiwiki-search'],
@@ -53,6 +53,11 @@ export default Component.extend({
   actions: {
     didPressKey() {
       run.debounce(this, this.recomputeResults, DEBOUNCE_WAIT);
+    },
+
+    didClickResult() {
+      this.set('query', "");
+      this.recomputeResults();
     }
   }
 });
