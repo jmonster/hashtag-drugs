@@ -1,17 +1,24 @@
-import { alias } from '@ember/object/computed';
+import { computed } from '@ember/object';
+import { alias, mapBy } from '@ember/object/computed';
+
 import Controller from '@ember/controller';
+import RSVP from 'rsvp';
 
 export default Controller.extend({
-  totalPrice: Ember.computed('cartItemCount', function() {
-    const totalPrice = this.get('cartItemCount') * 25; // TODO: use real price when ready
-    return `$${totalPrice}.00`;
-  }),
-  cartItemCount: Ember.computed('model.cartItems.@each.quantity', function() {
-    if (this.get('model.cartItems.length')) {
-      const quantities = this.get('model.cartItems').mapBy('quantity');
-      return quantities.reduce((a, b) => parseInt(a, 10) + parseInt(b, 10));
-    }
+  cartItems: alias('model.cartItems'),
+  products: mapBy('cartItems', 'product'),
 
-    return 0;
+  totalQuantity: computed('cartItems.@each.quantity', function() {
+    return this.get('cartItems').reduce(function(result, item) {
+      const itemQuantity = item.get('quantity');
+      return result + itemQuantity;
+    }, 0);
   }),
+
+  actions: {
+    setQuantity(cartItem, quantity) {
+      cartItem.set('quantity', quantity);
+      return cartItem.save();
+    }
+  }
 });

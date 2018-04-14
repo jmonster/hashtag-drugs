@@ -18,7 +18,7 @@
                 {{link-to "View" "browse.products.view" product.id class="btn btn-sm btn-outline-secondary"}}
                 <button type="button" class="btn btn-sm btn-outline-secondary" {{action "addToCart" product (hash quantity=1)}}>Buy</button>
               </div>
-              <small class="text-muted">$25</small>
+              <small class="text-muted">{{format-currency product.price unit='cents' showFree=true}}</small>
             </div>
           </div>
         </div>

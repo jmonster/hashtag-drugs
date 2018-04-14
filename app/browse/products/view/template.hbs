@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <header class="mb-5">
-        <h1>{{model.name}} by {{model.brand.name}}</h1>
+        <h1>{{product.name}} by {{product.brand.name}}</h1>
         {{rating-bar progress=95}}
         <span class="text-muted">
           4.4 | 8385 reviews
@@ -11,19 +11,22 @@
       <form class="form-inline">
         <div class="form-group mb-2">
           <label for="quantity">Quantity</label>
-          <select id="quantity" name="productQuantity" onchange={{action (mut quantity) value="target.value"}}>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
+          {{#x-select id="quantity" name="productQuantity" value=quantity action=(action 'updateQuantity') as |xs|}}
+            {{#xs.option value=1}}1{{/xs.option}}
+            {{#xs.option value=2}}2{{/xs.option}}
+            {{#xs.option value=3}}3{{/xs.option}}
+            {{#xs.option value=4}}4{{/xs.option}}
+            {{#xs.option value=5}}5{{/xs.option}}
+          {{/x-select}}
         </div>
-        <button {{action "addToCart" model (hash quantity=quantity)}} type="button" name="button" class="btn btn-primary">Add to Cart</button>
+
+        <button {{action "addToCart" product (hash quantity=quantity)}} type="button" name="button" class="btn btn-primary">Add to Cart</button>
       </form>
     </div>
     <div class="col">
       {{#carousel-container transitionInterval=300 as |ui controls|}}
         <div class="carousel-body">
-          {{#each model.pictures as |item|}}
+          {{#each product.pictures as |item|}}
             {{#ui.item}}
               <img class="img-fluid" src={{item.url}} alt="">
             {{/ui.item}}
@@ -33,7 +36,7 @@
             {{/ui.item}}
           {{/each}}
         </div>
-        {{#if (gt model.pictures.length 1)}}
+        {{#if (gt product.pictures.length 1)}}
           <button onclick={{controls.previous}}>
             <i class="fa fa-chevron-left"></i>
           </button>

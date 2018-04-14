@@ -4,9 +4,9 @@
 <div class="container x-form">
   <div class="row">
     <div class="col">
-      {{x-input value=model.name placeholder="brand name" label="name" type="input"}}
+      {{x-input value=newBrand.name placeholder="brand name" label="name" type="input"}}
     </div>
   </div>
 </div>
 
-<button class="btn btn-primary" type="button" {{action (route-action "saveRecord" model)}}>Create</button>
+<button class="btn btn-primary" type="button" {{action (route-action "saveRecord" newBrand)}}>Create</button>

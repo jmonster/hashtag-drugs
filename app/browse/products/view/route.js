@@ -1,11 +1,15 @@
-import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
+import RSVP from 'rsvp';
+
+import { inject as service } from '@ember/service';
 
 export default Route.extend({
   theme: service(),
 
   model(params) {
-    return this.store.findRecord('product', params.id);
+    return RSVP.hash({
+      product: this.store.findRecord('product', params.id)
+    });
   },
 
   resetController(controller, isExiting) {

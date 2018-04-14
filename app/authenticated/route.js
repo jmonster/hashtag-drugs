@@ -13,6 +13,13 @@ export default Route.extend({
     saveRecord(record) {
       record.save().then(() => {
         this.get('theme').toastMessage('saved!');
+
+        // redirect to edit page (if provided)
+        // to allow subsequent changes to this asset
+        const route = record.get('editRoute');
+        if (route) {
+          this.transitionTo(route, record.id);
+        }
       });
     }
   }

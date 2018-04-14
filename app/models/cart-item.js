@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import { computed } from '@ember/object';
 
 // !! IMPORTANT !!
 // https://github.com/firebase/emberfire/blob/master/docs/guide/relationships.md#relationships
@@ -13,5 +14,8 @@ const inverse = null;
 export default DS.Model.extend({
   product: DS.belongsTo('product', { inverse }),
   order: DS.belongsTo('order', { inverse }), // set once an order is confirmed
-  quantity: DS.attr('number', { defaultValue: 1 })
+  quantity: DS.attr('number', { defaultValue: 1 }),
+  totalPrice: computed('product.price', 'quantity', function() {
+    return this.get('product.price') * this.get('quantity');
+  })
 });

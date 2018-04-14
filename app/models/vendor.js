@@ -17,5 +17,8 @@ export default DS.Model.extend({
   location: DS.belongsTo('location', { inverse }),
   name: DS.attr('string'),
   description: DS.attr('string'),
-  instagramFeed: DS.attr('string')
+  instagramFeed: DS.attr('string'),
+
+  editRoute: 'authenticated.cms.admin.vendors.edit',
+  viewRoute: 'authenticated.cms.admin.vendors.edit'
 });

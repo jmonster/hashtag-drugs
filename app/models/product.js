@@ -16,5 +16,8 @@ export default DS.Model.extend({
   brand: DS.belongsTo('brand'),   // { name: "Jetty", ... }
   name: DS.attr('string'),        // e.g. "Sunset Sherbert"
   description: DS.attr('string'), // markdown text field
-  lowestPrice: DS.attr('number')  // lowest price available across all vendors
+  price: DS.attr('number'),
+
+  editRoute: 'authenticated.cms.admin.products.edit',
+  viewRoute: 'authenticated.cms.admin.products.edit'
 });

@@ -1,5 +1,5 @@
 <div class="container">
-  {{#unless model.cartItems.length}}
+  {{#unless cartItems.length}}
     <p>no items. {{link-to "shop" "browse.products.index"}}</p>
   {{else}}
     <table class="table">
@@ -12,38 +12,39 @@
         </tr>
       </thead>
       <tbody>
-        {{#each model.cartItems as |cartItem|}}
+        {{#each cartItems as |cartItem|}}
           <tr>
             <td>
               {{#link-to "browse.products.view" cartItem.product.id}}
                 {{cartItem.product.name}} <small>by {{cartItem.product.brand.name}}</small>
               {{/link-to}}
             </td>
-            <td>
 
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {{cartItem.quantity}}
-                </button>
-                <select multiple onchange={{action (mut cartItem.quantity) value="target.value"}} class="dropdown-menu" name="">
-                  <option class="dropdown-item" selected={{eq cartItem.quantity 1}} value="1">1</option>
-                  <option class="dropdown-item" selected={{eq cartItem.quantity 2}} value="2">2</option>
-                  <option class="dropdown-item" selected={{eq cartItem.quantity 3}} value="3">3</option>
-                  <option class="dropdown-item" selected={{eq cartItem.quantity 4}} value="4">4</option>
-                  <option class="dropdown-item" selected={{eq cartItem.quantity 5}} value="5">5</option>
-                </select>
-              </div>
+            <td>
+              {{#x-select value=cartItem.quantity action=(action 'setQuantity' cartItem) as |xs|}}
+                {{#xs.option class="dropdown-item" value=1}}1{{/xs.option}}
+                {{#xs.option class="dropdown-item" value=2}}2{{/xs.option}}
+                {{#xs.option class="dropdown-item" value=3}}3{{/xs.option}}
+                {{#xs.option class="dropdown-item" value=4}}4{{/xs.option}}
+                {{#xs.option class="dropdown-item" value=5}}5{{/xs.option}}
+              {{/x-select}}
             </td>
-            <td>$25.00</td>
+
+            <td>
+              {{format-currency cartItem.totalPrice unit='cents' showFree=true}}
+              {{#unless (eq cartItem.totalPrice 0)}}@ {{format-currency cartItem.product.price unit='cents' showFree=true}}/ea{{/unless}}
+            </td>
+
             <td><a href="/remove/cart-item" {{action "destroyRecord" cartItem}} class="cursor-pointer">remove</a></td>
           </tr>
         {{/each}}
       </tbody>
+
       <tfoot>
         <tr>
           <td>Total</td>
-          <td></td>
-          <td>{{totalPrice}}</td>
+          <td>{{totalQuantity}}</td>
+          <td><h1>{{totalPrice}}</h1>{{format-currency totalPrice unit='cents' showFree=true}}</td>
           <td></td>
         </tr>
       </tfoot>
