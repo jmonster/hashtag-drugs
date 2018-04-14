@@ -24,6 +24,12 @@
       {{/x-select}}
     </div>
   </div>
+
+  <div class="row">
+    <div class="col">
+      {{x-input value=newProduct.price type="text" placeholder="699" label="price (cents)"}}
+    </div>
+  </div>
 </div>
 
 <button class="btn btn-primary" type="button" {{action (route-action "saveRecord" newProduct)}}>Create</button>
