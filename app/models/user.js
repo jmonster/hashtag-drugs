@@ -12,8 +12,11 @@ const inverse = null;
 
 export default DS.Model.extend({
   cart: DS.belongsTo('cart', { inverse }),
-  location: DS.belongsTo('location', { inverse }),
   orders: DS.hasMany('order', { inverse }),
   name: DS.attr('string'),
-  email: DS.attr('string')
+  email: DS.attr('string'),
+
+  defaultBillingLocation: DS.belongsTo('location', { inverse }),
+  defaultDeliveryLocation: DS.belongsTo('location', { inverse }),
+  addressBook: DS.hasMany('location', { inverse })
 });
