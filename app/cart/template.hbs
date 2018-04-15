@@ -44,7 +44,7 @@
         <tr>
           <td>Total</td>
           <td>{{totalQuantity}}</td>
-          <td><h1>{{totalPrice}}</h1>{{format-currency totalPrice unit='cents' showFree=true}}</td>
+          <td>{{format-currency (await totalCost) unit='cents' showFree=true}}</td>
           <td></td>
         </tr>
       </tfoot>
