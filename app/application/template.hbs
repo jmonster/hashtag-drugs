@@ -57,12 +57,20 @@
 {{content-backdrop}}
 
   <nav class="navbar navbar-light">
-    {{#link-to "authenticated" class="navbar-brand"}}{{fa-icon "leaf"}} TopPot{{/link-to}}
     {{side-menu-toggle}}
+    {{#link-to "authenticated" class="navbar-brand mr-auto"}}{{fa-icon "leaf"}} TopPot{{/link-to}}
+    <i class="fa fa-search fa-lg" {{action (mut showSearch) (not showSearch)}}></i>
+    {{#link-to "cart"}}
+      <i class="fa fa-shopping-cart fa-lg"></i>
+    {{/link-to}}
   </nav>
 {{/if}}
 
-{{wikiwiki-search items=thingsToFilterOn}}
+{{#if showSearch}}
+  {{#wikiwiki-search items=thingsToFilterOn}}
+    <span {{action (mut showSearch) false}}>close</span>
+  {{/wikiwiki-search}}
+{{/if}}
 
 {{outlet}}
 

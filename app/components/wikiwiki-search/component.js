@@ -13,6 +13,10 @@ export default Component.extend({
     throw new Error("You must provide an `items` property to the _wikiwiki-search_ component.")
   }),
 
+  focusElement: Ember.on('didInsertElement', function() {
+    this.$('#search-field').focus();
+  }),
+
   matcher: function(query) {
     const escapedQuery = query.replace(/[^a-z0-9-]+/i, ''); // strip invalid chars
     const search = escapedQuery.split('').join('.*');

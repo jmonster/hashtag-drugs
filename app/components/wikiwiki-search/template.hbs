@@ -5,12 +5,14 @@
           type="text"
           value=query
           key-up='didPressKey'
+          id="search-field"
           class="d-flex"
           autocomplete="off"
           autocorrect="off"
           autocapitalize="off"
           spellcheck="false"}}
     </div>
+    {{yield}}
   </div>
 
 {{!-- temporary placeholder for search results --}}
