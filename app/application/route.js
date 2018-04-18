@@ -8,19 +8,31 @@ import Route from '@ember/routing/route'
 export default Route.extend({
   theme: service(),
   session: service(),
+  store: service(),
 
   removeInitialLoading: on('activate', function() {
     if (document) {
-      document.getElementById('initial-loading').remove();
+      const initalLoadingIndicator = document.getElementById('initial-loading-indicator');
+      initalLoadingIndicator && initalLoadingIndicator.remove();
     }
   }),
+
+  fetchCartItems() {
+    return this.store.findAll('cart-item');
+  },
 
   beforeModel() {
     const fetchSession = this.get('session').fetch().catch(function() {});
 
     // initial loading
     run(function() {
-      const loadingProgress = document.getElementById('initial-loading').children[0].children[1];
+      const initalLoadingIndicator = document.getElementById('initial-loading-indicator');
+
+      if (!initalLoadingIndicator) {
+        return; // abort
+      }
+
+      const loadingProgress = initalLoadingIndicator.children[0].children[1];
       loadingProgress.value = 70;
 
       fetchSession.then(function() {
@@ -29,12 +41,11 @@ export default Route.extend({
     });
 
     return fetchSession;
-
   },
 
   model() {
     return hash({
-      cartItems: this.store.findAll('cart-item')
+      cartItems: this.fetchCartItems()
     });
   },
 
@@ -44,7 +55,9 @@ export default Route.extend({
     },
 
     signOut() {
-      this.get('session').close().then(() => { this.refresh(); });
+      this.get('session').close().then(() => { this.refresh(); }).catch((/*err*/) => {
+        // fail silently
+      });
     },
 
     transitionTo(route) {
