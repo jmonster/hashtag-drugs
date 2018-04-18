@@ -23,32 +23,32 @@
     <ul class="list-group">
       <li class="list-group-item">
         {{#side-menu-link-to "cart"}}
-          <i class="fa fa-shopping-cart"></i> Cart ({{cartItemCount}})
+          {{fa-icon "shopping-cart"}} Cart ({{cartItemCount}})
         {{/side-menu-link-to}}
       </li>
       <li class="list-group-item">
         {{#side-menu-link-to "authenticated"}}
-          <i class="fa fa-home"></i> Home <span class="sr-only">(current)</span>
+          {{fa-icon "home"}} Home <span class="sr-only">(current)</span>
         {{/side-menu-link-to}}
       </li>
       <li class="list-group-item">
         {{#side-menu-link-to "authenticated.cms"}}
-          <i class="fa fa-user-plus"></i> CMS
+          {{fa-icon "user-plus"}} CMS
         {{/side-menu-link-to}}
       </li>
       <li class="list-group-item">
         {{#side-menu-link-to "browse.products.index"}}
-          <i class="fa fa-pagelines"></i> Browse Products
+          {{fa-icon "pagelines"}} Browse Products
         {{/side-menu-link-to}}
       </li>
       <li class="list-group-item">
         {{#side-menu-link-to "browse.brand"}}
-          <i class="fa fa-book"></i> Browse by Brand
+          {{fa-icon "book"}} Browse by Brand
         {{/side-menu-link-to}}
       </li>
       <li class="list-group-item">
         {{#side-menu-link-to "browse.vendor"}}
-          <i class="fa fa-truck"></i> Browse by Vendor
+          {{fa-icon "truck"}} Browse by Vendor
         {{/side-menu-link-to}}
       </li>
       <li class="list-group-item" {{action "signOut"}}>
