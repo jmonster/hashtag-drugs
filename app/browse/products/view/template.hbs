@@ -38,10 +38,10 @@
         </div>
         {{#if (gt product.pictures.length 1)}}
           <button onclick={{controls.previous}}>
-            <i class="fa fa-chevron-left"></i>
+            {{fa-icon "chevron-left"}}
           </button>
           <button onclick={{controls.next}}>
-            <i class="fa fa-chevron-right"></i>
+            {{fa-icon "chevron-right"}}
           </button>
         {{/if}}
       {{/carousel-container}}
