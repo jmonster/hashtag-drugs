@@ -1,4 +1,4 @@
-# top-pot
+# #drugs
 
 😉👉
 
@@ -15,7 +15,7 @@ You will need the following things properly installed on your computer.
 ## Installation
 
 * `git clone <repository-url>` this repository
-* `cd top-pot`
+* `cd hashtagdrugs`
 * `yarn install`
 
 ## Running / Development

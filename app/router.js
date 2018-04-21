@@ -20,7 +20,7 @@ Router.map(function() {
         this.route('announcements')
       });
 
-      // top-pot managed things
+      // #drugs managed things
       this.route('admin', function() {
         // dispensaries
         this.route('vendors', function() {

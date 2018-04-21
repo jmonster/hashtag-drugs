@@ -17,7 +17,7 @@ module.exports = function(environment) {
       defaultLocale: 'en'
     },
 
-    modulePrefix: 'top-pot',
+    modulePrefix: 'hashtagdrugs',
     environment,
     rootURL: '/',
     locationType: 'auto',
