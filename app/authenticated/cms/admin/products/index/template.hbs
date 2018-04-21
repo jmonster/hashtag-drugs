@@ -1,6 +1,6 @@
 <h2>products</h2>
 <ul>
-  {{#each model as |product|}}
+  {{#each products as |product|}}
     <li>{{link-to product.name "authenticated.cms.admin.products.edit" product.id}}</li>
   {{/each}}
 </ul>
