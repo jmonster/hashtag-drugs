@@ -54,6 +54,7 @@
     "ember-side-menu": "^0.0.15",
     "ember-source": "~3.0.0",
     "ember-truth-helpers": "^2.0.0",
+    "ember-uuid": "^1.0.1",
     "emberfire": "^2.0.9",
     "emberx-file-input": "^1.2.1",
     "emberx-select": "^3.1.1",

@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 import RSVP from 'rsvp';
-import { v4 } from 'uuid';
+import { v4 } from 'ember-uuid';
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 
