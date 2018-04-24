@@ -1,11 +1,11 @@
 import { computed } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { inject } from '@ember/service';
 import Controller from '@ember/controller';
 import RSVP from 'rsvp';
 
 export default Controller.extend({
-  theme: service(),
-  store: service(),
+  theme: inject(),
+  store: inject(),
 
   cartItemCount: computed('model.cartItems.@each.quantity', function() {
     if (this.get('model.cartItems.length')) {
