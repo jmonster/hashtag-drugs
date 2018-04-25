@@ -1,12 +1,14 @@
 import { computed } from '@ember/object';
-import { alias, mapBy } from '@ember/object/computed';
+import { alias, lt, mapBy } from '@ember/object/computed';
 import { task } from 'ember-concurrency';
 
 import Controller from '@ember/controller';
 import RSVP from 'rsvp';
 
 export default Controller.extend({
-  cartItems: alias('model.cartItems'),
+  cart: alias('model.cart'),
+  cartItems: alias('cart.cartItems'),
+  hasEmptyCart: lt('cartItems.length', 1),
   products: mapBy('cartItems', 'product'),
 
   totalQuantity: computed('cartItems.@each.quantity', function() {

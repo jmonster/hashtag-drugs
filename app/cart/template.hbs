@@ -1,5 +1,5 @@
 <div class="container">
-  {{#unless cartItems.length}}
+  {{#if hasEmptyCart}}
     <p>no items. {{link-to "shop" "browse.products.index"}}</p>
   {{else}}
     <table class="table">
@@ -35,7 +35,7 @@
               {{#unless (eq cartItem.totalPrice 0)}}@ {{format-currency cartItem.product.price unit='cents' showFree=true}}/ea{{/unless}}
             </td>
 
-            <td><a href="/remove/cart-item" {{action "destroyRecord" cartItem}} class="cursor-pointer">remove</a></td>
+            <td><a href="/remove/cart-item" {{action "removeFromCart" cartItem}} class="cursor-pointer">remove</a></td>
           </tr>
         {{/each}}
       </tbody>
@@ -49,6 +49,6 @@
         </tr>
       </tfoot>
     </table>
-  {{/unless}}
+  {{/if}}
 
 </div>

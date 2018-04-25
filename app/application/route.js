@@ -3,6 +3,7 @@ import { run } from '@ember/runloop';
 import { on } from '@ember/object/evented';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
+import { task } from 'ember-concurrency';
 import Route from '@ember/routing/route'
 
 export default Route.extend({
@@ -17,9 +18,22 @@ export default Route.extend({
     }
   }),
 
-  fetchCartItems() {
-    return this.store.findAll('cart-item');
-  },
+  fetchCart: task(function*() {
+    const user = this.get('session.currentUser');
+    let cart;
+
+    try {
+      cart = yield user.get('cart');
+    } catch (err) {
+      cart = this.store.createRecord('cart', { user });
+      yield cart.save();
+
+      user.set('cart', cart);
+      user.save();
+    }
+
+    return cart;
+  }),
 
   beforeModel() {
     const fetchSession = this.get('session').fetch().catch(function() {});
@@ -44,8 +58,12 @@ export default Route.extend({
   },
 
   model() {
+    const _cart = this.get('fetchCart').perform();
+    const _chartItems = _cart.then((cart) => cart.get('cartItems'));
+
     return hash({
-      cartItems: this.fetchCartItems()
+      cart: _cart,
+      cartItems: _chartItems
     });
   },
 
@@ -88,20 +106,26 @@ export default Route.extend({
     // options will be the customizations added to the cart item, such as
     // quantity, color, size, etc.
     addToCart(product, options = {}) {
-      const cartItems = this.modelFor('application').cartItems;
+      const cart = this.modelFor('application').cart;
+      const cartItems = cart.get('cartItems');
       const quantity = options.quantity || 1;
 
       let cartItem = cartItems.findBy('product.id', product.get('id'));
+      let pendingSave;
 
       if (cartItem) {
         cartItem.incrementProperty('quantity', quantity);
+        pendingSave = cartItem.save();
       } else {
         cartItem = this.store.createRecord('cart-item', {
           product, quantity
         });
+
+        cartItems.pushObject(cartItem);
+        pendingSave = cartItem.save().then(() => cart.save());
       }
 
-      cartItem.save().then(() => {
+      pendingSave.then(() => {
         this.get('theme').toastMessage(`${quantity} item(s) added`, {
           path: 'cart',
           text: 'view cart'
@@ -111,8 +135,11 @@ export default Route.extend({
       });
     },
 
-    destroyRecord(record) {
-      record.destroyRecord();
+    removeFromCart(cartItem) {
+      const cart = this.modelFor('application').cart;
+
+      cartItem.destroyRecord();
+      cart.save();
     }
   }
 });
