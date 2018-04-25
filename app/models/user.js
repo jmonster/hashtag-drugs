@@ -15,6 +15,7 @@ export default DS.Model.extend({
   orders: DS.hasMany('order', { inverse }),
   name: DS.attr('string'),
   email: DS.attr('string'),
+  isAnonymous: DS.attr('boolean', { defaultValue: false }),
 
   defaultBillingLocation: DS.belongsTo('location', { inverse }),
   defaultDeliveryLocation: DS.belongsTo('location', { inverse }),

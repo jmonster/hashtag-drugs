@@ -1,13 +1,13 @@
 import Route from '@ember/routing/route';
 import { hash } from 'rsvp';
+import { inject } from '@ember/service';
 
 export default Route.extend({
-  model() {
-    const applicationModel = this.modelFor('application');
-    const cart = applicationModel.cart;
+  session: inject(),
 
+  model() {
     return hash({
-      cart
+      cart: this.get('session.currentUser.cart')
     });
   }
 });

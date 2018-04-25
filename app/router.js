@@ -7,8 +7,6 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('onboarding'); // logged out users
-
   this.route('authenticated', { path: '/' }, function() {
     this.route('cms', function() {
       // dispenary-managed things
@@ -42,7 +40,6 @@ Router.map(function() {
   });
 
   this.route('cart');
-
   this.route('browse', function() {
     this.route('vendor');
     this.route('brand');

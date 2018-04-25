@@ -12,7 +12,8 @@ export default Controller.extend({
   products: mapBy('cartItems', 'product'),
 
   totalQuantity: computed('cartItems.@each.quantity', function() {
-    return this.get('cartItems').reduce(function(result, item) {
+    const cartItems = this.get('cartItems');
+    return !cartItems ? 0 : cartItems.reduce(function(result, item) {
       const itemQuantity = item.get('quantity');
       return result + itemQuantity;
     }, 0);

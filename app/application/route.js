@@ -4,6 +4,7 @@ import { on } from '@ember/object/evented';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 import { task } from 'ember-concurrency';
+import RSVP from 'rsvp';
 import Route from '@ember/routing/route'
 
 export default Route.extend({
@@ -18,8 +19,25 @@ export default Route.extend({
     }
   }),
 
+  configureAnonymousUser() {
+    const session = this.get('session');
+    const store = this.get('store');
+
+    if (!session.isAuthenticated) {
+      return session.open('firebase', { provider: 'anonymous' }).then(({ currentUser }) => {
+        currentUser.set('isAnonymous', true);
+
+        const cart = store.createRecord('cart', { user: currentUser });
+        currentUser.set('cart', cart);
+
+        return RSVP.all([cart.save(), currentUser.save()])
+          .then(() => { this.refresh(); });
+      });
+    }
+  },
+
   fetchCart: task(function*() {
-    const user = this.get('session.currentUser');
+    const user = yield this.get('session.currentUser');
     let cart;
 
     try {
@@ -36,35 +54,40 @@ export default Route.extend({
   }),
 
   beforeModel() {
-    const fetchSession = this.get('session').fetch().catch(function() {});
+    const session = this.get('session');
+    const fetchSession = session.fetch().catch(function() {});
+    const configureAnonymousUser = this.get('configureAnonymousUser').bind(this);
 
     // initial loading
-    run(function() {
-      const initalLoadingIndicator = document.getElementById('initial-loading-indicator');
+    const initalLoadingIndicator = document.getElementById('initial-loading-indicator');
 
-      if (!initalLoadingIndicator) {
-        return; // abort
+    if (!initalLoadingIndicator) {
+      return; // abort
+    }
+
+    const loadingProgress = initalLoadingIndicator.children[0].children[1];
+    run(function() { loadingProgress.value = 70; });
+
+    return fetchSession.then(() => {
+      if (!session.get('isAuthenticated')) {
+        return configureAnonymousUser();
       }
-
-      const loadingProgress = initalLoadingIndicator.children[0].children[1];
-      loadingProgress.value = 70;
-
-      fetchSession.then(function() {
-        loadingProgress.value = 100;
-      });
+    }).then(() => {
+      loadingProgress.value = 100;
     });
-
-    return fetchSession;
   },
 
   model() {
-    const _cart = this.get('fetchCart').perform();
-    const _chartItems = _cart.then((cart) => cart.get('cartItems'));
+    const session = this.get('session');
+    if (session.isAuthenticated) {
+      const _cart = this.get('fetchCart').perform();
+      const _chartItems = _cart.then((cart) => cart.get('cartItems'));
 
-    return hash({
-      cart: _cart,
-      cartItems: _chartItems
-    });
+      return hash({
+        cart: _cart,
+        cartItems: _chartItems
+      });
+    }
   },
 
   actions: {
@@ -73,9 +96,9 @@ export default Route.extend({
     },
 
     signOut() {
-      this.get('session').close().then(() => { this.refresh(); }).catch((/*err*/) => {
-        // fail silently
-      });
+      this.get('session').close()
+        .then(() => { this.transitionTo('/'); })
+        .catch((/*err*/) => { window.location.assign('/'); });
     },
 
     transitionTo(route) {
@@ -106,40 +129,41 @@ export default Route.extend({
     // options will be the customizations added to the cart item, such as
     // quantity, color, size, etc.
     addToCart(product, options = {}) {
-      const cart = this.modelFor('application').cart;
-      const cartItems = cart.get('cartItems');
-      const quantity = options.quantity || 1;
+      this.get('session.currentUser.cart').then((cart) => {
+        const cartItems = cart.get('cartItems');
+        const quantity = options.quantity || 1;
 
-      let cartItem = cartItems.findBy('product.id', product.get('id'));
-      let pendingSave;
+        let cartItem = cartItems.findBy('product.id', product.get('id'));
+        let pendingSave;
 
-      if (cartItem) {
-        cartItem.incrementProperty('quantity', quantity);
-        pendingSave = cartItem.save();
-      } else {
-        cartItem = this.store.createRecord('cart-item', {
-          product, quantity
+        if (cartItem) {
+          cartItem.incrementProperty('quantity', quantity);
+          pendingSave = cartItem.save();
+        } else {
+          cartItem = this.store.createRecord('cart-item', {
+            product, quantity
+          });
+
+          cartItems.pushObject(cartItem);
+          pendingSave = cartItem.save().then(() => cart.save());
+        }
+
+        pendingSave.then(() => {
+          this.get('theme').toastMessage(`${quantity} item(s) added`, {
+            path: 'cart',
+            text: 'view cart'
+          });
+        }).catch((/*err*/) => {
+          this.get('theme').toastMessage('error adding item');
         });
-
-        cartItems.pushObject(cartItem);
-        pendingSave = cartItem.save().then(() => cart.save());
-      }
-
-      pendingSave.then(() => {
-        this.get('theme').toastMessage(`${quantity} item(s) added`, {
-          path: 'cart',
-          text: 'view cart'
-        });
-      }).catch(() => {
-        this.get('theme').toastMessage('error adding item');
       });
     },
 
     removeFromCart(cartItem) {
-      const cart = this.modelFor('application').cart;
-
-      cartItem.destroyRecord();
-      cart.save();
+      this.get('session.currentUser.cart').then((cart) => {
+        cart.get('cartItems').removeObject(cartItem);
+        cart.save().then(() => cartItem.destroyRecord());
+      });
     }
   }
 });
