@@ -1,8 +1,8 @@
 import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service';
+import { inject } from '@ember/service';
 
 export default Route.extend({
-  theme: service(),
+  theme: inject(),
 
   actions: {
     saveRecord(record) {

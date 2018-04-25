@@ -1,10 +1,10 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { inject } from '@ember/service';
 import { filterBy } from '@ember/object/computed';
 
 export default Controller.extend({
-  store: service(),
+  store: inject(),
 
   newVendor: computed(function() {
     return this.store.createRecord('vendor');

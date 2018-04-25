@@ -1,9 +1,9 @@
 import ToriiFirebaseAdapter from 'emberfire/torii-adapters/firebase';
-import { inject as service } from '@ember/service';
+import { inject } from '@ember/service';
 import RSVP from 'rsvp';
 
 export default ToriiFirebaseAdapter.extend({
-  store: service(),
+  store: inject(),
 
   open(authorization) {
     const id = authorization.uid;

@@ -2,13 +2,13 @@ import Controller from '@ember/controller';
 import RSVP from 'rsvp';
 import { v4 } from 'ember-uuid';
 import { computed } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { inject } from '@ember/service';
 
 const { alias } = computed;
 
 export default Controller.extend({
-  store: service(),
-  storage: service(),
+  store: inject(),
+  storage: inject(),
 
   product: alias('model.product'),
   brands: computed(function() {

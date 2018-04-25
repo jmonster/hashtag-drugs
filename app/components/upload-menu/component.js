@@ -1,8 +1,8 @@
 import Component from '@ember/component';
-import { inject as service } from '@ember/service';
+import { inject } from '@ember/service';
 
 export default Component.extend({
-  storage: service(),
+  storage: inject(),
 
   actions: {
     didSelectFile([file]) {

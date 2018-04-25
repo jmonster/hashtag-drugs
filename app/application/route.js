@@ -1,16 +1,16 @@
 import { hash } from 'rsvp';
 import { run } from '@ember/runloop';
 import { on } from '@ember/object/evented';
-import { inject as service } from '@ember/service';
+import { inject } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 import { task } from 'ember-concurrency';
 import RSVP from 'rsvp';
 import Route from '@ember/routing/route'
 
 export default Route.extend({
-  theme: service(),
-  session: service(),
-  store: service(),
+  theme: inject(),
+  session: inject(),
+  store: inject(),
 
   removeInitialLoading: on('activate', function() {
     if (document) {
