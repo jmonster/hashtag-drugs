@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { inject } from '@ember/service';
 
 export default Component.extend({
-  store: injected(),
+  store: inject(),
 
   didReceiveAttrs() {
     this._super(...arguments);
@@ -18,6 +18,5 @@ export default Component.extend({
     record.get('location').catch((/* err */) => {
       record.set('location', store.createRecord('location'));
     });
-  },
-
+  }
 });
