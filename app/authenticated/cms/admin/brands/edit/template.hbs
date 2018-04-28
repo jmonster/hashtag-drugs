@@ -1,10 +1,10 @@
-<h1 class="h3">{{model.name}}</h1>
+<h1 class="h3">{{brand.name}}</h1>
 <div class="container x-form">
   <div class="row">
     <div class="col">
-      {{x-input value=model.name placeholder="brand name" label="name" type="input"}}
+      {{x-input value=brand.name placeholder="brand name" label="name" type="input"}}
     </div>
   </div>
 </div>
 
-<button class="btn btn-primary" type="button" {{action (route-action "saveRecord" model)}}>Save</button>
+<button class="btn btn-primary" type="button" {{action (route-action "saveRecord" brand)}}>Save</button>

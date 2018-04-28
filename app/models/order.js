@@ -13,7 +13,7 @@ const inverse = null;
 export default DS.Model.extend({
   purchaser: DS.belongsTo('user', { inverse }),
   tracking: DS.belongsTo('delivery', { inverse }),
-  cartItems: DS.hasMany('cart-item', { inverse }),
+  cart: DS.belongsTo('cart'),
   createdAt: DS.attr('date'),
   fulfilledAt: DS.attr('date'),
   total: DS.attr('number') // in cents

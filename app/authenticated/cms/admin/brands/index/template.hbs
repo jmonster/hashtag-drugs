@@ -1,12 +1,13 @@
 <h2>brands</h2>
 <ul>
-  {{#each model as |brand|}}
+  {{#each brands as |brand|}}
     <li>
-      <span {{action (route-action "destroyRecord" brand)}}>delete</span>
       {{link-to brand.name "authenticated.cms.admin.brands.edit" brand.id}}
+      -- <a href="#" {{action (route-action "destroyRecord" brand)}}>delete</a>
     </li>
   {{/each}}
 </ul>
+
 {{#link-to "authenticated.cms.admin.brands.new"}}
   {{fa-icon "user-plus"}} Add a brand
 {{/link-to}}

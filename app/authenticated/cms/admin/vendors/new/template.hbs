@@ -2,6 +2,18 @@
 <p>A vendor is a company that sells products made by a brand.</p>
 
 <div class="container x-form">
+  <div class="row">
+    <div class="col">
+      {{x-input value=newVendor.name placeholder="name" label="name"}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      {{x-input value=newVendor.url placeholder="url" label="url"}}
+    </div>
+  </div>
+
   {{location-form record=newVendor}}
 
   <div class="row">

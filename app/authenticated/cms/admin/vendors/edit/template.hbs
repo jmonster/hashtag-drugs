@@ -1,10 +1,10 @@
 <div class="container x-form">
-  {{location-form record=model}}
+  {{location-form record=vendor}}
 
   <div class="row">
     <div class="col">
       <label>products</label>
-      {{#x-select value=model.products multiple=true as |xs|}}
+      {{#x-select value=vendor.products multiple=true as |xs|}}
         {{#each products as |product|}}
           {{#xs.option value=product}}{{product.name}}{{/xs.option}}
         {{/each}}
@@ -13,4 +13,4 @@
   </div>
 </div>
 
-<button class="btn btn-primary" type="button" {{action "saveVendor" model}}>Save</button>
+<button class="btn btn-primary" type="button" {{action "saveVendor" vendor}}>Save</button>
