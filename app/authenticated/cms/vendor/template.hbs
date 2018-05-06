@@ -1,12 +1,12 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item">{{link-to "vendors" "authenticated.cms.admin.vendors.index"}}</li>
-    <li class="breadcrumb-item active" aria-current="page">{{model.name}}</li>
+    <li class="breadcrumb-item active" aria-current="page">{{vendor.name}}</li>
   </ol>
 </nav>
 
 <div class="border-bottom">
-  <h1 class="h3">{{model.name}}</h1>
+  <h1 class="h3">{{vendor.name}}</h1>
 </div>
 
 <ul class="nav nav-tabs">
@@ -20,4 +20,4 @@
 
 {{outlet}}
 
-<button class="btn btn-primary" type="button" {{action (route-action "saveRecord" model)}}>Save</button>
+<button class="btn btn-primary" type="button" {{action (route-action "saveRecord" vendor)}}>Save</button>

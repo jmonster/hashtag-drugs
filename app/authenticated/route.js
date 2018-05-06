@@ -16,6 +16,10 @@ export default Route.extend({
           this.transitionTo(route, record.id);
         }
       });
+    },
+
+    destroyRecord(record) {
+      return record.destroyRecord();
     }
   }
 });

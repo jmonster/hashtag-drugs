@@ -7,7 +7,10 @@ export default Controller.extend({
   store: inject(),
 
   newVendor: computed(function() {
-    return this.store.createRecord('vendor');
+    const location = this.store.createRecord('location');
+    const vendor = this.store.createRecord('vendor', { location });
+
+    return vendor;
   }),
 
   vendors: filterBy('_vendors', 'isNew', false),
