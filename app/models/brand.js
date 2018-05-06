@@ -14,6 +14,7 @@ export default DS.Model.extend({
   products: DS.hasMany('product', { inverse }),
   name: DS.attr('string'),
 
-  editRoute: 'authenticated.cms.admin.brands.edit',
-  viewRoute: 'authenticated.cms.admin.brands.edit'
+  editRoute: 'cms.admin.brands.edit',
+  viewRoute: 'cms.admin.brands.edit',
+  icon: '✴︎'
 });

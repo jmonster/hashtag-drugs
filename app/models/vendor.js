@@ -19,6 +19,7 @@ export default DS.Model.extend({
   description: DS.attr('string'),
   instagramFeed: DS.attr('string'),
 
-  editRoute: 'authenticated.cms.admin.vendors.edit',
-  viewRoute: 'authenticated.cms.admin.vendors.edit'
+  editRoute: 'cms.admin.vendors.edit',
+  viewRoute: 'cms.admin.vendors.edit',
+  icon: '⦿'
 });

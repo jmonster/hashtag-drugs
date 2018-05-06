@@ -1,0 +1,23 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">{{link-to "vendors" "cms.admin.vendors.index"}}</li>
+    <li class="breadcrumb-item active" aria-current="page">{{model.name}}</li>
+  </ol>
+</nav>
+
+<div class="border-bottom">
+  <h1 class="h3">{{vendor.name}}</h1>
+</div>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">{{#link-to "cms.vendor.index" class="nav-link"}}general{{/link-to}}</li>
+  <li class="nav-item">{{#link-to "cms.vendor.styles" class="nav-link"}}styles{{/link-to}}</li>
+  <li class="nav-item">{{#link-to "cms.vendor.inventory" class="nav-link"}}inventory{{/link-to}}</li>
+  <li class="nav-item">{{#link-to "cms.vendor.locations" class="nav-link"}}locations{{/link-to}}</li>
+  <li class="nav-item">{{#link-to "cms.vendor.announcements" class="nav-link"}}announcements{{/link-to}}</li>
+  <li class="nav-item">{{#link-to "cms.vendor.blog" class="nav-link"}}blog{{/link-to}}</li>
+</ul>
+
+{{outlet}}
+
+<button class="btn btn-primary" type="button" {{action (route-action "saveRecord" model)}}>Save</button>

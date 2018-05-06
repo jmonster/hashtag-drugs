@@ -1,0 +1,12 @@
+<div class="flex items-center justify-center">
+  <div class="hk-tabs flex-auto">
+    {{link-to "Products" "browse.products" class="f5 hk-tabs__tab" ignore_children="true"}}
+    {{link-to "Brands" "browse.brands" class="f5 hk-tabs__tab" ignore_children="true"}}
+    {{link-to "Dispensaries" "browse.vendors" class="f5 hk-tabs__tab" ignore_children="true"}}
+    {{link-to "Cart" "cart" class="f5 hk-tabs__tab" ignore_children="true"}}
+    <!-- {{link-to "CMS" "cms" class="red f5 hk-tabs__tab" ignore_children="true"}} -->
+    <div class="spacer flex-auto bb b--light-silver"></div>
+  </div>
+</div>
+
+{{outlet}}

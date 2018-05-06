@@ -1,5 +1,14 @@
 .wikiwiki-search {
   input {
-    width: 100%;
+    max-width: 375px;
   }
+}
+
+.wikiwiki-search-results {
+  top: 70px;
+  background-color: white;
+  left: 0;
+  right: 0;
+  max-height: calc(100vh - 80px);
+  overflow-y: scroll;
 }

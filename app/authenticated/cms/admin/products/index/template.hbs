@@ -1,9 +1,0 @@
-<h2>products</h2>
-<ul>
-  {{#each products as |product|}}
-    <li>{{link-to product.name "authenticated.cms.admin.products.edit" product.id}}</li>
-  {{/each}}
-</ul>
-{{#link-to "authenticated.cms.admin.products.new"}}
-  {{fa-icon "user-plus"}} Add a product
-{{/link-to}}

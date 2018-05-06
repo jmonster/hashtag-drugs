@@ -22,3 +22,19 @@ select {
    background-color: light-gray;   /* add custom arrow */
    padding: 0.6rem 1rem;
 }
+
+.content {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 70px);
+}
+
+.vertical-spacer {
+  height: 1rem;
+}
+
+// copy of hk-tabs__tab--active
+.hk-tabs__tab.active {
+  color: #008080;
+  border-color: #009999;
+}

@@ -1,0 +1,10 @@
+<h2 class="border-bottom">vendors</h2>
+
+<ul class="list-group">
+  {{#each vendors as |vendor|}}
+    {{link-to vendor.name 'authenticated.cms.vendor' vendor.id tagName="li" class="list-group-item list-group-item-action"}}
+  {{/each}}
+</ul>
+{{#link-to "authenticated.cms.admin.vendors.new"}}
+  {{fa-icon "plus"}} Add a vendor
+{{/link-to}}

@@ -1,10 +1,12 @@
 .media-icon {
-  color: $primary;
+  // color: $primary;
+  color: purple;
   display: inline-block;
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: lighten($primary, 35%);
+  // background: lighten($primary, 35%);
+  background: lighten(purple, 35%);
   font-size: 28px;
   margin: 20px auto;
 

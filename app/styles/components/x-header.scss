@@ -1,0 +1,60 @@
+.gradient-purple3 {
+  background-image: -webkit-gradient(linear, left top, right top, from(#40E0D0), to(#FF8000));
+  background-image: linear-gradient(to right, #40E0D0 0%, #FF8000 100%);
+}
+
+.navigation {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  height: 70px;
+  font-size: 14px;
+}
+
+.navigation .logo {
+  background: transparent;
+  backdrop-filter: saturate(130%) brightness(90%);
+  -webkit-backdrop-filter: saturate(130%) brightness(90%);
+  width: 75px;
+  min-height: 60px;
+  background: rgba(0, 0, 0, 0.075);
+}
+
+.navigation .navigation-links {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  // min-width: calc(100vw - 240px);
+  min-height: 40px;
+  z-index: 1;
+}
+
+.navigation .nav-link {
+  position: relative;
+}
+
+.navigation .nav-link:before {
+  content: '';
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  position: absolute;
+  bottom: 3px;
+  border-radius: 3px;
+  left: 0;
+  height: 3px;
+  // width: 100%;
+}
+
+.navigation .nav-link.active:before {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.navigation .nav-link:hover:before {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.navigation .repo-link {
+  margin-left: auto;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}

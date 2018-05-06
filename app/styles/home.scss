@@ -1,0 +1,18 @@
+.bg-faded {
+  background-color: rgba(0,128,128,0.6);
+}
+.bg-faded::after {
+  content: "";
+  opacity: 1;
+  background-image: url("https://img.etsystatic.com/il/f779e4/781053340/il_fullxfull.781053340_1l5a.jpg?version=1");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}

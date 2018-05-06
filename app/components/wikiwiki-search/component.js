@@ -1,11 +1,16 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import { and, empty } from '@ember/object/computed';
 import { run } from '@ember/runloop';
 
 const DEBOUNCE_WAIT = 100; // ms
 
 export default Component.extend({
-  classNames: ['wikiwiki-search'],
+  classNames: ['wikiwiki-search', 'flex', 'w-100', 'flex-auto', 'flex-column', 'relative'],
+
+  queryIsEmpty: empty('query'),
+  hasFocus: false,
+  showQuickLinks: and('hasFocus', 'queryIsEmpty'),
 
   // a collection of objects with a `name` key
   // from which we will filter/search on
@@ -56,8 +61,22 @@ export default Component.extend({
     },
 
     didClickResult() {
-      this.set('query', "");
+      this.set('query', '');
       this.recomputeResults();
+    },
+
+    didLoseFocus() {
+      // must defer with an ember run runloop
+      // or else didClickResult won't properly trigger
+      run.later(() => {
+        this.set('hasFocus', false);
+        this.set('query', '');
+        this.recomputeResults();
+      }, 100);
+    },
+
+    didFocusIn() {
+      this.set('hasFocus', true);
     }
   }
 });

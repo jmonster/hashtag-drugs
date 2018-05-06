@@ -18,6 +18,7 @@ export default DS.Model.extend({
   description: DS.attr('string'), // markdown text field
   price: DS.attr('number'),
 
-  editRoute: 'authenticated.cms.admin.products.edit',
-  viewRoute: 'authenticated.cms.admin.products.edit'
+  editRoute: 'cms.admin.products.edit',
+  viewRoute: 'cms.admin.products.edit',
+  icon: '❀'
 });

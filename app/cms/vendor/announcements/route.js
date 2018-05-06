@@ -6,10 +6,10 @@ export default Route.extend({
   store: service(),
 
   model() {
-    const { vendor } = this.modelFor('authenticated.cms.vendor');
-    const blogPosts = vendor.get('blogPosts');
+    const { vendor } = this.modelFor('cms.vendor');
+    const announcements = vendor.get('announcements');
     // TODO limit to last 5 instead of fetching all
 
-    return RSVP.hash({ vendor, blogPosts });
+    return RSVP.hash({ vendor, announcements });
   }
 });

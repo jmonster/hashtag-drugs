@@ -1,0 +1,40 @@
+{{outlet}}
+
+<div class="bg-faded white relative flex flex-column items-center pv6">
+  <h1 class="mt0 mb4">
+    <span class="db">#recreational</span>
+    <span class="db">#medical</span>
+    <span class="db">#legal</span>
+  </h1>
+
+  <span class="ph4 f4 b">
+    As of Jan. 1, 2018 – Anyone 21+ with a valid government issued, picture I.D. can legally purchase cannabis.
+  </span>
+</div>
+
+<h2 class="mh2">#specials</h2>
+{{#each specials as |product|}}
+  {{product-card product=product class="bb b--light-silver"}}
+{{/each}}
+
+<h2 class="mh2">#brands</h2>
+<ul class="pa0">
+  {{#each brands as |brand|}}
+    <!-- value here are icons representing types of products, e.g. herb, extract, etc -->
+    {{#link-to "browse.products" (query-params brand=brand.name dispensary=null) class="no-underline dark-gray"}}
+      {{list-item name=brand.name value="✩ ✴︎ ❀" value-type="rating"}}
+    {{/link-to}}
+  {{/each}}
+</ul>
+
+<h2 class="mh2">#dispensaries</h2>
+<ul class="pa0">
+  {{#each dispensaries as |dispensary|}}
+    <!-- TODO this is causing an error because the locations don't necessairly exist -->
+    {{#link-to "browse.products" (query-params dispensary=dispensary.id brand=null) class="no-underline dark-gray"}}
+      {{list-item name=dispensary.name meta=dispensary.description}}
+    {{/link-to}}
+    <!-- consider putting `open` and `closed` based on hours in a badge -->
+    <!-- consider putting distance in a badge -->
+  {{/each}}
+</ul>
