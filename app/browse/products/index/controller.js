@@ -18,7 +18,7 @@ export default Controller.extend({
     }
 
     if (dispensary) {
-      return this.store.query('product', {orderBy: 'dispensary', equalTo: vendor});
+      return this.store.query('product', {orderBy: 'dispensary', equalTo: dispensary});
     }
 
     return this.get('model').products;
