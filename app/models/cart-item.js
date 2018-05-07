@@ -13,8 +13,9 @@ const inverse = null;
 
 export default DS.Model.extend({
   product: DS.belongsTo('product', { inverse }),
-  order: DS.belongsTo('order', { inverse }), // set once an order is confirmed
+  cart: DS.belongsTo('cart', { inverse }), // set once an order is confirmed
   quantity: DS.attr('number', { defaultValue: 1 }),
+
   totalPrice: computed('product.price', 'quantity', function() {
     return this.get('product.price') * this.get('quantity');
   })

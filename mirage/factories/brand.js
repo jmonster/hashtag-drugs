@@ -1,6 +1,6 @@
-import { Factory, faker, hasMany } from 'ember-cli-mirage';
+import { Factory, faker } from 'ember-cli-mirage';
 
 export default Factory.extend({
-  products: hasMany('product'),
-  name: faker.name.findName()
+  name: () => faker.name.findName(),
+  // products: []
 });

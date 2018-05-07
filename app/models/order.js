@@ -12,7 +12,6 @@ const inverse = null;
 
 export default DS.Model.extend({
   purchaser: DS.belongsTo('user', { inverse }),
-  tracking: DS.belongsTo('delivery', { inverse }),
   cart: DS.belongsTo('cart'),
   createdAt: DS.attr('date'),
   fulfilledAt: DS.attr('date'),

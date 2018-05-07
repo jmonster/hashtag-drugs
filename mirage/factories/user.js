@@ -1,12 +1,12 @@
-import { Factory, faker, belongsTo, hasMany } from 'ember-cli-mirage';
+import { Factory, faker, association } from 'ember-cli-mirage';
 
 export default Factory.extend({
-  name: faker.name.findName(),
-  email: faker.internet.email(),
+  name: () => faker.name.findName(),
+  email: () => faker.internet.email(),
   isAnonymous: true,
-  cart: belongsTo('cart'),
-  orders: hasMany('order'),
-  defaultBillingLocation: belongsTo('location'),
-  defaultDeliveryLocation: belongsTo('location'),
-  addressBook: hasMany('locations')
+  // cart: association(),
+  orders: [],
+  defaultBillingLocation: association(),
+  defaultDeliveryLocation: association(),
+  addressBook: []
 });

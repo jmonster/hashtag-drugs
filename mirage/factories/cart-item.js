@@ -1,7 +1,7 @@
-import { Factory, belongsTo, faker } from 'ember-cli-mirage';
+import { Factory, faker, association } from 'ember-cli-mirage';
 
 export default Factory.extend({
-  product: belongsTo('product'),
-  order: belongsTo('order'),
-  quantity: faker.random.number({min: 1, max: 5})
+  // product: association(),
+  // cart: association(),
+  quantity: () => faker.random.number({min: 1, max: 5})
 });
