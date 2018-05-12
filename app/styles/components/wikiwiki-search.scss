@@ -5,10 +5,19 @@
 }
 
 .wikiwiki-search-results {
-  top: 70px;
+  top: 72px;
   background-color: white;
   left: 0;
   right: 0;
   max-height: calc(100vh - 80px);
+  width: 375px;
   overflow-y: scroll;
+}
+
+.wikiwiki-search-results li:not(:first-child){
+  margin-top: 2px;
+}
+
+.wikiwiki-search-results li:not(:last){
+  margin-bottom: 2px;
 }

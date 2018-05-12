@@ -13,52 +13,46 @@
     focus-in="didFocusIn"
   }}
 
-{{#if filteredResults}}
-  <div class="absolute wikiwiki-search-results shadow-1 br--bottom br2">
-    <ul class="ph0 mv1">
-      {{#each filteredResults as |result|}}
-        <li class="mv1 bg-lightest-silver bt bb b--silver f3 flex" {{action 'didClickResult' result}}>
-          {{#link-to result.viewRoute result.id class="no-underline dark-gray pa2 w-100"}}
-            {{result.icon}} {{result.name}}
-          {{/link-to}}
-        </li>
-      {{/each}}
-    </ul>
-  </div>
-{{/if}}
+{{#if showSearchResults}}
+<div class="absolute wikiwiki-search-results shadow-1 br1 mh2">
+  <ul class="ph0 mv0">
+    {{#each filteredResults as |result|}}
+      <li class="truncate bg-lightest-silver bt bb b--silver f3 flex" {{action 'didClickResult' result}}>
+        {{#link-to result.viewRoute result.id class="no-underline dark-gray pa2 w-100"}}
+          {{result.icon}} {{result.name}}
+        {{/link-to}}
+      </li>
+    {{else}}
+      <li class="truncate bg-lightest-silver bt bb b--silver f3 flex">
+        {{#link-to "browse.products" (query-params brand=null dispensary=null) class="no-underline dark-gray pa2 w-100"}}
+          {{fa-icon "tree" class="mh2"}} shop for products
+        {{/link-to}}
+      </li>
 
-{{#if showQuickLinks}}
-<div class="absolute wikiwiki-search-results shadow-1 br--bottom br2">
-  <ul class="ph0 mv1">
-    <li class="mv1 bg-lightest-silver bt bb b--silver f3 flex">
-      {{#link-to "browse.products" (query-params brand=null dispensary=null) class="no-underline dark-gray pa2 w-100"}}
-        {{fa-icon "tree" class="mh2"}} shop for products
-      {{/link-to}}
-    </li>
+      <li class="truncate bg-lightest-silver bt bb b--silver f3 flex">
+        {{#link-to "browse.vendors" class="no-underline dark-gray pa2 w-100"}}
+          {{fa-icon "road" class="mh2"}} find a dispensary
+        {{/link-to}}
+      </li>
 
-    <li class="mv1 bg-lightest-silver bt bb b--silver f3 flex">
-      {{#link-to "browse.vendors" class="no-underline dark-gray pa2 w-100"}}
-        {{fa-icon "road" class="mh2"}} find a dispensary
-      {{/link-to}}
-    </li>
+      <li class="truncate bg-lightest-silver bt bb b--silver f3 flex">
+        {{#link-to "cart" class="no-underline dark-gray pa2 w-100"}}
+          {{fa-icon "shopping-cart" class="mh2"}} view cart
+        {{/link-to}}
+      </li>
 
-    <li class="mv1 bg-lightest-silver bt bb b--silver f3 flex">
-      {{#link-to "cart" class="no-underline dark-gray pa2 w-100"}}
-        {{fa-icon "shopping-cart" class="mh2"}} view cart
-      {{/link-to}}
-    </li>
+      <li class="truncate bg-lightest-silver bt bb b--silver f3 flex">
+        {{#link-to "cart" class="no-underline dark-gray pa2 w-100"}}
+          {{fa-icon "truck" class="mh2"}} past orders
+        {{/link-to}}
+      </li>
 
-    <li class="mv1 bg-lightest-silver bt bb b--silver f3 flex">
-      {{#link-to "cart" class="no-underline dark-gray pa2 w-100"}}
-        {{fa-icon "truck" class="mh2"}} past orders
-      {{/link-to}}
-    </li>
-
-    <li class="mv1 bg-lightest-silver bt bb b--silver f3 flex">
-      {{#link-to "cart" class="no-underline dark-gray pa2 w-100"}}
-        {{fa-icon "user-circle" class="mh2"}} my account
-      {{/link-to}}
-    </li>
+      <li class="truncate bg-lightest-silver bt bb b--silver f3 flex">
+        {{#link-to "cart" class="no-underline dark-gray pa2 w-100"}}
+          {{fa-icon "user-circle" class="mh2"}} my account
+        {{/link-to}}
+      </li>
+    {{/each}}
   </ul>
 </div>
 {{/if}}

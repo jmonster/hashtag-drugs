@@ -10,7 +10,7 @@ export default Component.extend({
 
   queryIsEmpty: empty('query'),
   hasFocus: false,
-  showQuickLinks: and('hasFocus', 'queryIsEmpty'),
+  showSearchResults: and('hasFocus'),
 
   // a collection of objects with a `name` key
   // from which we will filter/search on
