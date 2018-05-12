@@ -17,4 +17,9 @@ export default function(server) {
   server.create('cart-item', { product: products[0], cart });
   server.create('cart-item', { product: products[1], cart });
   server.create('cart-item', { product: products[2], cart });
+
+  server.create('order', {
+    purchaser: user,
+    cart
+  });
 }

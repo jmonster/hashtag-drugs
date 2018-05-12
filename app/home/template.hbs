@@ -12,6 +12,11 @@
   </span>
 </div>
 
+<h2 class="mh2">#buyitagain</h2>
+{{#each (await previouslyPurchasedProducts) as |product|}}
+  {{product-card product=product class="bb b--light-silver"}}
+{{/each}}
+
 <h2 class="mh2">#specials</h2>
 {{#each specials as |product|}}
   {{product-card product=product class="bb b--light-silver"}}

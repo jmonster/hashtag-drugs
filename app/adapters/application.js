@@ -2,7 +2,7 @@ import DS from 'ember-data';
 import FirebaseAdapter from 'emberfire/adapters/firebase';
 import ENV from 'hashtagdrugs/config/environment';
 
-const mirage = ENV["ember-cli-mirage"];
+const mirage = ENV['ember-cli-mirage'];
 let Adapter;
 
 if (mirage.enabled) {
