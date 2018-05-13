@@ -44,6 +44,7 @@ select {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
 }
 
 .products a {
@@ -57,6 +58,7 @@ select {
 }
 
 .cart-container {
-  height: calc(100vh - 160px);
+  height: calc(100vh - 180px);
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
