@@ -1,15 +1,15 @@
-@import "purple-override";
 @import "global";
+@import "purple-override";
 @import "gravatar";
 @import "animate";
 
+@import "components/x-header";
 @import "components/x-input";
 
 @import "components/media-icon";
-@import "components/side-menu-toggle";
 @import "components/carousel";
 @import "components/wikiwiki-search";
-@import "components/x-header";
 @import "components/list-item";
+
 @import "home";
 @import "cart";
