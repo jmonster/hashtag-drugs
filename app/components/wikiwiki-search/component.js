@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 import { and, empty, gt } from '@ember/object/computed';
 import { run } from '@ember/runloop';
 
-const DEBOUNCE_WAIT = 100; // ms
+// const DEBOUNCE_WAIT = 100; // ms
 
 export default Component.extend({
   classNames: ['wikiwiki-search', 'flex', 'w-100', 'flex-auto', 'flex-column', 'mv2'],
