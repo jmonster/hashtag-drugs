@@ -2884,13 +2884,6 @@ ember-ast-helpers@0.3.5:
     "@glimmer/compiler" "^0.27.0"
     "@glimmer/syntax" "^0.27.0"
 
-ember-carousel@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/ember-carousel/-/ember-carousel-0.1.0.tgz#52db4df56117b489f8323c32edec28a1c0337c20"
-  dependencies:
-    ember-cli-babel "^6.6.0"
-    ember-cli-htmlbars "^1.0.1"
-
 ember-cli-app-version@^3.0.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/ember-cli-app-version/-/ember-cli-app-version-3.2.0.tgz#7b9ad0e1b63ae0518648356ee24c703e922bc26e"
@@ -3050,7 +3043,7 @@ ember-cli-htmlbars-inline-precompile@^1.0.0, ember-cli-htmlbars-inline-precompil
     heimdalljs-logger "^0.1.7"
     silent-error "^1.1.0"
 
-ember-cli-htmlbars@^1.0.1, ember-cli-htmlbars@^1.0.3:
+ember-cli-htmlbars@^1.0.3:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/ember-cli-htmlbars/-/ember-cli-htmlbars-1.3.4.tgz#461289724b34af372a6a0c4b6635819156963353"
   dependencies:
@@ -3516,12 +3509,6 @@ ember-runtime-enumerable-includes-polyfill@^2.0.0:
   dependencies:
     ember-cli-babel "^6.9.0"
     ember-cli-version-checker "^2.1.0"
-
-ember-side-menu@^0.0.15:
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/ember-side-menu/-/ember-side-menu-0.0.15.tgz#5ab6f3fa01e2a19894b83f41104cedb184fe958a"
-  dependencies:
-    ember-cli-babel "^5.1.7"
 
 ember-source-channel-url@^1.0.1:
   version "1.1.0"
