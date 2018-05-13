@@ -10,8 +10,9 @@ export default Component.extend({
 
   query: '',
   queryIsEmpty: empty('query'),
+
   hasFocus: false,
-  showSearchResults: and('hasFocus'),
+  componentIsActive: and('hasFocus'),
 
   // a collection of objects with a `name` key
   // from which we will filter/search on
@@ -27,12 +28,15 @@ export default Component.extend({
 
   recomputeResults() {
     const query = this.get('query');
+    this.set('searchIsPending', true);
+    this.set('showNotFoundMessage', false);
 
     if (query === '') {
       // show default
-      this.set('filteredResults', []);
       this.set('searchIsPending', false);
+      this.set('filteredResults', []);
     } else {
+
       // filter items
       const matcher = this.get('matcher')(query);
       this.get('items').then((items) => {
@@ -54,18 +58,19 @@ export default Component.extend({
 
         this.set('filteredResults', fuzzyResults);
         this.set('searchIsPending', false);
+        this.set('showNotFoundMessage', fuzzyResults.length === 0);
       });
     }
   },
 
   hasSearchQuery: gt('query.length', 0),
-  hasSearchResults: gt('filteredResults.length', 0),
   searchIsPending: false,
 
   actions: {
     didPressKey() {
-      this.set('searchIsPending', true);
-      run.debounce(this, this.recomputeResults, DEBOUNCE_WAIT);
+      // searchIsPending: true,
+      // run.debounce(this, this.recomputeResults, DEBOUNCE_WAIT);
+      this.recomputeResults();
     },
 
     didClickResult() {

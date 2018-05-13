@@ -15,9 +15,9 @@
 <h2 class="shadow-outer-3 ma0 pa2 pt5">#buyitagain</h2>
 <div class="products">
   {{#each (await previouslyPurchasedProducts) as |product|}}
-  {{#link-to "browse.products.view" product}}
-    {{product-card product=product}}
-  {{/link-to}}
+    {{#link-to "browse.products.view" product}}
+      {{product-card product=product}}
+    {{/link-to}}
   {{/each}}
 </div>
 

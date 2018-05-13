@@ -1,9 +1,9 @@
   <div class="bg-white shadow-outer-1 br2 flex flex-column items-center pa3">
-    <img class="br-100 h5" src="https://allbud.s3.amazonaws.com/media/feature/flower/double-dawg.jpg" alt="">
+    <img class="br2 h5 mb2" src={{{imageSrc}}} alt="">
 
     <div class="dark-gray f4 b">{{format-currency product.price unit='cents' showFree=true}}</div>
-    <div class="fw5 f5 mt2 mb1">{{product.name}}</div>
-    <div class="f5">{{product.brand.name}}</div>
+    <div class="fw5 f5 mt2 mb1 black">{{product.name}}</div>
+    <div class="f5 dark-gray">{{product.brand.name}}</div>
 
     <div class="flex flex-column mt2">
       <button href="#" class="hk-button-sm--primary mh1">Add to Cart</button>

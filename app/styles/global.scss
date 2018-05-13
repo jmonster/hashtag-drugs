@@ -24,9 +24,9 @@ select {
 }
 
 .content {
-  position: relative;
-  width: 100%;
-  height: calc(100vh - 70px);
+  // position: relative;
+  // width: 100%;
+  // height: calc(100vh - 70px);
 }
 
 .vertical-spacer {
@@ -49,4 +49,14 @@ select {
 .products a {
   color: inherit;
   text-decoration: inherit;
+}
+
+.apple-pay {
+  background: linear-gradient(135deg,#000,#555);
+  height: 44px;
+}
+
+.cart-container {
+  height: calc(100vh - 160px);
+  overflow-y: scroll;
 }

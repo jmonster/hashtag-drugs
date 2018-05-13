@@ -14,73 +14,75 @@
   focus-in="didFocusIn"
 }}
 
-{{#if showSearchResults}}
+{{#if componentIsActive}}
 <div class="wikiwiki-search-results br1 br--bottom z-0 bg-white">
   <ul class="ph0 mv0 list">
-    {{#if (or searchIsPending hasSearchResults)}}
-      {{#each filteredResults as |result|}}
-        <li class="bg-lightest-silver bt bb b--silver f3 flex" {{action 'didClickResult' result}}>
-          {{#link-to result.viewRoute result.id class="no-underline dark-gray pv2 w-100 truncate ph2"}}
-            {{result.icon}} {{result.name}}
-          {{/link-to}}
-        </li>
-      {{else}}
-        <li class="bg-lightest-silver bt bb b--silver f3 flex">
-          <a href="#" class="no-underline dark-gray pv4 w-100 truncate ph2">
-            <div class="hk-stencil w-40 pv2"></div>
-          </a>
-        </li>
-        <li class="bg-lightest-silver bt bb b--silver f3 flex">
-          <a href="#" class="no-underline dark-gray pv4 w-100 truncate ph2">
-            <div class="hk-stencil w-60 pv2"></div>
-          </a>
-        </li>
-        <li class="bg-lightest-silver bt bb b--silver f3 flex">
-          <a href="#" class="no-underline dark-gray pv4 w-100 truncate ph2">
-            <div class="hk-stencil w-50 pv2"></div>
-          </a>
-        </li>
-      {{/each}}
+    {{#each (await filteredResults) as |result|}}
+      <li class="bg-lightest-silver bt bb b--silver f3 flex" {{action 'didClickResult' result}}>
+        {{#link-to result.viewRoute result.id class="no-underline dark-gray pv2 w-100 truncate ph2"}}
+          {{result.icon}} {{result.name}}
+        {{/link-to}}
+      </li>
     {{else}}
-      {{#unless hasSearchQuery}}
-        <li class="truncate bg-lightest-silver bt bb b--silver f3 flex">
-          {{#link-to "browse.products" (query-params brand=null dispensary=null) class="no-underline dark-gray pv2 w-100 truncate"}}
-            {{fa-icon "tree" class="mh2"}} shop for products
-          {{/link-to}}
-        </li>
+      {{#if (and hasSearchQuery (not showNotFoundMessage))}}
+      <li class="bg-lightest-silver bt bb b--silver f3 flex">
+        <a href="#" class="no-underline dark-gray pv4 w-100 truncate ph2">
+          <div class="hk-stencil w-40 pv2"></div>
+        </a>
+      </li>
+      <li class="bg-lightest-silver bt bb b--silver f3 flex">
+        <a href="#" class="no-underline dark-gray pv4 w-100 truncate ph2">
+          <div class="hk-stencil w-60 pv2"></div>
+        </a>
+      </li>
+      <li class="bg-lightest-silver bt bb b--silver f3 flex">
+        <a href="#" class="no-underline dark-gray pv4 w-100 truncate ph2">
+          <div class="hk-stencil w-50 pv2"></div>
+        </a>
+      </li>
+      {{/if}}
+    {{/each}}
 
-        <li class="truncate bg-lightest-silver bt bb b--silver f3 flex">
-          {{#link-to "browse.vendors" class="no-underline dark-gray pv2 w-100 truncate"}}
-            {{fa-icon "road" class="mh2"}} find a dispensary
-          {{/link-to}}
-        </li>
-
-        <li class="truncate bg-lightest-silver bt bb b--silver f3 flex">
-          {{#link-to "cart" class="no-underline dark-gray pv2 w-100 truncate"}}
-            {{fa-icon "shopping-cart" class="mh2"}} view cart
-          {{/link-to}}
-        </li>
-
-        <li class="truncate bg-lightest-silver bt bb b--silver f3 flex">
-          {{#link-to "cart" class="no-underline dark-gray pv2 w-100 truncate"}}
-            {{fa-icon "truck" class="mh2"}} past orders
-          {{/link-to}}
-        </li>
-
-        <li class="truncate bg-lightest-silver bt bb b--silver f3 flex">
-          {{#link-to "cart" class="no-underline dark-gray pv2 w-100 truncate"}}
-            {{fa-icon "user-circle" class="mh2"}} my account
-          {{/link-to}}
-        </li>
-      {{else}}
-        <li class="bg-lightest-silver bt bb b--silver f3 pv2">
-          <div class="mv3 flex flex-column items-center justify-center">
-            <span class="pv1 f1">🤷‍♀️</span>
-            <span class="dark-gray">we ain't found shit</span>
-          </div>
-        </li>
-      {{/unless}}
+    {{#if showNotFoundMessage}}
+      <li class="bg-lightest-silver bt bb b--silver f3 pv2">
+        <div class="mv3 flex flex-column items-center justify-center">
+          <span class="pv1 f1">🤷‍♀️</span>
+          <span class="dark-gray">we ain't found shit</span>
+        </div>
+      </li>
     {{/if}}
+
+    {{#unless hasSearchQuery}}
+      <li class="truncate bg-lightest-silver bt bb b--silver f3 flex">
+        {{#link-to "browse.products" (query-params brand=null dispensary=null) class="no-underline dark-gray pv2 w-100 truncate"}}
+          {{fa-icon "tree" class="mh2"}} shop for products
+        {{/link-to}}
+      </li>
+
+      <li class="truncate bg-lightest-silver bt bb b--silver f3 flex">
+        {{#link-to "browse.vendors" class="no-underline dark-gray pv2 w-100 truncate"}}
+          {{fa-icon "road" class="mh2"}} find a dispensary
+        {{/link-to}}
+      </li>
+
+      <li class="truncate bg-lightest-silver bt bb b--silver f3 flex">
+        {{#link-to "cart" class="no-underline dark-gray pv2 w-100 truncate"}}
+          {{fa-icon "shopping-cart" class="mh2"}} view cart
+        {{/link-to}}
+      </li>
+
+      <li class="truncate bg-lightest-silver bt bb b--silver f3 flex">
+        {{#link-to "cart" class="no-underline dark-gray pv2 w-100 truncate"}}
+          {{fa-icon "truck" class="mh2"}} past orders
+        {{/link-to}}
+      </li>
+
+      <li class="truncate bg-lightest-silver bt bb b--silver f3 flex">
+        {{#link-to "cart" class="no-underline dark-gray pv2 w-100 truncate"}}
+          {{fa-icon "user-circle" class="mh2"}} my account
+        {{/link-to}}
+      </li>
+    {{/unless}}
   </ul>
 </div>
 {{/if}}

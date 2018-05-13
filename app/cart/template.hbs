@@ -1,54 +1,179 @@
-<div class="container">
-  {{#if hasEmptyCart}}
-    <p>no items. {{link-to "shop" "browse.products"}}</p>
-  {{else}}
-    <table class="table">
-      <thead>
-        <tr>
-          <th><h1 class="h3">shopping cart</h1></th>
-          <th>quantity</th>
-          <th>price</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each cartItems as |cartItem|}}
-          <tr>
-            <td>
-              {{#link-to "browse.products.view" cartItem.product.id}}
-                {{cartItem.product.name}} <small>by {{cartItem.product.brand.name}}</small>
-              {{/link-to}}
-            </td>
+{{#if hasEmptyCart}}
+  <p>no items. {{link-to "shop" "browse.products"}}</p>
+{{else}}
 
-            <td>
-              {{#x-select value=cartItem.quantity action=(action 'setQuantity' cartItem) as |xs|}}
-                {{#xs.option class="dropdown-item" value=1}}1{{/xs.option}}
-                {{#xs.option class="dropdown-item" value=2}}2{{/xs.option}}
-                {{#xs.option class="dropdown-item" value=3}}3{{/xs.option}}
-                {{#xs.option class="dropdown-item" value=4}}4{{/xs.option}}
-                {{#xs.option class="dropdown-item" value=5}}5{{/xs.option}}
-              {{/x-select}}
-            </td>
+<div class="cart-container">
+  <table class="collapse w-100">
+    <tbody>
+      <tr class="striped--light-gray">
+        <th class="pv2 ph3 tl f6 fw6 ttu">Product</th>
+        <th class="tr f6 ttu fw6 pv2 ph3">Qty</th>
+        <th class="tr f6 ttu fw6 pv2 ph3">Item Price</th>
+        <th class="tr f6 ttu fw6 pv2 ph3">Price</th>
+      </tr>
 
-            <td>
-              {{format-currency cartItem.totalPrice unit='cents' showFree=true}}
-              {{#unless (eq cartItem.totalPrice 0)}}@ {{format-currency cartItem.product.price unit='cents' showFree=true}}/ea{{/unless}}
-            </td>
+      {{#each cartItems as |cartItem|}}
+      <tr class="striped--light-gray">
+        <td class="pv2 ph3">
+          {{#link-to "browse.products.view" cartItem.product.id class="link black"}}
+            {{cartItem.product.name}} <small>by {{cartItem.product.brand.name}}</small>
+          {{/link-to}}
+        </td>
 
-            <td><a href="/remove/cart-item" {{action "removeFromCart" cartItem}} class="cursor-pointer">remove</a></td>
-          </tr>
-        {{/each}}
-      </tbody>
+        <td class="pv2 ph3 tr">
+          {{#x-select value=cartItem.quantity action=(action 'setQuantity' cartItem) as |xs|}}
+            {{#xs.option class="dropdown-item" value=1}}1{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=2}}2{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=3}}3{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=4}}4{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=5}}5{{/xs.option}}
+          {{/x-select}}
+        </td>
 
-      <tfoot>
-        <tr>
-          <td>Total</td>
-          <td>{{totalQuantity}}</td>
-          <td>{{format-currency (await totalCost) unit='cents' showFree=true}}</td>
-          <td></td>
-        </tr>
-      </tfoot>
-    </table>
-  {{/if}}
+        <td class="tr pr2">
+          {{format-currency cartItem.product.price unit='cents' showFree=true}}
+        </td>
 
-</div>
+        <td class="tr pr2">
+          {{format-currency cartItem.totalPrice unit='cents' showFree=true}}
+        </td>
+      </tr>
+      {{/each}}
+      {{#each cartItems as |cartItem|}}
+      <tr class="striped--light-gray">
+        <td class="pv2 ph3">
+          {{#link-to "browse.products.view" cartItem.product.id class="link black"}}
+            {{cartItem.product.name}} <small>by {{cartItem.product.brand.name}}</small>
+          {{/link-to}}
+        </td>
+
+        <td class="pv2 ph3 tr">
+          {{#x-select value=cartItem.quantity action=(action 'setQuantity' cartItem) as |xs|}}
+            {{#xs.option class="dropdown-item" value=1}}1{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=2}}2{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=3}}3{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=4}}4{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=5}}5{{/xs.option}}
+          {{/x-select}}
+        </td>
+
+        <td class="tr pr2">
+          {{format-currency cartItem.product.price unit='cents' showFree=true}}
+        </td>
+
+        <td class="tr pr2">
+          {{format-currency cartItem.totalPrice unit='cents' showFree=true}}
+        </td>
+      </tr>
+      {{/each}}
+      {{#each cartItems as |cartItem|}}
+      <tr class="striped--light-gray">
+        <td class="pv2 ph3">
+          {{#link-to "browse.products.view" cartItem.product.id class="link black"}}
+            {{cartItem.product.name}} <small>by {{cartItem.product.brand.name}}</small>
+          {{/link-to}}
+        </td>
+
+        <td class="pv2 ph3 tr">
+          {{#x-select value=cartItem.quantity action=(action 'setQuantity' cartItem) as |xs|}}
+            {{#xs.option class="dropdown-item" value=1}}1{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=2}}2{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=3}}3{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=4}}4{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=5}}5{{/xs.option}}
+          {{/x-select}}
+        </td>
+
+        <td class="tr pr2">
+          {{format-currency cartItem.product.price unit='cents' showFree=true}}
+        </td>
+
+        <td class="tr pr2">
+          {{format-currency cartItem.totalPrice unit='cents' showFree=true}}
+        </td>
+      </tr>
+      {{/each}}
+      {{#each cartItems as |cartItem|}}
+      <tr class="striped--light-gray">
+        <td class="pv2 ph3">
+          {{#link-to "browse.products.view" cartItem.product.id class="link black"}}
+            {{cartItem.product.name}} <small>by {{cartItem.product.brand.name}}</small>
+          {{/link-to}}
+        </td>
+
+        <td class="pv2 ph3 tr">
+          {{#x-select value=cartItem.quantity action=(action 'setQuantity' cartItem) as |xs|}}
+            {{#xs.option class="dropdown-item" value=1}}1{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=2}}2{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=3}}3{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=4}}4{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=5}}5{{/xs.option}}
+          {{/x-select}}
+        </td>
+
+        <td class="tr pr2">
+          {{format-currency cartItem.product.price unit='cents' showFree=true}}
+        </td>
+
+        <td class="tr pr2">
+          {{format-currency cartItem.totalPrice unit='cents' showFree=true}}
+        </td>
+      </tr>
+      {{/each}}
+      {{#each cartItems as |cartItem|}}
+      <tr class="striped--light-gray">
+        <td class="pv2 ph3">
+          {{#link-to "browse.products.view" cartItem.product.id class="link black"}}
+            {{cartItem.product.name}} <small>by {{cartItem.product.brand.name}}</small>
+          {{/link-to}}
+        </td>
+
+        <td class="pv2 ph3 tr">
+          {{#x-select value=cartItem.quantity action=(action 'setQuantity' cartItem) as |xs|}}
+            {{#xs.option class="dropdown-item" value=1}}1{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=2}}2{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=3}}3{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=4}}4{{/xs.option}}
+            {{#xs.option class="dropdown-item" value=5}}5{{/xs.option}}
+          {{/x-select}}
+        </td>
+
+        <td class="tr pr2">
+          {{format-currency cartItem.product.price unit='cents' showFree=true}}
+        </td>
+
+        <td class="tr pr2">
+          {{format-currency cartItem.totalPrice unit='cents' showFree=true}}
+        </td>
+      </tr>
+      {{/each}}
+
+      <tr class="bb b--light-silver w-100">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+
+    <tfoot>
+      <tr>
+        <td></td>
+        <td></td>
+        <td class="tr pr2 bt2 pt4">Est. tax</td>
+        <td class="tr pr2 pt4">{{format-currency 0 unit='cents' showFree=false}}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td class="bt1 b pb4">Bag Subtotal</td>
+        <td class="tr pr2 pb4">{{format-currency (await totalCost) unit='cents' showFree=true}}</td>
+      </tr>
+
+      <!-- <tr><td class="pv6"></td></tr> -->
+    </tfoot>
+  </table>
+  </div>
+
+<a href="#" class="fixed right-1 left-1 bottom-1 hk-button--primary apple-pay pa3 f1">Buy with Apple Pay</a>
+{{/if}}
