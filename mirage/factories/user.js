@@ -5,8 +5,8 @@ export default Factory.extend({
   email: () => faker.internet.email(),
   isAnonymous: true,
   // cart: association(),
-  orders: [],
+  orders: () => [],
   defaultBillingLocation: association(),
   defaultDeliveryLocation: association(),
-  addressBook: []
+  addressBook: () => []
 });

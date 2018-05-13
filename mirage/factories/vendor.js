@@ -1,9 +1,9 @@
 import { Factory, faker, association } from 'ember-cli-mirage';
 
 export default Factory.extend({
-  products: [],
-  blogPosts: [],
-  announcements: [],
+  products: () => [],
+  blogPosts: () => [],
+  announcements: () => [],
   location: association(),
   name: () => faker.name.findName(),
   description: () => faker.lorem.paragraphs(),

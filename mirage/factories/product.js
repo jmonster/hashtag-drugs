@@ -1,8 +1,8 @@
-import { Factory, faker, association } from 'ember-cli-mirage';
+import { Factory, faker } from 'ember-cli-mirage';
 
 export default Factory.extend({
-  reviews: [],
-  pictures: [],
+  reviews: () => [],
+  pictures: () => [],
   // brand: association(),
   name: () => faker.name.findName(),
   description: () => faker.lorem.paragraphs(),
