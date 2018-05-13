@@ -1,13 +1,12 @@
 .gradient-purple3 {
-  background-image: -webkit-gradient(linear, left top, right top, from(#40E0D0), to(#FF8000));
-  background-image: linear-gradient(to right, #40E0D0 0%, #FF8000 100%);
+  background-image: -webkit-gradient(linear, left top, right top, from(#00cfd4), to(#00e304));
+  background-image: linear-gradient(to right, #00cfd4 0%, #00e304 100%);
 }
 
 .navigation {
-  position: sticky;
   position: -webkit-sticky;
+  position: sticky;
   top: 0;
-  height: 70px;
   font-size: 14px;
 }
 

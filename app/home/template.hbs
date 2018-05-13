@@ -12,17 +12,23 @@
   </span>
 </div>
 
-<h2 class="mh2">#buyitagain</h2>
-{{#each (await previouslyPurchasedProducts) as |product|}}
-  {{product-card product=product class="bb b--light-silver"}}
-{{/each}}
+<h2 class="shadow-outer-3 ma0 pa2 pt5">#buyitagain</h2>
+<div class="products">
+  {{#each (await previouslyPurchasedProducts) as |product|}}
+  {{#link-to "browse.products.view" product}}
+    {{product-card product=product}}
+  {{/link-to}}
+  {{/each}}
+</div>
 
-<h2 class="mh2">#specials</h2>
-{{#each specials as |product|}}
-  {{product-card product=product class="bb b--light-silver"}}
-{{/each}}
+<h2 class="shadow-outer-3 ma0 pa2  pt5">#specials</h2>
+<div class="products">
+  {{#each specials as |product|}}
+    {{product-card product=product}}
+  {{/each}}
+</div>
 
-<h2 class="mh2">#brands</h2>
+<h2 class="shadow-outer-3 ma0 pa2  pt5">#brands</h2>
 <ul class="pa0">
   {{#each brands as |brand|}}
     <!-- value here are icons representing types of products, e.g. herb, extract, etc -->
@@ -32,7 +38,7 @@
   {{/each}}
 </ul>
 
-<h2 class="mh2">#dispensaries</h2>
+<h2 class="shadow-outer-3 ma0 pa2  pt5">#dispensaries</h2>
 <ul class="pa0">
   {{#each dispensaries as |dispensary|}}
     <!-- TODO this is causing an error because the locations don't necessairly exist -->

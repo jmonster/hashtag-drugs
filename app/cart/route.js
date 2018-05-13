@@ -7,7 +7,8 @@ export default Route.extend({
 
   model() {
     return hash({
-      cart: this.get('session.currentUser.cart')
+      cart: this.get('session.currentUser.cart'),
+      user: this.get('session.currentUser')
     });
   }
 });

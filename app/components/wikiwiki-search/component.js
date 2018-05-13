@@ -1,13 +1,14 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import { and, empty } from '@ember/object/computed';
+import { and, empty, gt } from '@ember/object/computed';
 import { run } from '@ember/runloop';
 
 const DEBOUNCE_WAIT = 100; // ms
 
 export default Component.extend({
-  classNames: ['wikiwiki-search', 'flex', 'w-100', 'flex-auto', 'flex-column', 'relative'],
+  classNames: ['wikiwiki-search', 'flex', 'w-100', 'flex-auto', 'flex-column', 'mv2'],
 
+  query: '',
   queryIsEmpty: empty('query'),
   hasFocus: false,
   showSearchResults: and('hasFocus'),
@@ -30,6 +31,7 @@ export default Component.extend({
     if (query === '') {
       // show default
       this.set('filteredResults', []);
+      this.set('searchIsPending', false);
     } else {
       // filter items
       const matcher = this.get('matcher')(query);
@@ -51,12 +53,18 @@ export default Component.extend({
         }
 
         this.set('filteredResults', fuzzyResults);
+        this.set('searchIsPending', false);
       });
     }
   },
 
+  hasSearchQuery: gt('query.length', 0),
+  hasSearchResults: gt('filteredResults.length', 0),
+  searchIsPending: false,
+
   actions: {
     didPressKey() {
+      this.set('searchIsPending', true);
       run.debounce(this, this.recomputeResults, DEBOUNCE_WAIT);
     },
 

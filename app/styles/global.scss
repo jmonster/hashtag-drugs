@@ -38,3 +38,15 @@ select {
   color: #008080;
   border-color: #009999;
 }
+
+.products {
+  width: auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.products a {
+  color: inherit;
+  text-decoration: inherit;
+}

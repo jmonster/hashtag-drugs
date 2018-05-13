@@ -1,23 +1,17 @@
 .wikiwiki-search {
-  input {
-    max-width: 375px;
-  }
+  max-width: 420px;
 }
 
-.wikiwiki-search-results {
-  top: 72px;
-  background-color: white;
-  left: 0;
-  right: 0;
-  max-height: calc(100vh - 80px);
-  width: 375px;
-  overflow-y: scroll;
-}
-
-.wikiwiki-search-results li:not(:first-child){
+.wikiwiki-search-results li:not(:first-child) {
   margin-top: 2px;
 }
 
-.wikiwiki-search-results li:not(:last){
+.wikiwiki-search-results li:not(:last) {
   margin-bottom: 2px;
+}
+
+.wikiwiki-search-results ul > li:last-child {
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }

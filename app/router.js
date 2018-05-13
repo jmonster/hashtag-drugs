@@ -37,7 +37,6 @@ Router.map(function() {
     });
   });
   this.route('cart');
-
   this.route('home', { path: '/' });
   this.route('browse', function() {
     this.route('vendors');
