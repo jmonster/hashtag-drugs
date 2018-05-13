@@ -8,7 +8,6 @@ import RSVP from 'rsvp';
 import Route from '@ember/routing/route'
 
 export default Route.extend({
-  theme: inject(),
   session: inject(),
   store: inject(),
 
@@ -117,13 +116,6 @@ export default Route.extend({
       window.location.assign(url);
     },
 
-    // usage: this.send('toastMessage', message)
-    // alt usage: {{action "toastMessage" message}}
-    // expires after 6 seconds
-    toastMessage(message) {
-      this.get('theme').toastMessage(message);
-    },
-
     // usage: this.send('addToCart', product, options)
     // alt usage: {{action "addToCart" product (hash quantity=1)}}
     // options will be the customizations added to the cart item, such as
@@ -149,12 +141,9 @@ export default Route.extend({
         }
 
         pendingSave.then(() => {
-          this.get('theme').toastMessage(`${quantity} item(s) added`, {
-            path: 'cart',
-            text: 'view cart'
-          });
+
         }).catch((/*err*/) => {
-          this.get('theme').toastMessage('error adding item');
+          
         });
       });
     },

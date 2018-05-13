@@ -5,7 +5,6 @@ import Controller from '@ember/controller';
 import RSVP from 'rsvp';
 
 export default Controller.extend({
-  theme: inject(),
   store: inject(),
 
   cart: alias('model.cart'),

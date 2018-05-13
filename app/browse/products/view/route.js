@@ -4,8 +4,6 @@ import RSVP from 'rsvp';
 import { inject } from '@ember/service';
 
 export default Route.extend({
-  theme: inject(),
-
   model(params) {
     return RSVP.hash({
       product: this.store.findRecord('product', params.id)

@@ -1,22 +1,3 @@
-{{#if theme.alertText}}
-  <div class="alert alert-{{theme.alertContext}} {{if theme.alertDismissible 'alert-dismissible'}}">
-    {{theme.alertText}}
-    {{#if theme.alertDismissible}}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    {{/if}}
-  </div>
-{{/if}}
-
-{{#if theme.toastMessageText}}
-  {{#toast-message message=theme.toastMessageText}}
-    {{#if (and theme.toastLinkText theme.toastLinkPath)}}
-      {{link-to theme.toastLinkText theme.toastLinkPath}}
-    {{/if}}
-  {{/toast-message}}
-{{/if}}
-
 {{x-header searchableItems=thingsToFilterOn}}
 
 <div class="content">
