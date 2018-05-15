@@ -2,7 +2,6 @@ import { hash } from 'rsvp';
 import { run } from '@ember/runloop';
 import { on } from '@ember/object/evented';
 import { inject } from '@ember/service';
-import { isEmpty } from '@ember/utils';
 import { task } from 'ember-concurrency';
 import RSVP from 'rsvp';
 import Route from '@ember/routing/route'

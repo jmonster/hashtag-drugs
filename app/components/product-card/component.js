@@ -1,7 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { inject } from '@ember/service';
-import { alias } from '@ember/object/computed';
 
 export default Component.extend({
   classNames: ['product-card', 'pa2', 'dib'],
