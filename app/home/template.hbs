@@ -12,19 +12,21 @@
   </span>
 </div>
 
+{{#if (await previouslyPurchasedProducts)}}
 <h2 class="shadow-outer-3 ma0 pa2 pt5">#buyitagain</h2>
 <div class="products">
   {{#each (await previouslyPurchasedProducts) as |product|}}
-    {{#link-to "browse.products.view" product}}
-      {{product-card product=product}}
+    {{#link-to "browse.products.view" product.id}}
+      {{product-card product=product cart=session.currentUser.cart}}
     {{/link-to}}
   {{/each}}
 </div>
+{{/if}}
 
 <h2 class="shadow-outer-3 ma0 pa2  pt5">#specials</h2>
 <div class="products">
   {{#each specials as |product|}}
-    {{product-card product=product}}
+    {{product-card product=product cart=session.currentUser.cart addToCart=cartService.addToCart}}
   {{/each}}
 </div>
 

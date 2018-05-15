@@ -4,6 +4,7 @@ import { alias } from '@ember/object/computed';
 import { inject } from '@ember/service';
 import { task } from 'ember-concurrency';
 import RSVP from 'rsvp';
+
 export default Controller.extend({
   session: inject(),
 

@@ -1,4 +1,5 @@
-<main class="container">
-  <h2>browse by vendor</h2>
-  <p>TODO</p>
-</main>
+<h2>browse by vendor</h2>
+
+{{#each (await dispensaries) as |dispensary|}}
+name: {{dispensary.name}}
+{{/each}}

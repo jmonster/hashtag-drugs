@@ -1,13 +1,6 @@
 import Controller from '@ember/controller';
-import { computed } from '@ember/object';
+import { alias } from '@ember/object/computed';
 
 export default Controller.extend({
-  vendorCategories: computed('model.[]', function() {
-    return []
-  }),
-
-  brandCategories: computed('model.[]', function() {
-    // const brands = this.get('model').mapBy('brand');
-    return [];
-  })
+  dispensaries: alias('model.dispensaries')
 });
