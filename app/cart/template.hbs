@@ -16,7 +16,8 @@
       <tr class="striped--light-gray">
         <td class="pv2 ph3">
           {{#link-to "browse.products.view" cartItem.product.id class="link black"}}
-            {{cartItem.product.name}} <small>by {{cartItem.product.brand.name}}</small>
+            <span class="fw5 f4">{{cartItem.product.name}}</span>
+            <span class="fw3"> by {{cartItem.product.brand.name}}</span>
           {{/link-to}}
         </td>
 
@@ -40,7 +41,7 @@
         </td>
       </tr>
       {{/each}}
-      
+
       <tr class="bb b--light-silver w-100">
         <td></td>
         <td></td>
@@ -62,8 +63,6 @@
         <td class="bt1 b pb4">Bag Subtotal</td>
         <td class="tr pr2 pb4">{{format-currency (await totalCost) unit='cents' showFree=true}}</td>
       </tr>
-
-      <!-- <tr><td class="pv6"></td></tr> -->
     </tfoot>
   </table>
   </div>

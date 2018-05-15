@@ -10,9 +10,7 @@ export default function(server) {
     cart,
     email: "monster@cook.ies"
   });
-  const brand = server.create('brand', {
-    name: "Pax"
-  });
+  const brand = server.create('brand');
   // const products = server.createList('product', 10, { brand });
 
   const products = [

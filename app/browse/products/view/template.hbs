@@ -1,67 +1,48 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <header class="mt-3 mb-5">
-        <h1 class="h3">{{product.name}} by {{product.brand.name}}</h1>
-        {{rating-bar progress=95}}
-        <span class="text-muted">
-          4.4 | 8385 reviews
-        </span>
-      </header>
-      <form class="form-inline">
-        <div class="form-group mb-2">
-          <label for="quantity">Quantity</label>
-          {{#x-select id="quantity" name="productQuantity" value=quantity action=(action 'updateQuantity') as |xs|}}
-            {{#xs.option value=1}}1{{/xs.option}}
-            {{#xs.option value=2}}2{{/xs.option}}
-            {{#xs.option value=3}}3{{/xs.option}}
-            {{#xs.option value=4}}4{{/xs.option}}
-            {{#xs.option value=5}}5{{/xs.option}}
-          {{/x-select}}
-        </div>
+<div class="flex flex-column items-end pt3 pr2">
+  {{#link-to "browse.products.view.reviews" class="link"}}
+    {{rating-bar progress=95}}
+  {{/link-to}}
+</div>
 
-        <button type="button" name="button" class="btn btn-primary">Add to Cart</button>
-      </form>
-    </div>
-    <div class="col">
-      <!-- {{#carousel-container transitionInterval=300 as |ui controls|}}
-        <div class="carousel-body">
-          {{#each product.pictures as |item|}}
-            {{#ui.item}}
-              <img class="img-fluid" src={{item.url}} alt="">
-            {{/ui.item}}
-          {{else}}
-            {{#ui.item}}
-              <img class="img-fluid" src="/assets/images/pod-1.jpg" alt="Card image cap">
-            {{/ui.item}}
-          {{/each}}
-        </div>
-        {{#if (gt product.pictures.length 1)}}
-          <button onclick={{controls.previous}}>
-            {{fa-icon "chevron-left"}}
-          </button>
-          <button onclick={{controls.next}}>
-            {{fa-icon "chevron-right"}}
-          </button>
-        {{/if}}
-      {{/carousel-container}} -->
-    </div>
+<h2 class="shadow-outer-3 ma0 pa2 pt0">
+  <span class="f1 fw8">{{product.name}}</span>
+  <span class="f3 fw4">by {{product.brand.name}}</span>
+</h2>
+
+<div class="product-view-images">
+  <div class="products">
+    {{#each images as |image|}}
+      <img src="{{image.url}}" alt="">
+    {{/each}}
   </div>
 </div>
-<div class="container mt-3">
-  <ul class="nav nav-tabs mb-2">
-    <li class="nav-item">
-      {{link-to "Strain info" "browse.products.view.index" class="nav-link"}}
-    </li>
-    <li class="nav-item">
-      {{link-to "Benefits" "browse.products.view.benefits" class="nav-link"}}
-    </li>
-    <li class="nav-item">
-      {{link-to "Reviews (8385)" "browse.products.view.reviews" class="nav-link"}}
-    </li>
-    <li class="nav-item">
-      {{link-to "Photos (436)" "browse.products.view.photos" class="nav-link"}}
-    </li>
-  </ul>
-  {{outlet}}
+
+<script type="text/javascript">
+  new ClipboardJS('.btn');
+</script>
+
+<div class="flex flex-column">
+  <button {{action "addToCart" cart product}}
+          type="button"
+          name="button"
+          class="flex-auto items-center hk-button--primary ma2">
+          Add to Cart
+  </button>
+  <button {{action "copyLink"}}
+          type="button"
+          name="button"
+          class="btn flex-auto items-center purple b--light-purple hk-button--secondary mh2">
+          Share
+        </button>
+</div>
+
+<div class="flex items-center justify-center shadow-outer-3">
+  <div class="hk-tabs flex-auto">
+    {{link-to "Strain" "browse.products.view.photos" class="f5 hk-tabs__tab" ignore_children="true"}}
+    {{link-to "Benefits" "browse.products.view.benefits" class="f5 hk-tabs__tab" ignore_children="true"}}
+    {{link-to "Reviews" "browse.products.view.reviews" class="f5 hk-tabs__tab" ignore_children="true"}}
+    <!-- {{link-to "Availability" "cart" class="f5 hk-tabs__tab" ignore_children="true"}} -->
+    <a href="#" class="f5 hk-tabs__tab">Availability</a>
+    <div class="spacer flex-auto bb b--light-silver"></div>
+  </div>
 </div>

@@ -1,34 +1,11 @@
 <header class="mt-3 mb-5">
-  <h2>Products</h2>
+  <h2 class="shadow-outer-3 ma0 pa2 pt5">#products</h2>
 </header>
 
-<div class="row">
+<ul class="list-items ma0 pa0">
   {{#each products as |product|}}
-    <div class="col-6 col-sm-4">
-      <div class="card mb-4 box-shadow">
-        {{#link-to "browse.products.view" product.id}}<img class="card-img-top" src="/assets/images/pod-1.jpg" alt="Card image cap">{{/link-to}}
-        <div class="card-body">
-          <h5 class="card-title">{{product.name}}</h5>
-          {{#if product.description}}
-            <p class="card-text">{{product.description}}</p>
-          {{else}}
-            <p class="card-text font-italic text-muted">No description.</p>
-          {{/if}}
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              {{link-to "View" "browse.products.view" product.id class="btn btn-sm btn-outline-secondary"}}
-              <button type="button" class="btn btn-sm btn-outline-secondary" {{action "addToCart" cart product (hash quantity=1)}}>Buy</button>
-            </div>
-            <small class="text-muted">{{format-currency product.price unit='cents' showFree=true}}</small>
-          </div>
-        </div>
-      </div>
-    </div>
-  {{else}}
-    <div class="col">
-      <div class="card">
-        no products.
-      </div>
-    </div>
+    {{#link-to "browse.products.view" product.id tagName="div"}}
+      {{list-item-product product=product}}
+    {{/link-to}}
   {{/each}}
-</div>
+</ul>

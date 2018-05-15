@@ -26,21 +26,13 @@
 <h2 class="shadow-outer-3 ma0 pa2  pt5">#specials</h2>
 <div class="products">
   {{#each specials as |product|}}
-    {{product-card product=product cart=session.currentUser.cart addToCart=cartService.addToCart}}
+    {{#link-to "browse.products.view" product.id}}
+      {{product-card product=product cart=session.currentUser.cart addToCart=cartService.addToCart}}
+    {{/link-to}}
   {{/each}}
 </div>
 
-<h2 class="shadow-outer-3 ma0 pa2  pt5">#brands</h2>
-<ul class="pa0">
-  {{#each brands as |brand|}}
-    <!-- value here are icons representing types of products, e.g. herb, extract, etc -->
-    {{#link-to "browse.products" (query-params brand=brand.name dispensary=null) class="no-underline dark-gray"}}
-      {{list-item name=brand.name value="✩ ✴︎ ❀" value-type="rating"}}
-    {{/link-to}}
-  {{/each}}
-</ul>
-
-<h2 class="shadow-outer-3 ma0 pa2  pt5">#dispensaries</h2>
+<h2 class="shadow-outer-3 ma0 pa2  pt5">#locations</h2>
 <ul class="pa0">
   {{#each dispensaries as |dispensary|}}
     <!-- TODO this is causing an error because the locations don't necessairly exist -->

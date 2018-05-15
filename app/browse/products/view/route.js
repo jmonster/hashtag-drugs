@@ -4,7 +4,8 @@ import RSVP from 'rsvp';
 export default Route.extend({
   model(params) {
     return RSVP.hash({
-      product: this.store.findRecord('product', params.id)
+      product: this.store.findRecord('product', params.id),
+      cart: this.modelFor('application').cart
     });
   },
 

@@ -1,6 +1,11 @@
 import { Factory, faker } from 'ember-cli-mirage';
 
 export default Factory.extend({
-  name: () => faker.name.findName(),
+  name: () => faker.random.arrayElement([
+    'Bloom Fields',
+    'Gold Drop',
+    'Nativ',
+    'Jetty'
+  ])
   // products: []
 });

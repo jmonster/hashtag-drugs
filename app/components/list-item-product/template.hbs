@@ -1,0 +1,22 @@
+<div class="flex ma2 justify-center shadow-outer-1 br1 items-center list-item-product-image-container">
+  <img class="" src="{{image.url}}" alt="">
+</div>
+
+<div class="flex flex-column mv2">
+  <div class="list-item-product-name-container fw5 f3">
+    <span>{{product.name}}</span>
+  </div>
+
+  <div class="list-item-product-brand-name-container mt1 fw4 f5 dark-gray">
+    <span>{{product.brand.name}}</span>
+  </div>
+  <div class="list-item-product-type-container mt2">
+    <span>Pax Era Pod</span>
+  </div>
+  <div class="list-item-product-price-container fw5 f3 mv3">
+    <span>{{format-currency product.price unit='cents' showFree=true}}</span>
+  </div>
+  <div class="list-item-product-rating-container mt2">
+    <span>⭐️⭐️⭐️⭐️⭐️</span>
+  </div>
+</div>
