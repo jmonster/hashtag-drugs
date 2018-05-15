@@ -6,7 +6,12 @@
     <div class="f5 dark-gray">{{product.brand.name}}</div>
 
     <div class="flex flex-column mt2">
-      <button href="#" class="hk-button-sm--primary mh1">Add to Cart</button>
+      <button
+        href="#"
+        class="hk-button-sm--primary mh1"
+        {{action "addToCart" cart product}}>
+        Add to Cart
+      </button>
       <!-- <a href="#" class="link purple ph2 pv1 ba b--light-purple br1 mh1">Subscribe and Save</a> -->
     </div>
   </div>

@@ -1,26 +1,36 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
+import { alias } from '@ember/object/computed';
 import { inject } from '@ember/service';
 
 export default Controller.extend({
   store: inject(),
+  cartService: inject('cart'),
 
   queryParams: ['brand', 'dispensary'],
-  brand: null,  // id
-  vendor: null, // id
+  brand: null,  // name
+  vendor: null, // name
 
+  cart: alias('model.cart'),
   products: computed('brand', 'vendor', function() {
+    const { products } = this.get('model');
     const brand = this.get('brand');
     const dispensary = this.get('dispensary');
 
     if (brand) {
-      return this.store.query('product', {orderBy: 'brand', equalTo: brand});
+      return products.filterBy('brand.name', brand);
     }
 
     if (dispensary) {
-      return this.store.query('product', {orderBy: 'dispensary', equalTo: dispensary});
+      return products.filterBy('dispensary.name', dispensary);
     }
 
-    return this.get('model').products;
-  })
+    return products;
+  }),
+
+  actions: {
+    addToCart() {
+      this.get('cartService').addToCart(...arguments);
+    }
+  }
 });

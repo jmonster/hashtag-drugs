@@ -3,8 +3,7 @@ import { hash } from 'rsvp';
 
 export default Route.extend({
   model() {
-    return hash({
-      products: this.store.findAll('product')
-    });
+    const { cart, products } = this.modelFor('application');
+    return hash({ cart, products });
   }
 });

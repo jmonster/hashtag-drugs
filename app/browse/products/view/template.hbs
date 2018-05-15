@@ -20,11 +20,11 @@
           {{/x-select}}
         </div>
 
-        <button {{action "addToCart" product (hash quantity=quantity)}} type="button" name="button" class="btn btn-primary">Add to Cart</button>
+        <button type="button" name="button" class="btn btn-primary">Add to Cart</button>
       </form>
     </div>
     <div class="col">
-      {{#carousel-container transitionInterval=300 as |ui controls|}}
+      <!-- {{#carousel-container transitionInterval=300 as |ui controls|}}
         <div class="carousel-body">
           {{#each product.pictures as |item|}}
             {{#ui.item}}
@@ -44,7 +44,7 @@
             {{fa-icon "chevron-right"}}
           </button>
         {{/if}}
-      {{/carousel-container}}
+      {{/carousel-container}} -->
     </div>
   </div>
 </div>
