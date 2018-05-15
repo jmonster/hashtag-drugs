@@ -58,8 +58,9 @@ export default function() {
   this.get('/carts/:id');
   this.post('/carts');
   this.patch('/carts/:id')
-  this.patch('/cart-items/:id')
-  this.delete('/cart-items/:id')
+  this.post('/cart-items');
+  this.patch('/cart-items/:id');
+  this.delete('/cart-items/:id');
 
   this.get('/orders');
   this.get('/deliveries/:id');

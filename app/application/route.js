@@ -78,15 +78,24 @@ export default Route.extend({
 
   model() {
     const session = this.get('session');
-    if (session.isAuthenticated) {
+    const brands = this.store.findAll('brand');
+    const dispensaries = this.store.findAll('vendor');
+    const products = this.store.findAll('product');
+
+    if (session.get('isAuthenticated')) {
       const _cart = this.get('fetchCart').perform();
       const _chartItems = _cart.then((cart) => cart.get('cartItems'));
 
       return hash({
+        products,
+        brands,
+        dispensaries,
         cart: _cart,
         cartItems: _chartItems
       });
     }
+
+    return { brands, dispensaries, products };
   },
 
   actions: {
@@ -98,61 +107,6 @@ export default Route.extend({
       this.get('session').close()
         .then(() => { this.transitionTo('/'); })
         .catch((/*err*/) => { window.location.assign('/'); });
-    },
-
-    transitionTo(route) {
-      // transitionTo(route, id, event) vs transitionTo(route, event)
-      const id = arguments.length > 2 ? arguments[1] : null;
-
-      if (isEmpty(id)) {
-        this.transitionTo(route);
-      } else {
-        this.transitionTo(route, id);
-      }
-    },
-
-    hopTo(url) {
-      // TODO make this work with Cordova
-      window.location.assign(url);
-    },
-
-    // usage: this.send('addToCart', product, options)
-    // alt usage: {{action "addToCart" product (hash quantity=1)}}
-    // options will be the customizations added to the cart item, such as
-    // quantity, color, size, etc.
-    addToCart(product, options = {}) {
-      this.get('session.currentUser.cart').then((cart) => {
-        const cartItems = cart.get('cartItems');
-        const quantity = options.quantity || 1;
-
-        let cartItem = cartItems.findBy('product.id', product.get('id'));
-        let pendingSave;
-
-        if (cartItem) {
-          cartItem.incrementProperty('quantity', quantity);
-          pendingSave = cartItem.save();
-        } else {
-          cartItem = this.store.createRecord('cart-item', {
-            product, quantity
-          });
-
-          cartItems.pushObject(cartItem);
-          pendingSave = cartItem.save().then(() => cart.save());
-        }
-
-        pendingSave.then(() => {
-
-        }).catch((/*err*/) => {
-          
-        });
-      });
-    },
-
-    removeFromCart(cartItem) {
-      this.get('session.currentUser.cart').then((cart) => {
-        cart.get('cartItems').removeObject(cartItem);
-        cart.save().then(() => cartItem.destroyRecord());
-      });
     }
   }
 });

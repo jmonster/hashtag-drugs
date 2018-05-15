@@ -22,6 +22,7 @@
 
         <td class="pv2 ph3 tr">
           {{#x-select value=cartItem.quantity action=(action 'setQuantity' cartItem) as |xs|}}
+            {{#xs.option class="dropdown-item" value=0}}0{{/xs.option}}
             {{#xs.option class="dropdown-item" value=1}}1{{/xs.option}}
             {{#xs.option class="dropdown-item" value=2}}2{{/xs.option}}
             {{#xs.option class="dropdown-item" value=3}}3{{/xs.option}}
@@ -39,115 +40,7 @@
         </td>
       </tr>
       {{/each}}
-      {{#each cartItems as |cartItem|}}
-      <tr class="striped--light-gray">
-        <td class="pv2 ph3">
-          {{#link-to "browse.products.view" cartItem.product.id class="link black"}}
-            {{cartItem.product.name}} <small>by {{cartItem.product.brand.name}}</small>
-          {{/link-to}}
-        </td>
-
-        <td class="pv2 ph3 tr">
-          {{#x-select value=cartItem.quantity action=(action 'setQuantity' cartItem) as |xs|}}
-            {{#xs.option class="dropdown-item" value=1}}1{{/xs.option}}
-            {{#xs.option class="dropdown-item" value=2}}2{{/xs.option}}
-            {{#xs.option class="dropdown-item" value=3}}3{{/xs.option}}
-            {{#xs.option class="dropdown-item" value=4}}4{{/xs.option}}
-            {{#xs.option class="dropdown-item" value=5}}5{{/xs.option}}
-          {{/x-select}}
-        </td>
-
-        <td class="tr pr2">
-          {{format-currency cartItem.product.price unit='cents' showFree=true}}
-        </td>
-
-        <td class="tr pr2">
-          {{format-currency cartItem.totalPrice unit='cents' showFree=true}}
-        </td>
-      </tr>
-      {{/each}}
-      {{#each cartItems as |cartItem|}}
-      <tr class="striped--light-gray">
-        <td class="pv2 ph3">
-          {{#link-to "browse.products.view" cartItem.product.id class="link black"}}
-            {{cartItem.product.name}} <small>by {{cartItem.product.brand.name}}</small>
-          {{/link-to}}
-        </td>
-
-        <td class="pv2 ph3 tr">
-          {{#x-select value=cartItem.quantity action=(action 'setQuantity' cartItem) as |xs|}}
-            {{#xs.option class="dropdown-item" value=1}}1{{/xs.option}}
-            {{#xs.option class="dropdown-item" value=2}}2{{/xs.option}}
-            {{#xs.option class="dropdown-item" value=3}}3{{/xs.option}}
-            {{#xs.option class="dropdown-item" value=4}}4{{/xs.option}}
-            {{#xs.option class="dropdown-item" value=5}}5{{/xs.option}}
-          {{/x-select}}
-        </td>
-
-        <td class="tr pr2">
-          {{format-currency cartItem.product.price unit='cents' showFree=true}}
-        </td>
-
-        <td class="tr pr2">
-          {{format-currency cartItem.totalPrice unit='cents' showFree=true}}
-        </td>
-      </tr>
-      {{/each}}
-      {{#each cartItems as |cartItem|}}
-      <tr class="striped--light-gray">
-        <td class="pv2 ph3">
-          {{#link-to "browse.products.view" cartItem.product.id class="link black"}}
-            {{cartItem.product.name}} <small>by {{cartItem.product.brand.name}}</small>
-          {{/link-to}}
-        </td>
-
-        <td class="pv2 ph3 tr">
-          {{#x-select value=cartItem.quantity action=(action 'setQuantity' cartItem) as |xs|}}
-            {{#xs.option class="dropdown-item" value=1}}1{{/xs.option}}
-            {{#xs.option class="dropdown-item" value=2}}2{{/xs.option}}
-            {{#xs.option class="dropdown-item" value=3}}3{{/xs.option}}
-            {{#xs.option class="dropdown-item" value=4}}4{{/xs.option}}
-            {{#xs.option class="dropdown-item" value=5}}5{{/xs.option}}
-          {{/x-select}}
-        </td>
-
-        <td class="tr pr2">
-          {{format-currency cartItem.product.price unit='cents' showFree=true}}
-        </td>
-
-        <td class="tr pr2">
-          {{format-currency cartItem.totalPrice unit='cents' showFree=true}}
-        </td>
-      </tr>
-      {{/each}}
-      {{#each cartItems as |cartItem|}}
-      <tr class="striped--light-gray">
-        <td class="pv2 ph3">
-          {{#link-to "browse.products.view" cartItem.product.id class="link black"}}
-            {{cartItem.product.name}} <small>by {{cartItem.product.brand.name}}</small>
-          {{/link-to}}
-        </td>
-
-        <td class="pv2 ph3 tr">
-          {{#x-select value=cartItem.quantity action=(action 'setQuantity' cartItem) as |xs|}}
-            {{#xs.option class="dropdown-item" value=1}}1{{/xs.option}}
-            {{#xs.option class="dropdown-item" value=2}}2{{/xs.option}}
-            {{#xs.option class="dropdown-item" value=3}}3{{/xs.option}}
-            {{#xs.option class="dropdown-item" value=4}}4{{/xs.option}}
-            {{#xs.option class="dropdown-item" value=5}}5{{/xs.option}}
-          {{/x-select}}
-        </td>
-
-        <td class="tr pr2">
-          {{format-currency cartItem.product.price unit='cents' showFree=true}}
-        </td>
-
-        <td class="tr pr2">
-          {{format-currency cartItem.totalPrice unit='cents' showFree=true}}
-        </td>
-      </tr>
-      {{/each}}
-
+      
       <tr class="bb b--light-silver w-100">
         <td></td>
         <td></td>

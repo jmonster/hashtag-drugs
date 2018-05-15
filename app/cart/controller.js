@@ -1,11 +1,14 @@
 import { computed } from '@ember/object';
 import { alias, lt, mapBy } from '@ember/object/computed';
 import { task } from 'ember-concurrency';
+import { inject } from '@ember/service';
 
 import Controller from '@ember/controller';
 import RSVP from 'rsvp';
 
 export default Controller.extend({
+  cartService: inject('cart'),
+
   cart: alias('model.cart'),
   cartItems: alias('cart.cartItems'),
   hasEmptyCart: lt('cartItems.length', 1),
@@ -42,8 +45,18 @@ export default Controller.extend({
 
   actions: {
     setQuantity(cartItem, quantity) {
-      cartItem.set('quantity', quantity);
-      return cartItem.save();
+      if (quantity === 0) {
+        const confirmed = confirm("Do you want to remove this item from your cart?");
+        if (confirmed) { this.get('cartService').removeFromCart(cartItem); }
+        else {
+          // for some reason this isn't triggering the UI to update
+          // but I confirmed via Ember extension that the data store has the new value
+          cartItem.set('quantity', 1);
+        }
+      } else {
+        cartItem.set('quantity', quantity);
+        return cartItem.save();
+      }
     }
   }
 });
