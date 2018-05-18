@@ -8,8 +8,8 @@ export default Component.extend({
 
   imageSrc: computed(function() {
     const pictures = this.get('product.pictures');
-    const img = pictures.get('firstObject');
-    return img.get('url');
+    const imgSrc = pictures.get('firstObject.url');
+    return imgSrc;
   }),
 
   actions: {
