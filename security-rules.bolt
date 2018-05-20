@@ -1,0 +1,332 @@
+//
+// Table definitions
+//
+
+path /users/{user_id} is User {
+  // only let user read or write their own data
+  write() { isCurrentUser(auth.id) }
+  read() { isCurrentUser(auth.id) }
+
+  /orders/{order_id} is OrderChild;
+  /addressBook/{location_id} is LocationChild;
+}
+
+type User {
+  validate() { this.message.length <= 140 }
+
+  location: LocationChild,
+  cart: CartChild,
+  orders: Object,
+  name: String,
+  email: Email,
+  isAnonymous: Boolean,
+  defaultBillingLocation: LocationChild,
+  defaultDeliveryLocation: LocationChild
+}
+
+// ==============================================
+
+path /vendors is Vendor {
+  // let everyone read vendors
+  read() { true }
+
+  // let everyone create vendors
+  create() { true }
+  // only allow the owner to edit or delete the vendor
+  update() { isVendorOwner(vendor_id, auth.uid) }
+  delete() { isVendorOwner(vendor_id, auth.uid) }
+
+  /products/{product_id} is ProductChild;
+
+  /blogPosts/{post_id} is BlogPostChild;
+
+  /announcements/{announcement_id} is AnnouncementChild;
+}
+
+type Vendor {
+  name: String,
+  description: String,
+  instagramFeed: InstagramTag,
+  owner: String,
+  location: LocationChild
+}
+
+// ==============================================
+
+path /locations  is Location {
+  // TODO - add relationships and validation
+  read() { true }
+  write() { true }
+}
+
+type Location {
+  street1: NonEmptyString,
+  street2: String,
+  zip: NonEmptyString,
+  city: NonEmptyString,
+  state: NonEmptyString,
+  longitude: NonEmptyString,
+  latitude: NonEmptyString,
+  phone: NonEmptyString,
+  email: Email
+}
+
+// ==============================================
+
+path /products is Product {
+  // everyone can read products
+  read() { true }
+  // only allow brand owner to write products
+  write() { isBrandOwner(this.brand, auth.id) }
+
+  /reviews/{review_id} is ReviewChild;
+  /pictures/{picture_id} is PictureChild;
+}
+
+type Product {
+  brand: BrandChild,
+  name: NonEmptyString,
+  description: NonEmptyString,
+  price: NonZeroNumber
+}
+
+// ==============================================
+
+path /brands is Brand {
+  // let everyone read brands
+  read() { true }
+  // anyone can create a brand
+  create() { true }
+  // only the brand ownder can update or delete the brand
+  update() { isBrandOwner(brand_id, auth.uid) }
+  delete() { isBrandOwner(brand_id, auth.uid) }
+
+  /products/{product_id} is ProductChild;
+}
+
+type Brand {
+  name: NonEmptyString
+  owner: UserChild
+}
+
+// ==============================================
+
+path /pictures is Picture {
+  // everyone can see all pics
+  read() { true }
+  // only the brand owner can write pictures
+  write() { isBrandOwner(this.brand, auth.uid) }
+}
+
+type Picture {
+  title: NonEmptyString,
+  url: NonEmptyString,
+  path: NonEmptyString,
+  alt: NonEmptyString,
+  product: ProductChild
+}
+
+// ==============================================
+
+path /reviews is Review {
+  // everyone can read reviews
+  read() { true }
+  // antone can create a review
+  create() { true }
+  // only the author can update or delete the review
+  update() { isSignedIn() && this.author == auth.id }
+  delete() { isSignedIn() && this.author == auth.id }
+}
+
+type Review {
+  author: UserChild,
+  product: ProductChild,
+  body: NonEmptyString,
+  rating: Rating
+}
+
+// ==============================================
+
+path /announcements is Announcement {
+  // everyone can read anncouncements
+  read() { true }
+  // only vendor owner can write announcements
+  write() { isVendorOwner(this.vendor, auth.uid) }
+}
+
+type Announcement {
+  vendor: VendorChild,
+  title: NonEmptyString,
+  body: NonEmptyString
+}
+
+// ==============================================
+
+path /blogPosts is BlogPost {
+  // everyone can read blog posts
+  read() { true }
+  // only vendor owner can write blog posts
+  write() { isVendorOwner(this.vendor, auth.uid) }
+}
+
+type BlogPost {
+  vendor: VendorChild,
+  title: NonEmptyString,
+  body: NonEmptyString
+}
+
+// ==============================================
+
+path /carts is Cart {
+  // only the cart owner can read and write
+  read() { isSignedIn() && this.user == auth.id }
+  write() { isSignedIn() && this.user == auth.id }
+
+  /cartItems/{item_id} is CartItemChild;
+}
+
+type Cart {
+  user: UserChild
+}
+
+// ==============================================
+
+path /cartItems is CartItem {
+  // only the cart owner can read and write
+  read() { isSignedIn() && root.cart[this.cart].user == auth.id }
+  write() { isSignedIn() && root.cart[this.cart].user == auth.id }
+}
+
+type CartItem {
+  cart: CartChild,
+  product: ProductChild,
+  quantity: NonZeroNumber
+}
+
+// ==============================================
+
+path /orders {
+  // only the purchaser can read order
+  read() { isSignedIn() && this.purchaser == auth.id }
+  // Im anticipating writing this with a cloud function
+  write() { false }
+
+  /{order_id} is Order;
+}
+
+type Order {
+  purchaser: UserChild,
+  cart: CartChild,
+  createdAt: Number,
+  fulfilledAt: Number,
+  total: Number
+}
+
+// ==============================================
+
+path /deliveries {
+  // only the purchaser can read deliveries
+  read() { isSignedIn() && root.orders[this.order].purchaser == auth.id }
+  // Im anticipating writing this with a cloud function
+  write() { false }
+
+  /{delivery_id} is Delivery;
+}
+
+type Delivery {
+  order: OrderChild,
+  driver: UserChild,
+  lastKnownLocation: LocationChild,
+  eta: Number
+}
+
+
+//
+// Child Types - used to guarentee existance
+//
+
+type VendorChild {
+  validate() { exists('vendors', this) }
+}
+
+type BrandChild {
+  validate() { exists('brands', this) }
+}
+
+type ReviewChild {
+  validate() { exists('reviews', this) }
+}
+
+type PictureChild {
+  validate() { exists('pictures', this) }
+}
+
+type ProductChild {
+  validate() { exists('products', this) }
+}
+
+type BlogPostChild {
+  validate() { exists('blogPosts', this) }
+}
+
+type AnnouncementChild {
+  validate() { exists('announcements', this) }
+}
+
+type LocationChild {
+  validate() { exists('locations', this) }
+}
+
+type UserChild {
+  validate() { exists('users', this) }
+}
+
+type CartItemChild {
+  validate() { exists('cartItems', this) }
+}
+
+type CartChild {
+  validate() { exists('carts', this) }
+}
+
+type OrderChild {
+  validate() { exists('orders', this) }
+}
+
+
+//
+// Generic Extended Types
+//
+
+type Email extends String {
+  // email must be a string, not empty, and be something@something.something
+  validate() { this.length > 0 && this.test(/.+@.+\\..+/) }
+}
+
+type InstagramTag extends String {
+  // instragram handles begin with @
+  validate() { this.length > 0 && this.startsWith('@') }
+}
+
+type NonEmptyString extends String {
+  validate() { this.length > 0 }
+}
+
+type NonZeroNumber extends Number {
+  validate() { this > 0 }
+}
+
+type Rating extends Number {
+  validate() { this >= 1 && this <= 5 }
+}
+
+
+//
+// Helper Functions
+//
+
+isCurrentUser(uid) { isSignedIn() && auth.uid == uid }
+isSignedIn() { auth != null }
+exists(type, id) { root[type][id] != null }
+isVendorOwner(vendor_id, user_id) { isSignedIn() && root.vendors[vendor_id].owner == user_id }
+isBrandOwner(brand_id, user_id) { isSignedIn() && root.brands[brand_id].owner == user_id }

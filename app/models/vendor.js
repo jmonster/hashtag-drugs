@@ -18,6 +18,7 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   description: DS.attr('string'),
   instagramFeed: DS.attr('string'),
+  owner: DS.belongsTo('user', { inverse }),
 
   editRoute: 'cms.admin.vendors.edit',
   viewRoute: 'cms.admin.vendors.edit',

@@ -13,6 +13,7 @@ const inverse = null;
 export default DS.Model.extend({
   products: DS.hasMany('product', { inverse }),
   name: DS.attr('string'),
+  owner: DS.belongsTo('user', { inverse }),
 
   editRoute: 'cms.admin.brands.edit',
   viewRoute: 'cms.admin.brands.edit',
